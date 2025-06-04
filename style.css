@@ -1,67 +1,87 @@
-
 body {
-  font-family: 'Helvetica Neue', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   margin: 0;
-  background: #faf6f2;
+  background: #f9f5ef;
   color: #111;
-  text-align: center;
-  padding: 1rem;
+  line-height: 1.6;
 }
 
 header {
+  text-align: center;
   padding: 2rem 1rem;
-  background-color: #fff;
-  border-bottom: 2px solid #ddd;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 
 .logo {
   width: 180px;
-  max-width: 80%;
-  margin: 1rem auto;
-}
-
-h1 {
-  font-size: 2.2rem;
-  margin: 1rem 0 0.5rem;
-  color: #000;
-}
-
-h2 {
-  font-size: 1.6rem;
-  color: #222;
-  margin-top: 2rem;
-}
-
-section {
-  margin: 2rem auto;
-  max-width: 800px;
-  padding: 0 1rem;
-}
-
-.book-cover {
-  width: 180px;
-  max-width: 90%;
   margin: 1rem auto;
   display: block;
 }
 
-a {
-  color: #000;
-  text-decoration: none;
-  font-weight: 600;
-  margin: 0 0.5rem;
-  display: inline-block;
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
 }
 
-a:hover {
-  text-decoration: underline;
+.intro {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1rem;
+  color: #333;
+}
+
+main {
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.book-cover {
+  width: 180px;
+  max-width: 100%;
+  margin: 1rem auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.buttons {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.buttons a {
+  background: #111;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.buttons a:hover {
+  background: #444;
 }
 
 footer {
-  margin-top: 3rem;
+  text-align: center;
   padding: 2rem 1rem;
+  font-size: 0.9rem;
+  color: #666;
   background: #fff;
   border-top: 1px solid #ddd;
-  font-size: 0.9rem;
-  color: #444;
 }
