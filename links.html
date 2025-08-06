@@ -31,7 +31,7 @@
     p {
       font-size: 1.2rem;
       margin-bottom: 2rem;
-      color: #ffffff; /* improved for contrast */
+      color: #ffffff;
       opacity: 0;
       animation: fadeSlideUp 1s ease-out 0.3s forwards;
       max-width: 500px;
@@ -74,12 +74,13 @@
     }
 
     footer {
-      margin-top: auto;
+      margin-top: 2rem;
       padding-top: 2rem;
       font-size: 0.9rem;
       color: #dfe6e9;
-      animation: bounceIn 1.5s ease-out 1.3s forwards;
       opacity: 0;
+      animation: fadeIn 1s ease-out forwards;
+      animation-delay: 1.4s;
     }
 
     /* === Animations === */
@@ -116,20 +117,9 @@
       }
     }
 
-    @keyframes bounceIn {
-      0% {
-        transform: translateY(40px);
-        opacity: 0;
-      }
-      60% {
-        transform: translateY(-10px);
+    @keyframes fadeIn {
+      to {
         opacity: 1;
-      }
-      80% {
-        transform: translateY(5px);
-      }
-      100% {
-        transform: translateY(0);
       }
     }
   </style>
@@ -152,9 +142,9 @@
   <footer>
     🌺 Powered by love, acceptance, and glitter.
   </footer>
- 
+
   <script>
-    // Confetti burst when page loads 🎉
+    // Confetti burst on page load 🎉
     window.onload = () => {
       confetti({
         particleCount: 120,
