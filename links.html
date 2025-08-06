@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>🌴 3Dudes1Life Links</title>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <style>
     /* === TROPICAL STYLING + ANIMATIONS === */
     body {
@@ -28,11 +29,12 @@
     }
 
     p {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       margin-bottom: 2rem;
-      color: #ffeaa7;
+      color: #ffffff; /* improved for contrast */
       opacity: 0;
       animation: fadeSlideUp 1s ease-out 0.3s forwards;
+      max-width: 500px;
     }
 
     .links {
@@ -57,7 +59,6 @@
       animation: slideIn 0.5s ease-out forwards;
     }
 
-    /* Staggered delay for each button */
     .links a:nth-child(1) { animation-delay: 0.4s; }
     .links a:nth-child(2) { animation-delay: 0.5s; }
     .links a:nth-child(3) { animation-delay: 0.6s; }
@@ -147,10 +148,21 @@
     <a href="https://cdawgssnackshack.com" target="_blank">🍪 C-Dawg’s Snack Shack</a>
     <a href="https://outatinc.myshopify.com" target="_blank">🛍️ OutAt Store (All Brands)</a>
   </div>
- 
+
   <footer>
     🌺 Powered by love, acceptance, and glitter.
   </footer>
+
+  <script>
+    // Confetti burst when page loads 🎉
+    window.onload = () => {
+      confetti({
+        particleCount: 120,
+        spread: 90,
+        origin: { y: 0.3 }
+      });
+    };
+  </script>
 
 </body>
 </html>
