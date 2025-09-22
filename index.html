@@ -31,6 +31,7 @@
     }
     *{box-sizing:border-box}
     body{margin:0;font-family:'Quicksand',sans-serif;background:var(--bg);color:var(--text);}
+    /* NAV */
     nav{
       position:sticky;top:0;z-index:1000;background:#fff;
       border-bottom:4px solid;border-image:linear-gradient(to right,var(--teal),var(--blue)) 1;
@@ -38,6 +39,7 @@
     }
     nav a{color:#000;text-decoration:none;font-weight:600;}
     nav a:hover{color:var(--teal);}
+    /* HERO */
     header{
       text-align:center;color:#fff;background:linear-gradient(135deg,var(--teal),var(--blue));
       padding:4rem 1rem 2rem;position:relative;
@@ -47,6 +49,7 @@
     header img.logo{max-width:120px;margin-bottom:1rem;}
     header h1{margin:.5rem 0;font-size:2.2rem;}
     header .intro{max-width:720px;margin:0 auto;line-height:1.6;}
+    /* CONTENT */
     main{max-width:1000px;margin:auto;padding:2rem 1rem;}
     .card{
       background:var(--card);color:var(--text);border-radius:12px;padding:2rem;margin-bottom:2rem;
@@ -63,6 +66,7 @@
       text-decoration:none;font-weight:700;border-radius:50px;transition:transform .2s,background .3s;
     }
     .buttons a:hover{background:var(--teal);transform:translateY(-2px);}
+    /* FOOTER */
     footer{text-align:center;background:var(--blue);color:#fff;padding:1.5rem;margin-top:2rem;}
     @media (max-width:768px){nav{justify-content:center;flex-wrap:wrap}header h1{font-size:1.85rem}}
   </style>
@@ -110,9 +114,14 @@
     <section class="card" id="podcast">
       <h2>🎙️ A Little Throuple Tea — Podcast</h2>
 
-      <!-- Clickable artwork (cache-busted) -->
+      <!-- Clickable artwork (use RAW GitHub URL to avoid decoding / caching issues) -->
       <a href="https://throupletea.com" target="_blank" rel="noopener">
-        <img src="./podcastartwork.jpeg?v=2" alt="A Little Throuple Tea podcast artwork" class="podcast-art" loading="lazy">
+        <img
+          class="podcast-art"
+          alt="A Little Throuple Tea podcast artwork"
+          loading="lazy"
+          src="https://raw.githubusercontent.com/3dudes1life/ThroupleTea/main/podcastartwork.jpeg?v=3"
+        />
       </a>
 
       <p><strong>Out now.</strong> New episodes drop <strong>weekly</strong> through late November. Watch, listen, and sip the tea with William, Caleb, and Daniel.</p>
@@ -172,7 +181,7 @@
     <!-- Contact -->
     <section class="card contact" id="contact">
       <h2>📬 Get In Touch</h2>
-      <p><a href="mailto:3dudes1lifecreative@outatinc.com?subject=3dudes1life%20creative%20website">3dudes1lifecreative@outatinc.com</a></p>
+      <p><a href="mailto:3dudes1life@gmail.com?subject=3dudes1life%20creative%20website">3dudes1life@gmail.com</a></p>
     </section>
   </main>
 
