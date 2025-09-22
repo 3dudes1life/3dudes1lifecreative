@@ -4,12 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>3Dudes1Life Creative</title>
-  <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="logo.png" />
-  <meta name="description" content="3Dudes1Life Creative — books, blog, and the A Little Throuple Tea podcast." />
+  <meta name="description" content="3Dudes1Life Creative — the queer lifestyle branch of OutAt Inc: books, blog, and the A Little Throuple Tea podcast." />
   <meta property="og:title" content="3Dudes1Life Creative" />
-  <meta property="og:description" content="3Dudes1Life Creative is the queer lifestyle branch of OutAt Inc — books, podcasts, blog, and more." />
+  <meta property="og:description" content="3Dudes1Life Creative — stories, podcasts, and projects from Daniel, Caleb, and Will." />
   <meta property="og:image" content="logo.png" />
   <meta property="og:type" content="website" />
 
@@ -23,126 +22,97 @@
   </script>
 
   <style>
-    body {
-      margin: 0;
-      font-family: 'Quicksand', sans-serif;
-      background: #222; /* dark grey background */
-      color: #333;
+    :root{
+      --teal:#43cea2;
+      --blue:#185a9d;
+      --bg:#222;            /* deep grey background */
+      --card:#fff;
+      --text:#333;
     }
 
-    header {
-      text-align: center;
-      padding: 4rem 1rem 2rem;
-      background: linear-gradient(135deg, #43cea2, #185a9d);
-      color: white;
+    /* Base */
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:'Quicksand',sans-serif;
+      background:var(--bg);
+      color:var(--text);
     }
 
-    header img.logo {
-      max-width: 120px;
-      margin-bottom: 1rem;
+    /* Nav */
+    nav{
+      position:sticky; top:0; z-index:1000;
+      background:#fff;
+      border-bottom:4px solid;
+      border-image:linear-gradient(to right,var(--teal),var(--blue)) 1;
+      padding:.9rem 2rem;
+      display:flex; justify-content:flex-end; gap:1.5rem;
     }
-
-    header h1 {
-      margin: 0.5rem 0;
-      font-size: 2.2rem;
+    nav a{
+      color:#000; text-decoration:none; font-weight:600;
     }
+    nav a:hover{ color:var(--teal); }
 
-    header .intro {
-      max-width: 700px;
-      margin: 0 auto;
-      font-size: 1.1rem;
-      line-height: 1.6;
+    /* Hero */
+    header{
+      text-align:center; color:#fff;
+      background:linear-gradient(135deg,var(--teal),var(--blue));
+      padding:4rem 1rem 2rem; position:relative;
     }
-
-    nav {
-      display: flex;
-      justify-content: flex-end;
-      background: white;
-      padding: 0.75rem 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+    header::after{
+      content:""; position:absolute; inset:0; background:rgba(0,0,0,.35);
     }
+    header .wrap{ position:relative; z-index:1; }
+    header img.logo{ max-width:120px; margin-bottom:1rem; }
+    header h1{ margin:.5rem 0; font-size:2.2rem; }
+    header .intro{ max-width:720px; margin:0 auto; line-height:1.6; }
 
-    nav a {
-      color: black;
-      text-decoration: none;
-      margin-left: 1.5rem;
-      font-weight: 600;
+    /* Layout */
+    main{ max-width:1000px; margin:auto; padding:2rem 1rem; }
+    .card{
+      background:var(--card); color:var(--text);
+      border-radius:12px; padding:2rem; margin-bottom:2rem;
+      box-shadow:0 6px 18px rgba(0,0,0,.4);
     }
+    .card h2{ margin-top:0; color:var(--blue); }
 
-    main {
-      padding: 2rem 1rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    .card {
-      background: white;
-      padding: 2rem;
-      border-radius: 12px;
-      margin-bottom: 2rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-
-    .card h2 {
-      margin-top: 0;
-      color: #185a9d;
-    }
-
-    .buttons {
-      margin-top: 1rem;
-    }
-
-    .buttons a {
-      display: inline-block;
-      margin: 0.3rem;
-      padding: 0.6rem 1.2rem;
-      border-radius: 50px;
-      background: #185a9d;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      transition: all 0.3s ease;
-    }
-
-    .buttons a:hover {
-      background: #43cea2;
-    }
-
+    /* Media blocks */
     .book-cover,
-    .podcast-art {
-      display: block;
-      max-width: 280px;
-      margin: 1rem auto 2rem auto;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    .podcast-art{
+      display:block;
+      max-width:280px;
+      width:100%;
+      height:auto;
+      margin:1rem auto 1.5rem;
+      border-radius:8px;
+      box-shadow:0 4px 12px rgba(0,0,0,.3);
     }
 
-    footer {
-      text-align: center;
-      background: #185a9d;
-      color: white;
-      padding: 1.5rem;
-      margin-top: 2rem;
+    /* Buttons */
+    .buttons{ margin-top:1rem; }
+    .buttons a{
+      display:inline-block; margin:.35rem; padding:.6rem 1.2rem;
+      background:var(--blue); color:#fff; text-decoration:none; font-weight:700;
+      border-radius:50px; transition:transform .2s, background .3s;
+    }
+    .buttons a:hover{ background:var(--teal); transform:translateY(-2px); }
+
+    /* Footer */
+    footer{
+      text-align:center; background:var(--blue); color:#fff;
+      padding:1.5rem; margin-top:2rem;
     }
 
-    /* Mobile tweaks */
-    @media (max-width: 768px) {
-      nav {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      nav a {
-        margin: 0.5rem 1rem;
-      }
-      header h1 {
-        font-size: 1.8rem;
-      }
+    /* Mobile */
+    @media (max-width:768px){
+      nav{ justify-content:center; flex-wrap:wrap; }
+      header h1{ font-size:1.85rem; }
     }
   </style>
 </head>
 <body>
+
+  <!-- Menu -->
   <nav>
     <a href="#who">Who We Are</a>
     <a href="#podcast">Podcast</a>
@@ -151,18 +121,21 @@
     <a href="#contact">Contact</a>
   </nav>
 
+  <!-- Hero -->
   <header>
-    <img src="logo.png" alt="3Dudes1Life Creative Logo" class="logo" />
-    <h1>Welcome to 3Dudes1Life Creative</h1>
-    <p class="intro">
-      3Dudes1Life Creative is the queer lifestyle branch of <strong>OutAt Inc</strong> — building a hub for books, podcasts, blogs,
-      and more. What started as a throuple’s book series is now expanding into projects and stories that celebrate
-      love, inclusivity, and community. We’re here to inspire, to entertain, and to proudly redefine what it
-      means to live and love out loud. 🌈
-    </p>
+    <div class="wrap">
+      <img src="logo.png" alt="3Dudes1Life Creative logo" class="logo" loading="lazy" />
+      <h1>Welcome to 3Dudes1Life Creative</h1>
+      <p class="intro">
+        3Dudes1Life Creative is the queer lifestyle branch of <strong>OutAt Inc</strong> — a hub for books, podcasts, blogs, and more. 
+        What started as a throuple’s book series has grown into projects and stories that celebrate love, inclusivity, and community. 
+        We’re here to inspire, entertain, and proudly redefine what it means to live and love out loud. 🌈
+      </p>
+    </div>
   </header>
 
   <main>
+    <!-- Who -->
     <section class="card" id="who">
       <h2>Who We Are</h2>
       <p>
@@ -176,27 +149,35 @@
       </p>
     </section>
 
+    <!-- Podcast -->
     <section class="card" id="podcast">
       <h2>🎙️ A Little Throuple Tea — Podcast</h2>
-      <img src="podcastartwork.jpeg" alt="Podcast Artwork" class="podcast-art" />
+
+      <!-- Clickable artwork -->
+      <a href="https://throupletea.com" target="_blank" rel="noopener">
+        <img src="podcastartwork.jpeg" alt="A Little Throuple Tea podcast artwork" class="podcast-art" loading="lazy">
+      </a>
+
       <p>
-        Funny, real, a little messy. William, Caleb, and Daniel spill the tea on love, life, and everything in between.
-        New episodes mid-September. Watch, listen, or subscribe for alerts.
+        <strong>Out now.</strong> New episodes drop <strong>weekly</strong> through late November. 
+        Watch, listen, and sip the tea with William, Caleb, and Daniel.
       </p>
+
       <div class="buttons">
-        <a href="https://throupletea.com" target="_blank" rel="noopener">🌐 Visit Podcast Site</a>
+        <a href="https://podcasts.apple.com/us/podcast/3dudes1life-a-little-throuple-tea/id1837237399" target="_blank" rel="noopener">🍎 Apple Podcasts</a>
         <a href="https://open.spotify.com/show/6cb9Y7qcyDO1L7O15X2oL5" target="_blank" rel="noopener">🟢 Spotify</a>
         <a href="https://www.youtube.com/channel/UCswzye8bcm8bByqLlW0QaFQ" target="_blank" rel="noopener">▶️ YouTube</a>
         <a href="https://www.iheart.com/podcast/269-3dudes1life-a-little-throu-289987978/" target="_blank" rel="noopener">❤️ iHeartRadio</a>
         <a href="https://music.amazon.com/podcasts/2a3cfc8f-2a79-4aac-b48b-625a20f08421/3dudes1life-a-little-throuple-tea" target="_blank" rel="noopener">🛒 Amazon Music</a>
         <a href="https://anchor.fm/s/1087008c4/podcast/rss" target="_blank" rel="noopener">📰 RSS</a>
-        <a href="https://podcasts.apple.com/us/podcast/3dudes1life-a-little-throuple-tea/id1837237399" target="_blank" rel="noopener">🍎 Apple Podcasts</a>
+        <a href="https://throupletea.com" target="_blank" rel="noopener">🌐 Visit Site</a>
       </div>
     </section>
 
+    <!-- Book -->
     <section class="card" id="book">
       <h2>📚 Tres Amigos, Una Vida</h2>
-      <img src="book-cover.png" alt="Book Cover" class="book-cover" />
+      <img src="book-cover.png" alt="Tres Amigos, Una Vida book cover" class="book-cover" loading="lazy" />
       <p>
         What happens when three wildly different men—an emotionally guarded Navy mechanic from Oklahoma, a tattooed culinary specialist
         from a tiny Florida town, and a sharp-tongued tech heir from San Francisco—collide at exactly the wrong time... and it feels perfectly right?
@@ -211,6 +192,7 @@
         It’s about what it really means to build a life together when the world keeps trying to pull you apart.
       </p>
       <p>Inspired by true events from a real-life throuple who’ve spent a decade building a life—and love—together.</p>
+
       <div class="buttons">
         <a href="https://www.etsy.com/shop/TresAmigosUnaVida" target="_blank" rel="noopener">🛒 Buy the Paperback</a>
         <a href="https://www.amazon.com/Tres-Amigos-Una-Vida-Throuple-ebook/dp/B0F98W6S5N" target="_blank" rel="noopener">📖 Get the eBook</a>
@@ -219,12 +201,12 @@
       </div>
     </section>
 
+    <!-- Blog -->
     <section class="card" id="blog">
       <h2>🌈 3Dudes1Life Blog</h2>
       <p>
-        The blog is a window into our world—filled with garden updates, vacation stories, mouthwatering recipes, how we met
-        (spoiler: it’s adorable), and the beautiful chaos of everyday throuple life. It’s equal parts love letter, scrapbook,
-        and behind-the-scenes of building a life together.
+        The blog is a window into our world—garden updates, vacation stories, mouthwatering recipes, how we met
+        (spoiler: it’s adorable), and the beautiful chaos of everyday throuple life.
       </p>
       <div class="buttons">
         <a href="https://3dudes1life.com" target="_blank" rel="noopener">📰 Read the Blog</a>
@@ -233,6 +215,7 @@
       </div>
     </section>
 
+    <!-- Contact -->
     <section class="card contact" id="contact">
       <h2>📬 Get In Touch</h2>
       <p><a href="mailto:3dudes1life@gmail.com?subject=3dudes1life%20creative%20website">3dudes1life@gmail.com</a></p>
