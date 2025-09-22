@@ -23,27 +23,131 @@
   </script>
 
   <style>
-    /* Basic nav styling (adjust in style.css as needed) */
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      color: #333;
+      background: #fafafa;
+    }
+
+    /* === NAV === */
     nav {
       position: sticky;
       top: 0;
       background: #fff;
+      border-bottom: 4px solid;
+      border-image: linear-gradient(to right, #43cea2, #185a9d) 1;
       padding: 1rem;
       display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      font-family: 'Quicksand', sans-serif;
-      font-weight: 600;
+      justify-content: space-between;
+      align-items: center;
       z-index: 1000;
+    }
+    nav .menu {
+      display: flex;
+      gap: 1.5rem;
     }
     nav a {
       text-decoration: none;
-      color: #185a9d;
+      color: #000; /* black menu text */
+      font-weight: 600;
       transition: color 0.3s;
     }
     nav a:hover {
       color: #43cea2;
     }
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #000;
+    }
+
+    /* === HEADER === */
+    header {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: linear-gradient(to bottom, #43cea2, #185a9d);
+      color: #fff;
+    }
+    header img.logo {
+      max-width: 100px;
+      margin-bottom: 1rem;
+    }
+    header h1 {
+      margin: 0.5rem 0;
+      font-size: 2rem;
+    }
+    header .intro {
+      max-width: 800px;
+      margin: 1rem auto;
+      line-height: 1.6;
+    }
+
+    /* === SECTIONS === */
+    main {
+      padding: 2rem 1rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    section.card {
+      background: #fff;
+      margin: 2rem 0;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    section h2 {
+      margin-top: 0;
+      color: #185a9d;
+    }
+
+    /* === BUTTONS === */
+    .buttons a {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 0.7rem 1.2rem;
+      border-radius: 30px;
+      background: #185a9d;
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s, background 0.3s;
+    }
+    .buttons a:hover {
+      background: #43cea2;
+      transform: translateY(-2px);
+    }
+
+    /* === FOOTER === */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #185a9d;
+      color: #fff;
+    }
+
+    /* === MOBILE === */
+    @media (max-width: 768px) {
+      nav .menu {
+        display: none;
+        flex-direction: column;
+        background: #fff;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        border-left: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+      }
+      nav .menu.active {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+      }
+    }
+
     html {
       scroll-behavior: smooth;
     }
@@ -53,21 +157,24 @@
 
   <!-- Navigation Menu -->
   <nav>
-    <a href="#who-we-are">Who We Are</a>
-    <a href="#podcast">Podcast</a>
-    <a href="#book">The Book</a>
-    <a href="#blog">Blog</a>
-    <a href="#contact">Contact</a>
+    <div class="menu-toggle">☰</div>
+    <div class="menu">
+      <a href="#who-we-are">Who We Are</a>
+      <a href="#podcast">Podcast</a>
+      <a href="#book">The Book</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
+    </div>
   </nav>
 
   <header>
     <img src="logo.png" alt="3Dudes1Life Creative Logo" class="logo" />
     <h1>Welcome to 3Dudes1Life Creative</h1>
     <p class="intro">
-      3Dudes1Life Creative is growing into the queer lifestyle branch of OutAt Inc — 
-      building a hub for stories, projects, and community.  
-      What started as a throuple’s book series is now expanding into podcasts, blogs,  
-      and creative ventures that celebrate the ups, downs, and deep connection found in loving more than one person at a time.  
+      3Dudes1Life Creative is the queer lifestyle branch of OutAt Inc — 
+      building a hub for books, podcasts, blogs, and more.  
+      What started as a throuple’s book series is now expanding into 
+      projects and stories that celebrate love, inclusivity, and community.  
       We’re here to inspire, to entertain, and to proudly redefine what it means to live and love out loud. 🌈
     </p>
   </header>
@@ -151,5 +258,12 @@
   <footer>
     <p>© 2025 3Dudes1Life Creative. All rights reserved.</p>
   </footer>
+
+  <script>
+    // Mobile nav toggle
+    document.querySelector(".menu-toggle").addEventListener("click", () => {
+      document.querySelector(".menu").classList.toggle("active");
+    });
+  </script>
 </body>
 </html>
