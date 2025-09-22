@@ -25,89 +25,46 @@
     :root{
       --teal:#43cea2;
       --blue:#185a9d;
-      --bg:#222;            /* deep grey background */
+      --bg:#222;
       --card:#fff;
       --text:#333;
     }
-
-    /* Base */
     *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:'Quicksand',sans-serif;
-      background:var(--bg);
-      color:var(--text);
-    }
-
-    /* Nav */
+    body{margin:0;font-family:'Quicksand',sans-serif;background:var(--bg);color:var(--text);}
     nav{
-      position:sticky; top:0; z-index:1000;
-      background:#fff;
-      border-bottom:4px solid;
-      border-image:linear-gradient(to right,var(--teal),var(--blue)) 1;
-      padding:.9rem 2rem;
-      display:flex; justify-content:flex-end; gap:1.5rem;
+      position:sticky;top:0;z-index:1000;background:#fff;
+      border-bottom:4px solid;border-image:linear-gradient(to right,var(--teal),var(--blue)) 1;
+      padding:.9rem 2rem;display:flex;justify-content:flex-end;gap:1.5rem;
     }
-    nav a{
-      color:#000; text-decoration:none; font-weight:600;
-    }
-    nav a:hover{ color:var(--teal); }
-
-    /* Hero */
+    nav a{color:#000;text-decoration:none;font-weight:600;}
+    nav a:hover{color:var(--teal);}
     header{
-      text-align:center; color:#fff;
-      background:linear-gradient(135deg,var(--teal),var(--blue));
-      padding:4rem 1rem 2rem; position:relative;
+      text-align:center;color:#fff;background:linear-gradient(135deg,var(--teal),var(--blue));
+      padding:4rem 1rem 2rem;position:relative;
     }
-    header::after{
-      content:""; position:absolute; inset:0; background:rgba(0,0,0,.35);
-    }
-    header .wrap{ position:relative; z-index:1; }
-    header img.logo{ max-width:120px; margin-bottom:1rem; }
-    header h1{ margin:.5rem 0; font-size:2.2rem; }
-    header .intro{ max-width:720px; margin:0 auto; line-height:1.6; }
-
-    /* Layout */
-    main{ max-width:1000px; margin:auto; padding:2rem 1rem; }
+    header::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.35);}
+    header .wrap{position:relative;z-index:1;}
+    header img.logo{max-width:120px;margin-bottom:1rem;}
+    header h1{margin:.5rem 0;font-size:2.2rem;}
+    header .intro{max-width:720px;margin:0 auto;line-height:1.6;}
+    main{max-width:1000px;margin:auto;padding:2rem 1rem;}
     .card{
-      background:var(--card); color:var(--text);
-      border-radius:12px; padding:2rem; margin-bottom:2rem;
+      background:var(--card);color:var(--text);border-radius:12px;padding:2rem;margin-bottom:2rem;
       box-shadow:0 6px 18px rgba(0,0,0,.4);
     }
-    .card h2{ margin-top:0; color:var(--blue); }
-
-    /* Media blocks */
-    .book-cover,
-    .podcast-art{
-      display:block;
-      max-width:280px;
-      width:100%;
-      height:auto;
-      margin:1rem auto 1.5rem;
-      border-radius:8px;
+    .card h2{margin-top:0;color:var(--blue);}
+    .book-cover,.podcast-art{
+      display:block;max-width:280px;width:100%;height:auto;margin:1rem auto 1.5rem;border-radius:8px;
       box-shadow:0 4px 12px rgba(0,0,0,.3);
     }
-
-    /* Buttons */
-    .buttons{ margin-top:1rem; }
+    .buttons{margin-top:1rem;}
     .buttons a{
-      display:inline-block; margin:.35rem; padding:.6rem 1.2rem;
-      background:var(--blue); color:#fff; text-decoration:none; font-weight:700;
-      border-radius:50px; transition:transform .2s, background .3s;
+      display:inline-block;margin:.35rem;padding:.6rem 1.2rem;background:var(--blue);color:#fff;
+      text-decoration:none;font-weight:700;border-radius:50px;transition:transform .2s,background .3s;
     }
-    .buttons a:hover{ background:var(--teal); transform:translateY(-2px); }
-
-    /* Footer */
-    footer{
-      text-align:center; background:var(--blue); color:#fff;
-      padding:1.5rem; margin-top:2rem;
-    }
-
-    /* Mobile */
-    @media (max-width:768px){
-      nav{ justify-content:center; flex-wrap:wrap; }
-      header h1{ font-size:1.85rem; }
-    }
+    .buttons a:hover{background:var(--teal);transform:translateY(-2px);}
+    footer{text-align:center;background:var(--blue);color:#fff;padding:1.5rem;margin-top:2rem;}
+    @media (max-width:768px){nav{justify-content:center;flex-wrap:wrap}header h1{font-size:1.85rem}}
   </style>
 </head>
 <body>
@@ -127,8 +84,8 @@
       <img src="logo.png" alt="3Dudes1Life Creative logo" class="logo" loading="lazy" />
       <h1>Welcome to 3Dudes1Life Creative</h1>
       <p class="intro">
-        3Dudes1Life Creative is the queer lifestyle branch of <strong>OutAt Inc</strong> — a hub for books, podcasts, blogs, and more. 
-        What started as a throuple’s book series has grown into projects and stories that celebrate love, inclusivity, and community. 
+        3Dudes1Life Creative is the queer lifestyle branch of <strong>OutAt Inc</strong> — a hub for books, podcasts, blogs, and more.
+        What started as a throuple’s book series has grown into projects and stories that celebrate love, inclusivity, and community.
         We’re here to inspire, entertain, and proudly redefine what it means to live and love out loud. 🌈
       </p>
     </div>
@@ -153,15 +110,12 @@
     <section class="card" id="podcast">
       <h2>🎙️ A Little Throuple Tea — Podcast</h2>
 
-      <!-- Clickable artwork -->
+      <!-- Clickable artwork (cache-busted) -->
       <a href="https://throupletea.com" target="_blank" rel="noopener">
-        <img src="podcastartwork.jpeg" alt="A Little Throuple Tea podcast artwork" class="podcast-art" loading="lazy">
+        <img src="./podcastartwork.jpeg?v=2" alt="A Little Throuple Tea podcast artwork" class="podcast-art" loading="lazy">
       </a>
 
-      <p>
-        <strong>Out now.</strong> New episodes drop <strong>weekly</strong> through late November. 
-        Watch, listen, and sip the tea with William, Caleb, and Daniel.
-      </p>
+      <p><strong>Out now.</strong> New episodes drop <strong>weekly</strong> through late November. Watch, listen, and sip the tea with William, Caleb, and Daniel.</p>
 
       <div class="buttons">
         <a href="https://podcasts.apple.com/us/podcast/3dudes1life-a-little-throuple-tea/id1837237399" target="_blank" rel="noopener">🍎 Apple Podcasts</a>
@@ -218,7 +172,7 @@
     <!-- Contact -->
     <section class="card contact" id="contact">
       <h2>📬 Get In Touch</h2>
-      <p><a href="mailto:3dudes1life@gmail.com?subject=3dudes1life%20creative%20website">3dudes1life@gmail.com</a></p>
+      <p><a href="mailto:3dudes1lifecreative@outatinc.com?subject=3dudes1life%20creative%20website">3dudes1lifecreative@outatinc.com</a></p>
     </section>
   </main>
 
