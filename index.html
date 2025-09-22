@@ -21,20 +21,59 @@
     gtag('js', new Date());
     gtag('config', 'G-0JTFMYWEFZ');
   </script>
+
+  <style>
+    /* Basic nav styling (adjust in style.css as needed) */
+    nav {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 600;
+      z-index: 1000;
+    }
+    nav a {
+      text-decoration: none;
+      color: #185a9d;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #43cea2;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
 </head>
 <body>
+
+  <!-- Navigation Menu -->
+  <nav>
+    <a href="#who-we-are">Who We Are</a>
+    <a href="#podcast">Podcast</a>
+    <a href="#book">The Book</a>
+    <a href="#blog">Blog</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
   <header>
     <img src="logo.png" alt="3Dudes1Life Creative Logo" class="logo" />
     <h1>Welcome to 3Dudes1Life Creative</h1>
     <p class="intro">
-      D.C.W. created 3Dudes1Life Creative to celebrate the ups, downs, and deep connection found in loving more than one person at a time.
-      They hope their stories inspire others to embrace their truth, redefine relationships on their own terms, and never settle for anything less than magic.
-      This brand will manage social, the book series, the blog, and whatever is to come.
+      3Dudes1Life Creative is growing into the queer lifestyle branch of OutAt Inc — 
+      building a hub for stories, projects, and community.  
+      What started as a throuple’s book series is now expanding into podcasts, blogs,  
+      and creative ventures that celebrate the ups, downs, and deep connection found in loving more than one person at a time.  
+      We’re here to inspire, to entertain, and to proudly redefine what it means to live and love out loud. 🌈
     </p>
   </header>
 
   <main>
-    <section class="card">
+    <section class="card" id="who-we-are">
       <h2>Who We Are</h2>
       <p>
         D.C.W. = Daniel, Caleb, and Will have been building a life together for nearly a decade. As a real-life throuple,
@@ -47,8 +86,7 @@
       </p>
     </section>
 
-    <!-- NEW: Podcast card -->
-    <section class="card">
+    <section class="card" id="podcast">
       <h2>🎙️ A Little Throuple Tea — Podcast</h2>
       <p>
         Funny, real, a little messy. William, Caleb, and Daniel spill the tea on love, life, and everything in between.
@@ -65,7 +103,7 @@
       </div>
     </section>
 
-    <section class="card">
+    <section class="card" id="book">
       <h2>📚 Tres Amigos, Una Vida</h2>
       <img src="book-cover.png" alt="Book Cover" class="book-cover" />
       <p>
@@ -90,7 +128,7 @@
       </div>
     </section>
 
-    <section class="card">
+    <section class="card" id="blog">
       <h2>🌈 3Dudes1Life Blog</h2>
       <p>
         The blog is a window into our world—filled with garden updates, vacation stories, mouthwatering recipes, how we met
@@ -104,7 +142,7 @@
       </div>
     </section>
 
-    <section class="card contact">
+    <section class="card contact" id="contact">
       <h2>📬 Get In Touch</h2>
       <p><a href="mailto:3dudes1life@gmail.com?subject=3dudes1life%20creative%20website">3dudes1life@gmail.com</a></p>
     </section>
