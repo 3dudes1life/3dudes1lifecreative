@@ -4,11 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>3Dudes1Life Creative</title>
+  <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="logo.png" />
   <meta name="description" content="3Dudes1Life Creative — books, blog, and the A Little Throuple Tea podcast." />
   <meta property="og:title" content="3Dudes1Life Creative" />
-  <meta property="og:description" content="D.C.W. share their stories through books, blog, and the A Little Throuple Tea podcast." />
+  <meta property="og:description" content="3Dudes1Life Creative is the queer lifestyle branch of OutAt Inc — books, podcasts, blog, and more." />
   <meta property="og:image" content="logo.png" />
   <meta property="og:type" content="website" />
 
@@ -25,165 +26,143 @@
     body {
       margin: 0;
       font-family: 'Quicksand', sans-serif;
-      color: #eee;
-      background: #222; /* deep grey */
+      background: #222; /* dark grey background */
+      color: #333;
     }
 
-    /* === NAV === */
-    nav {
-      position: sticky;
-      top: 0;
-      background: #fff;
-      border-bottom: 4px solid;
-      border-image: linear-gradient(to right, #43cea2, #185a9d) 1;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
-    }
-    nav img.logo {
-      max-height: 40px;
-    }
-    nav .menu {
-      display: flex;
-      gap: 1.5rem;
-    }
-    nav a {
-      text-decoration: none;
-      color: #000;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
-    nav a:hover {
-      color: #43cea2;
-    }
-
-    /* === HEADER === */
     header {
       text-align: center;
-      padding: 4rem 1rem;
-      background: linear-gradient(to bottom, #43cea2, #185a9d);
-      position: relative;
-      color: #fff;
-    }
-    header::after {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.4); /* dark overlay */
-    }
-    header .content {
-      position: relative;
-      z-index: 1;
-    }
-    header img.logo {
-      max-width: 100px;
-      margin-bottom: 1rem;
-    }
-    header h1 {
-      margin: 0.5rem 0;
-      font-size: 2rem;
-    }
-    header .intro {
-      max-width: 800px;
-      margin: 1rem auto;
-      line-height: 1.6;
-      color: #f1f1f1;
+      padding: 4rem 1rem 2rem;
+      background: linear-gradient(135deg, #43cea2, #185a9d);
+      color: white;
     }
 
-    /* === SECTIONS === */
+    header img.logo {
+      max-width: 120px;
+      margin-bottom: 1rem;
+    }
+
+    header h1 {
+      margin: 0.5rem 0;
+      font-size: 2.2rem;
+    }
+
+    header .intro {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    nav {
+      display: flex;
+      justify-content: flex-end;
+      background: white;
+      padding: 0.75rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: black;
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 600;
+    }
+
     main {
       padding: 2rem 1rem;
       max-width: 1000px;
       margin: auto;
     }
-    section.card {
-      background: #fff;
-      margin: 2rem 0;
+
+    .card {
+      background: white;
       padding: 2rem;
       border-radius: 12px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.4); /* stronger shadow */
-      color: #333;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
-    section h2 {
+
+    .card h2 {
       margin-top: 0;
       color: #185a9d;
     }
 
-    /* === BUTTONS === */
+    .buttons {
+      margin-top: 1rem;
+    }
+
     .buttons a {
       display: inline-block;
-      margin: 0.5rem;
-      padding: 0.7rem 1.2rem;
-      border-radius: 30px;
+      margin: 0.3rem;
+      padding: 0.6rem 1.2rem;
+      border-radius: 50px;
       background: #185a9d;
-      color: #fff;
-      font-weight: 600;
+      color: white;
       text-decoration: none;
-      transition: transform 0.2s, background 0.3s;
+      font-weight: bold;
+      transition: all 0.3s ease;
     }
+
     .buttons a:hover {
       background: #43cea2;
-      transform: translateY(-2px);
     }
 
-    /* === FOOTER === */
+    .book-cover {
+      display: block;
+      max-width: 280px;
+      margin: 1rem auto 2rem auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     footer {
       text-align: center;
-      padding: 2rem;
-      background: #111;
-      color: #ccc;
+      background: #185a9d;
+      color: white;
+      padding: 1.5rem;
+      margin-top: 2rem;
     }
 
-    /* === MOBILE === */
+    /* Mobile tweaks */
     @media (max-width: 768px) {
       nav {
         flex-wrap: wrap;
-      }
-      nav .menu {
-        width: 100%;
         justify-content: center;
-        margin-top: 0.5rem;
       }
-    }
-
-    html {
-      scroll-behavior: smooth;
+      nav a {
+        margin: 0.5rem 1rem;
+      }
+      header h1 {
+        font-size: 1.8rem;
+      }
     }
   </style>
 </head>
 <body>
-
-  <!-- Navigation Menu -->
   <nav>
-    <img src="logo.png" alt="3Dudes1Life Creative Logo" class="logo" />
-    <div class="menu">
-      <a href="#who-we-are">Who We Are</a>
-      <a href="#podcast">Podcast</a>
-      <a href="#book">The Book</a>
-      <a href="#blog">Blog</a>
-      <a href="#contact">Contact</a>
-    </div>
+    <a href="#who">Who We Are</a>
+    <a href="#podcast">Podcast</a>
+    <a href="#book">The Book</a>
+    <a href="#blog">Blog</a>
+    <a href="#contact">Contact</a>
   </nav>
 
   <header>
-    <div class="content">
-      <img src="logo.png" alt="3Dudes1Life Creative Logo" class="logo" />
-      <h1>Welcome to 3Dudes1Life Creative</h1>
-      <p class="intro">
-        3Dudes1Life Creative is the queer lifestyle branch of OutAt Inc — 
-        building a hub for books, podcasts, blogs, and more.  
-        What started as a throuple’s book series is now expanding into 
-        projects and stories that celebrate love, inclusivity, and community.  
-        We’re here to inspire, to entertain, and to proudly redefine what it means to live and love out loud. 🌈
-      </p>
-    </div>
+    <img src="logo.png" alt="3Dudes1Life Creative Logo" class="logo" />
+    <h1>Welcome to 3Dudes1Life Creative</h1>
+    <p class="intro">
+      3Dudes1Life Creative is the queer lifestyle branch of <strong>OutAt Inc</strong> — building a hub for books, podcasts, blogs,
+      and more. What started as a throuple’s book series is now expanding into projects and stories that celebrate
+      love, inclusivity, and community. We’re here to inspire, to entertain, and to proudly redefine what it
+      means to live and love out loud. 🌈
+    </p>
   </header>
 
   <main>
-    <section class="card" id="who-we-are">
+    <section class="card" id="who">
       <h2>Who We Are</h2>
       <p>
         D.C.W. = Daniel, Caleb, and Will have been building a life together for nearly a decade. As a real-life throuple,
