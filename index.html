@@ -6,9 +6,9 @@
   <title>3Dudes1Life Creative</title>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="logo.png" />
-  <meta name="description" content="3Dudes1Life Creative — the queer lifestyle branch of OutAt Inc: books, blog, and the A Little Throuple Tea podcast." />
+  <meta name="description" content="3Dudes1Life Creative — home of A Little Throuple Tea, Tres Amigos Una Vida, and the real-life gay throuple story of William, Caleb, and Daniel." />
   <meta property="og:title" content="3Dudes1Life Creative" />
-  <meta property="og:description" content="3Dudes1Life Creative — stories, podcasts, and projects from Daniel, Caleb, and Will." />
+  <meta property="og:description" content="Three men. One life. Endless stories. Podcast, books, blog, and real-life throuple chaos from William, Caleb, and Daniel." />
   <meta property="og:image" content="logo.png" />
   <meta property="og:type" content="website" />
 
@@ -31,7 +31,6 @@
     }
     *{box-sizing:border-box}
     body{margin:0;font-family:'Quicksand',sans-serif;background:var(--bg);color:var(--text);}
-    /* NAV */
     nav{
       position:sticky;top:0;z-index:1000;background:#fff;
       border-bottom:4px solid;border-image:linear-gradient(to right,var(--teal),var(--blue)) 1;
@@ -39,7 +38,6 @@
     }
     nav a{color:#000;text-decoration:none;font-weight:600;}
     nav a:hover{color:var(--teal);}
-    /* HERO */
     header{
       text-align:center;color:#fff;background:linear-gradient(135deg,var(--teal),var(--blue));
       padding:4rem 1rem 2rem;position:relative;
@@ -48,8 +46,7 @@
     header .wrap{position:relative;z-index:1;}
     header img.logo{max-width:120px;margin-bottom:1rem;}
     header h1{margin:.5rem 0;font-size:2.2rem;}
-    header .intro{max-width:720px;margin:0 auto;line-height:1.6;}
-    /* CONTENT */
+    header .intro{max-width:720px;margin:0 auto 1rem;line-height:1.6;}
     main{max-width:1000px;margin:auto;padding:2rem 1rem;}
     .card{
       background:var(--card);color:var(--text);border-radius:12px;padding:2rem;margin-bottom:2rem;
@@ -61,20 +58,17 @@
       box-shadow:0 4px 12px rgba(0,0,0,.3);
     }
     .card p{max-width:700px;margin:0 auto 1rem;}
-    /* Buttons */
     .buttons a{
       display:inline-block;margin:.35rem;padding:.6rem 1.2rem;background:var(--blue);color:#fff;
       text-decoration:none;font-weight:700;border-radius:50px;transition:transform .2s,background .3s;
     }
     .buttons a:hover{background:var(--teal);transform:translateY(-2px);}
-    /* FOOTER */
     footer{text-align:center;background:var(--blue);color:#fff;padding:1.5rem;margin-top:2rem;}
     @media (max-width:768px){nav{justify-content:center;flex-wrap:wrap}header h1{font-size:1.85rem}}
   </style>
 </head>
 <body>
 
-  <!-- Menu -->
   <nav>
     <a href="#who">Who We Are</a>
     <a href="#podcast">Podcast</a>
@@ -83,46 +77,40 @@
     <a href="#contact">Contact</a>
   </nav>
 
-  <!-- Hero -->
   <header>
     <div class="wrap">
       <img src="logo.png" alt="3Dudes1Life Creative logo" class="logo" loading="lazy" />
-      <h1>Welcome to 3Dudes1Life Creative</h1>
+      <h1>Three Men. One Life. Endless Stories.</h1>
       <p class="intro">
-        3Dudes1Life Creative is the queer lifestyle branch of <strong>OutAt Inc</strong> — a hub for books, podcasts, blogs, and more.
-        What started as a throuple’s book series has grown into projects and stories that celebrate love, inclusivity, and community.
-        We’re here to inspire, entertain, and proudly redefine what it means to live and love out loud. 🌈
+        Welcome to the home of 3Dudes1Life — a real-life gay throuple sharing our adventures, relationship, travels, books, and podcast with the world.
+        Follow William, Caleb, and Daniel as they navigate love, laughter, side hustles, home projects, and the beautiful chaos of building a life together.
       </p>
+      <div class="buttons">
+        <a href="https://throupletea.com" target="_blank" rel="noopener">🎙️ Listen to the Podcast</a>
+        <a href="https://tresamigosunavida.com" target="_blank" rel="noopener">📚 Read the Book</a>
+        <a href="https://3dudes1life.com" target="_blank" rel="noopener">🌴 Follow Our Journey</a>
+      </div>
     </div>
   </header>
 
   <main>
-    <!-- Who -->
     <section class="card" id="who">
-      <h2>Who We Are</h2>
+      <h2>Meet the Dudes</h2>
       <p>
-        D.C.W. = Daniel, Caleb, and Will have been building a life together for nearly a decade. As a real-life throuple,
-        they’ve shared everything from wild travel adventures and cozy Sunday breakfasts, to owning a business,
-        raising two lovable dogs, and maybe even cohabiting with a ghost (their house definitely has vibes).
+        We’re William, Caleb, and Daniel — a real-life throuple who have spent nearly a decade building a life together.
+        Along the way we've written books, launched a podcast, traveled thousands of miles, built businesses, raised dogs, survived home renovations, and collected more stories than we know what to do with.
       </p>
       <p>
-        When they're not writing, you can find them working in their garden, planning their future in Hawaii,
-        or answering questions on their blog, 3Dudes1Life.
+        Through 3Dudes1Life, we share the reality of our relationship — the funny moments, the challenges, the adventures, and everything in between. Whether you're here for the podcast, the book, the blog, or simply because you're curious about how three men make a relationship work, we're glad you're here.
       </p>
     </section>
 
-    <!-- Podcast -->
     <section class="card" id="podcast">
       <h2>🎙️ A Little Throuple Tea — Podcast</h2>
       <a href="https://throupletea.com" target="_blank" rel="noopener">
-        <img
-          class="podcast-art"
-          alt="A Little Throuple Tea podcast artwork"
-          loading="lazy"
-          src="https://raw.githubusercontent.com/3dudes1life/ThroupleTea/main/podcastartwork.jpeg?v=3"
-        />
+        <img class="podcast-art" alt="A Little Throuple Tea podcast artwork" loading="lazy" src="https://raw.githubusercontent.com/3dudes1life/ThroupleTea/main/podcastartwork.jpeg?v=3" />
       </a>
-      <p><strong>Out now.</strong> New episodes drop <strong>weekly</strong> through late November. Watch, listen, and sip the tea with William, Caleb, and Daniel.</p>
+      <p><strong>Out now.</strong> New episodes drop <strong>weekly</strong>. Watch, listen, and sip the tea with William, Caleb, and Daniel.</p>
       <div class="buttons">
         <a href="https://podcasts.apple.com/us/podcast/3dudes1life-a-little-throuple-tea/id1837237399" target="_blank" rel="noopener">🍎 Apple Podcasts</a>
         <a href="https://open.spotify.com/show/6cb9Y7qcyDO1L7O15X2oL5" target="_blank" rel="noopener">🟢 Spotify</a>
@@ -134,7 +122,6 @@
       </div>
     </section>
 
-    <!-- Book -->
     <section class="card" id="book">
       <h2>📚 Tres Amigos, Una Vida</h2>
       <img src="book-cover.png" alt="Tres Amigos, Una Vida book cover" class="book-cover" loading="lazy" />
@@ -144,12 +131,7 @@
       </p>
       <p>
         From secret glances in the mess hall to fights that end in laughter under the same blanket, <em>Tres Amigos, Una Vida</em>
-        follows a raw and unforgettable path through love, vulnerability, and devotion. Over years, through deployments, cities, and shifting
-        definitions of home, their story asks one question: what if your forever isn’t just one person—but two?
-      </p>
-      <p>
-        This isn’t your typical romance. This is the story of how three men fall in love—messily, deeply, and against all odds.
-        It’s about what it really means to build a life together when the world keeps trying to pull you apart.
+        follows a raw and unforgettable path through love, vulnerability, and devotion.
       </p>
       <p>Inspired by true events from a real-life throuple who’ve spent a decade building a life—and love—together.</p>
       <div class="buttons">
@@ -160,12 +142,11 @@
       </div>
     </section>
 
-    <!-- Blog -->
     <section class="card" id="blog">
       <h2>🌈 3Dudes1Life Blog</h2>
       <p>
-        The blog is a window into our world—garden updates, vacation stories, mouthwatering recipes, how we met
-        (spoiler: it’s adorable), and the beautiful chaos of everyday throuple life.
+        The blog is a window into our world—garden updates, vacation stories, recipes, how we met,
+        and the beautiful chaos of everyday throuple life.
       </p>
       <div class="buttons">
         <a href="https://3dudes1life.com" target="_blank" rel="noopener">📰 Read the Blog</a>
@@ -174,7 +155,6 @@
       </div>
     </section>
 
-    <!-- Contact -->
     <section class="card contact" id="contact">
       <h2>📬 Get In Touch</h2>
       <p><a href="mailto:3dudes1lifecreative@outatinc.com">3dudes1lifecreative@outatinc.com</a></p>
