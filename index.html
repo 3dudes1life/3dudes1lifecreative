@@ -41,7 +41,9 @@
     }
 
     *{box-sizing:border-box}
+
     html{scroll-behavior:smooth;}
+
     body{
       margin:0;
       font-family:'Quicksand',sans-serif;
@@ -53,7 +55,7 @@
       position:sticky;
       top:0;
       z-index:1000;
-      background:rgba(255,255,255,.96);
+      background:rgba(255,255,255,.98);
       border-bottom:4px solid;
       border-image:linear-gradient(to right,var(--teal),var(--pink),var(--orange),var(--blue)) 1;
       padding:.9rem 2rem;
@@ -77,10 +79,10 @@
       text-align:center;
       color:#fff;
       background:
-        radial-gradient(circle at top left, rgba(255,79,216,.32), transparent 32%),
-        radial-gradient(circle at bottom right, rgba(67,206,162,.28), transparent 34%),
+        radial-gradient(circle at top left, rgba(255,79,216,.26), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(67,206,162,.26), transparent 36%),
         linear-gradient(135deg,#141824 0%,#181d2b 45%,#0f1724 100%);
-      padding:5rem 1rem 4rem;
+      padding:4.5rem 1rem 4rem;
       position:relative;
       overflow:hidden;
     }
@@ -90,25 +92,30 @@
       z-index:1;
       max-width:980px;
       margin:0 auto;
+      text-align:center;
     }
 
     header img.logo{
+      display:block;
       max-width:140px;
-      margin-bottom:1rem;
+      width:100%;
+      height:auto;
+      margin:0 auto 1.3rem;
       filter:drop-shadow(0 8px 18px rgba(0,0,0,.45));
     }
 
     .eyebrow{
       display:inline-block;
-      margin-bottom:1rem;
+      margin:0 auto 1.1rem;
       padding:.45rem .9rem;
-      border:1px solid rgba(255,255,255,.35);
+      border:1px solid rgba(255,255,255,.42);
       border-radius:999px;
-      background:rgba(255,255,255,.09);
+      background:rgba(255,255,255,.11);
       font-weight:700;
       letter-spacing:.04em;
       text-transform:uppercase;
       font-size:.78rem;
+      color:#fff;
     }
 
     header h1{
@@ -116,6 +123,8 @@
       font-size:clamp(2.2rem,6vw,4.8rem);
       line-height:1.02;
       max-width:920px;
+      color:#fff;
+      text-shadow:0 4px 18px rgba(0,0,0,.35);
     }
 
     header h1 span{
@@ -130,7 +139,8 @@
       margin:1.2rem auto 1.6rem;
       line-height:1.7;
       font-size:1.12rem;
-      color:#f2f5ff;
+      color:#ffffff;
+      text-shadow:0 3px 12px rgba(0,0,0,.45);
     }
 
     main{
@@ -168,13 +178,18 @@
     }
 
     .lead{
-      font-size:1.08rem;
-      color:var(--muted);
+      font-size:1.12rem;
+      color:#263238;
+      font-weight:600;
     }
 
     .highlight{
-      background:linear-gradient(135deg,rgba(67,206,162,.14),rgba(255,79,216,.12));
-      border:1px solid rgba(24,90,157,.12);
+      background:#ffffff;
+      border:3px solid rgba(67,206,162,.35);
+    }
+
+    .highlight h2{
+      color:var(--blue);
     }
 
     .buttons{
@@ -331,7 +346,7 @@
       }
     }
   </style>
-</head>
+ </head>
 
 <body>
 
