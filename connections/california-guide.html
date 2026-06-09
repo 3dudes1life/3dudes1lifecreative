@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>California Guide | 3Dudes1Life Creative</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body{
+      margin:0;
+      font-family:Arial, sans-serif;
+      background:#11131a;
+      color:#fff;
+      text-align:center;
+    }
+
+    .site-nav{
+      position:sticky;
+      top:0;
+      z-index:99999;
+      background:rgba(255,255,255,.98);
+      border-bottom:4px solid;
+      border-image:linear-gradient(to right,#43cea2,#ff4fd8,#ff9f1c,#185a9d) 1;
+      padding:.9rem 2rem;
+      display:flex;
+      justify-content:center;
+      gap:1.2rem;
+      flex-wrap:wrap;
+    }
+
+    .site-nav a{
+      color:#000;
+      text-decoration:none;
+      font-weight:700;
+      font-size:.95rem;
+    }
+
+    .site-nav a:hover{
+      color:#ff4fd8;
+    }
+
+    header{
+      padding:4rem 1rem 2rem;
+      background:
+        radial-gradient(circle at top left, rgba(255,79,216,.22), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(67,206,162,.24), transparent 36%),
+        linear-gradient(135deg,#185a9d,#11131a);
+    }
+
+    header p{
+      max-width:850px;
+      margin:1rem auto 0;
+      line-height:1.7;
+      color:#f3f7ff;
+      font-weight:700;
+    }
+
+    main{
+      max-width:1050px;
+      margin:auto;
+      padding:2rem 1rem;
+    }
+
+    .hero-img{
+      width:100%;
+      max-width:900px;
+      border-radius:20px;
+      box-shadow:0 10px 30px rgba(0,0,0,.4);
+      margin-bottom:2rem;
+    }
+
+    .card{
+      background:#fff;
+      color:#263238;
+      border-radius:20px;
+      padding:2rem;
+      margin-bottom:2rem;
+      text-align:left;
+      box-shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+
+    .card h2{
+      color:#185a9d;
+      margin-top:0;
+      text-align:center;
+    }
+
+    .card p{
+      line-height:1.7;
+    }
+
+    .guide-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:1.25rem;
+      margin-top:1.5rem;
+    }
+
+    .guide-card{
+      background:#f6f7fb;
+      border:1px solid rgba(24,90,157,.12);
+      border-radius:18px;
+      padding:1.25rem;
+      min-width:0;
+      box-shadow:0 6px 18px rgba(0,0,0,.06);
+    }
+
+    .guide-card h3{
+      color:#185a9d;
+      margin:0 0 .75rem;
+      line-height:1.25;
+    }
+
+    .guide-card p{
+      color:#5f6f7a;
+      margin:0;
+      line-height:1.65;
+    }
+
+    .map-placeholder{
+      background:
+        linear-gradient(135deg,rgba(67,206,162,.18),rgba(255,79,216,.12)),
+        #f6f7fb;
+      border:2px dashed rgba(24,90,157,.25);
+      border-radius:20px;
+      padding:2rem;
+      text-align:center;
+    }
+
+    a.button{
+      display:inline-block;
+      background:#185a9d;
+      color:#fff;
+      padding:.8rem 1.3rem;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:bold;
+      margin:.35rem;
+    }
+
+    a.button:hover{
+      background:#ff4fd8;
+    }
+
+    footer{
+      text-align:center;
+      padding:2rem;
+      color:#d7e4f3;
+    }
+
+    @media (max-width:760px){
+      .guide-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width:620px){
+      .site-nav{
+        padding:.8rem .7rem;
+        gap:.7rem;
+      }
+
+      .site-nav a{
+        font-size:.85rem;
+      }
+
+      header{
+        padding:3rem 1rem 2rem;
+      }
+
+      .card{
+        padding:1.4rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="site-nav">
+    <a href="../index.html#universe">The Universe</a>
+    <a href="../index.html#podcast">Podcast</a>
+    <a href="../index.html#latest">Latest Episode</a>
+    <a href="../index.html#book">Books</a>
+    <a href="../index.html#adventures">Adventures</a>
+    <a href="../index.html#blog">Blog</a>
+    <a href="../index.html#contact">Contact</a>
+  </nav>
+
+  <header>
+    <h1>🌈 California Guide</h1>
+    <p>
+      Our growing guide to the California years — Hillcrest, Pride events, fairs, road trips, friendships, reinvention, creative projects, and the places that shaped the 3Dudes1Life story.
+    </p>
+  </header>
+
+  <main>
+
+    <img class="hero-img" src="../images/california.jpg" alt="California years and Pride events">
+
+    <section class="card">
+      <h2>Why This Guide Exists</h2>
+
+      <p>
+        California is where so much of the 3Dudes1Life universe began. It is where our relationship grew, our creative projects started taking shape, our businesses evolved, and years of stories were built through Hillcrest nights, Pride events, fairs, road trips, friendships, work, reinvention, and everyday life.
+      </p>
+
+      <p>
+        This guide will become a place to organize the California memories that connect our podcast, books, blog, photos, Out at the Fair history, and the real-life moments that shaped who we are together.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>What Will Be Added</h2>
+
+      <div class="guide-grid">
+        <div class="guide-card">
+          <h3>🌈 Pride + LGBTQ+ History</h3>
+          <p>Hillcrest memories, Pride moments, LGBTQ+ community stories, and the places that helped shape our lives in California.</p>
+        </div>
+
+        <div class="guide-card">
+          <h3>🎡 Fairs + Events</h3>
+          <p>Out at the Fair memories, fairgrounds, stages, road days, behind-the-scenes stories, and years of LGBTQ+ visibility work.</p>
+        </div>
+
+        <div class="guide-card">
+          <h3>🌴 Favorite SoCal Stops</h3>
+          <p>Beaches, restaurants, neighborhoods, road trip stops, local spots, and the places we would recommend from our California years.</p>
+        </div>
+
+        <div class="guide-card">
+          <h3>🚗 California Road Trips</h3>
+          <p>Drives, detours, weekend trips, event travel, small towns, scenic routes, and the miles that became part of our shared story.</p>
+        </div>
+
+        <div class="guide-card">
+          <h3>📸 Photo Memories</h3>
+          <p>Personal photos, event moments, travel notes, favorite views, and visual memories from years of life in California.</p>
+        </div>
+
+        <div class="guide-card">
+          <h3>🎙️ Podcast + Book Connections</h3>
+          <p>Stories that show up in the podcast, real-life inspiration behind the book universe, blog posts, and creative connections.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Future California Map</h2>
+
+      <div class="map-placeholder">
+        <h3>🗺️ California Map Coming Soon</h3>
+        <p>
+          This page will eventually include a clickable California map with places, memories, photos, recommendations, podcast references, event history, and links to related stories.
+        </p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Where This Connects</h2>
+
+      <p>
+        The California guide will connect into the podcast universe, book universe, Out at the Fair history, blog archive, travel memories, photo collections, and the larger 3Dudes1Life story.
+      </p>
+
+      <p>
+        Over time, this page can become the California hub inside 3Dudes1Life Creative — starting simple now, then growing into a fuller archive of the places, people, memories, and moments that shaped us.
+      </p>
+
+      <a class="button" href="../index.html#adventures">🌎 More Adventures</a>
+      <a class="button" href="california.html">🌈 California Adventure Page</a>
+      <a class="button" href="../index.html">🏠 Back to Creative</a>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 3Dudes1Life Creative • Three Men. One Life. Endless Stories.
+  </footer>
+
+</body>
+</html>
