@@ -610,5 +610,153 @@
     <p>Three men. One life. Endless stories.</p>
   </footer>
 
+  <script>
+const RSS_FEED = 'https://anchor.fm/s/1087008c4/podcast/rss';
+const DEFAULT_ART = 'https://throupletea.com/podcastartwork.jpg?v=4';
+
+const sources = [
+  RSS_FEED,
+  `https://api.allorigins.win/raw?url=${encodeURIComponent(RSS_FEED)}`,
+  `https://corsproxy.io/?${encodeURIComponent(RSS_FEED)}`
+];
+
+function stripHtml(html = '') {
+  const doc = new DOMParser().parseFromString(html, 'text/html');
+  return (doc.body.textContent || '').replace(/\s+/g, ' ').trim();
+}
+
+function truncate(text, max = 220) {
+  if (!text) return '';
+  return text.length > max ? text.slice(0, max).trim() + '…' : text;
+}
+
+function formatDate(dateString) {
+  const date = new Date(dateString);
+  if (Number.isNaN(date.getTime())) return '';
+  return date.toLocaleDateString(undefined, {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+}
+
+function getText(item, selector) {
+  return item.querySelector(selector)?.textContent?.trim() || '';
+}
+
+function getEpisodeImage(item, channelImage) {
+  const itunesImage = item.querySelector('image')?.getAttribute('href');
+  const mediaThumbnail = item.querySelector('thumbnail')?.getAttribute('url');
+
+  if (itunesImage) return itunesImage;
+  if (mediaThumbnail) return mediaThumbnail;
+  if (channelImage) return channelImage;
+  return DEFAULT_ART;
+}
+
+function parseEpisodes(xmlText) {
+  const xml = new DOMParser().parseFromString(xmlText, 'application/xml');
+
+  if (xml.querySelector('parsererror')) {
+    throw new Error('RSS parser error');
+  }
+
+  const channelImage =
+    xml.querySelector('channel > image > url')?.textContent?.trim() ||
+    xml.querySelector('channel > image')?.getAttribute('href') ||
+    DEFAULT_ART;
+
+  const items = Array.from(xml.querySelectorAll('item'));
+
+  if (!items.length) {
+    throw new Error('No RSS items found');
+  }
+
+  return items.map((item) => {
+    const title = getText(item, 'title');
+    const pubDate = getText(item, 'pubDate');
+    const link = getText(item, 'link') || RSS_FEED;
+    const rawDescription =
+      getText(item, 'description') ||
+      getText(item, 'encoded') ||
+      getText(item, 'summary');
+
+    return {
+      title,
+      pubDate,
+      link,
+      image: getEpisodeImage(item, channelImage),
+      description: stripHtml(rawDescription)
+    };
+  }).filter(ep => ep.title);
+}
+
+async function fetchWithTimeout(url, ms = 9000) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), ms);
+
+  try {
+    const response = await fetch(url, {
+      signal: controller.signal,
+      cache: 'no-store'
+    });
+
+    if (!response.ok) {
+      throw new Error(`Fetch failed: ${response.status}`);
+    }
+
+    return await response.text();
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+async function loadLatestEpisode() {
+  const latestBox = document.getElementById('latest-episode');
+  let lastError;
+
+  for (const source of sources) {
+    try {
+      const xmlText = await fetchWithTimeout(source);
+      const episodes = parseEpisodes(xmlText)
+        .sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+
+      const latest = episodes[0];
+
+      latestBox.innerHTML = `
+        <article class="latest-episode-card">
+          <img src="${latest.image || DEFAULT_ART}" alt="A Little Throuple Tea latest episode artwork" loading="lazy" onerror="this.src='${DEFAULT_ART}'">
+          <div>
+            <div class="latest-episode-date">${formatDate(latest.pubDate)}</div>
+            <h3>${latest.title}</h3>
+            <p>${truncate(latest.description)}</p>
+            <div class="buttons" style="justify-content:flex-start;">
+              <a href="${latest.link}" target="_blank" rel="noopener">🎧 Listen Now</a>
+              <a href="https://throupletea.com/episodes/" target="_blank" rel="noopener">📚 View Episodes</a>
+            </div>
+          </div>
+        </article>
+      `;
+      return;
+    } catch (error) {
+      lastError = error;
+      console.warn('Latest episode feed source failed:', source, error);
+    }
+  }
+
+  console.error(lastError);
+  latestBox.innerHTML = `
+    <p>Latest episode could not load automatically right now.</p>
+    <div class="buttons">
+      <a href="https://throupletea.com/episodes/" target="_blank" rel="noopener">📚 View Episodes</a>
+      <a href="https://open.spotify.com/show/6cb9Y7qcyDO1L7O15X2oL5" target="_blank" rel="noopener">🟢 Spotify</a>
+      <a href="https://podcasts.apple.com/us/podcast/3dudes1life-a-little-throuple-tea/id1837237399" target="_blank" rel="noopener">🍎 Apple Podcasts</a>
+    </div>
+  `;
+}
+
+loadLatestEpisode();
+</script>
+  
 </body>
 </html>
