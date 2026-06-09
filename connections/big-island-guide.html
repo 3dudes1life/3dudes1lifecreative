@@ -91,27 +91,34 @@
 
     .guide-grid{
       display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:1rem;
-      margin-top:1.4rem;
+      grid-template-columns:repeat(2,1fr);
+      gap:1.5rem;
+      margin-top:1.5rem;
+      align-items:stretch;
     }
 
     .guide-card{
       background:#f6f7fb;
       border:1px solid rgba(24,90,157,.12);
       border-radius:18px;
-      padding:1.25rem;
+      padding:1.5rem;
       min-height:100%;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-start;
+      box-shadow:0 6px 18px rgba(0,0,0,.06);
     }
 
     .guide-card h3{
       color:#185a9d;
-      margin-top:0;
+      margin:0 0 .75rem;
+      line-height:1.25;
     }
 
     .guide-card p{
       color:#5f6f7a;
-      margin-bottom:0;
+      margin:0;
+      line-height:1.65;
     }
 
     .map-placeholder{
@@ -145,9 +152,9 @@
       color:#d7e4f3;
     }
 
-    @media (max-width:900px){
+    @media (max-width:760px){
       .guide-grid{
-        grid-template-columns:1fr 1fr;
+        grid-template-columns:1fr;
       }
     }
 
@@ -163,10 +170,6 @@
 
       header{
         padding:3rem 1rem 2rem;
-      }
-
-      .guide-grid{
-        grid-template-columns:1fr;
       }
 
       .card{
