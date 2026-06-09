@@ -17,21 +17,23 @@
     .site-nav{
       position:sticky;
       top:0;
-      z-index:1000;
-      background:rgba(255,255,255,.96);
+      z-index:99999;
+      background:#ffffff;
       padding:1rem;
       display:flex;
       justify-content:center;
+      align-items:center;
       gap:1rem;
       flex-wrap:wrap;
-      border-bottom:3px solid #43cea2;
-      backdrop-filter:blur(10px);
+      border-bottom:4px solid #43cea2;
+      box-shadow:0 4px 18px rgba(0,0,0,.25);
     }
 
     .site-nav a{
       text-decoration:none;
       color:#185a9d;
       font-weight:700;
+      font-size:1rem;
     }
 
     .site-nav a:hover{
@@ -54,6 +56,7 @@
     .breadcrumb a{
       color:#43cea2;
       text-decoration:none;
+      font-weight:bold;
     }
 
     .breadcrumb a:hover{
@@ -103,60 +106,79 @@
       padding:2rem;
       color:#d7e4f3;
     }
+
+    @media (max-width:620px){
+      .site-nav{
+        gap:.65rem;
+        padding:.85rem;
+      }
+
+      .site-nav a{
+        font-size:.9rem;
+      }
+
+      header{
+        padding:3rem 1rem 2rem;
+      }
+
+      .card{
+        padding:1.4rem;
+      }
+    }
   </style>
 </head>
 
 <body>
 
-<nav class="site-nav">
-  <a href="../index.html">🏠 Home</a>
-  <a href="../index.html#podcast">🎙️ Podcast</a>
-  <a href="../index.html#book">📚 Books</a>
-  <a href="../index.html#adventures">🌎 Adventures</a>
-  <a href="../index.html#blog">📝 Blog</a>
-  <a href="../index.html#contact">📬 Contact</a>
-</nav>
+  <nav class="site-nav">
+    <a href="../index.html">🏠 Home</a>
+    <a href="../index.html#podcast">🎙️ Podcast</a>
+    <a href="../index.html#book">📚 Books</a>
+    <a href="../index.html#adventures">🌎 Adventures</a>
+    <a href="../index.html#blog">📝 Blog</a>
+    <a href="../index.html#contact">📬 Contact</a>
+  </nav>
 
-<header>
-  <div class="breadcrumb">
-    <a href="../index.html">3Dudes1Life Creative</a>
-    →
-    <a href="../index.html#adventures">Adventures</a>
-    →
-    Alaska
-  </div>
+  <header>
+    <div class="breadcrumb">
+      <a href="../index.html">3Dudes1Life Creative</a>
+      →
+      <a href="../index.html#adventures">Adventures</a>
+      →
+      Alaska
+    </div>
 
-  <h1>🏔️ Alaska Adventure</h1>
-  <p>Thousands of miles, wild roads, birthday memories, glaciers, and one of the biggest adventures in the 3Dudes1Life story.</p>
-</header>
+    <h1>🏔️ Alaska Adventure</h1>
+    <p>Thousands of miles, wild roads, birthday memories, glaciers, and one of the biggest adventures in the 3Dudes1Life story.</p>
+  </header>
 
-<main>
-  <img src="../images/alaska.jpg" alt="Alaska adventure">
+  <main>
+    <img src="../images/alaska.jpg" alt="Alaska adventure">
 
-  <section class="card">
-    <h2>Where This Connects</h2>
+    <section class="card">
+      <h2>Where This Connects</h2>
 
-    <p>
-      Alaska is part travel story, part memory archive, and part 3Dudes1Life history. This page will eventually connect photos, blog posts, podcast stories, and future creative projects tied to our Alaska adventures.
-    </p>
+      <p>
+        Alaska is part travel story, part memory archive, and part 3Dudes1Life history. This page will eventually connect photos, blog posts, podcast stories, and future creative projects tied to our Alaska adventures.
+      </p>
 
-    <p>
-      What started as a birthday adventure became one of our most memorable trips together, covering thousands of miles and creating stories that still show up in conversations today.
-    </p>
+      <p>
+        What started as a birthday adventure became one of our most memorable trips together, covering thousands of miles and creating stories that still show up in conversations today.
+      </p>
 
-    <p>
-      <strong>Coming soon:</strong> photo galleries, favorite stops, travel maps, podcast references, and behind-the-scenes memories from the trip.
-    </p>
+      <p>
+        <strong>Coming soon:</strong> photo galleries, favorite stops, travel maps, podcast references, and behind-the-scenes memories from the trip.
+      </p>
 
-    <a class="button" href="https://www.3dudes1life.com/post/post-10-will-s-40th-birthday-an-alaskan-adventure-to-remember" target="_blank" rel="noopener">📰 Read the Alaska Blog</a>
-    <a class="button" href="../index.html#adventures">🌎 More Adventures</a>
-    <a class="button" href="../index.html">🏠 Back to Creative</a>
-  </section>
-</main>
+      <a class="button" href="https://www.3dudes1life.com/post/post-10-will-s-40th-birthday-an-alaskan-adventure-to-remember" target="_blank" rel="noopener">📰 Read the Alaska Blog</a>
+      <a class="button" href="../index.html#adventures">🌎 More Adventures</a>
+      <a class="button" href="../index.html">🏠 Back to Creative</a>
+    </section>
+  </main>
 
-<footer>
-  © 2026 3Dudes1Life Creative • Three Men. One Life. Endless Stories.
-</footer>
+  <footer>
+    © 2026 3Dudes1Life Creative • Three Men. One Life. Endless Stories.
+  </footer>
 
 </body>
 </html>
