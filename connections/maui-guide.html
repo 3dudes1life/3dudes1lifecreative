@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Maui Guide | 3Dudes1Life Creative</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body{
+      margin:0;
+      font-family:Arial, sans-serif;
+      background:#11131a;
+      color:#fff;
+      text-align:center;
+    }
+
+    .site-nav{
+      position:sticky;
+      top:0;
+      z-index:99999;
+      background:rgba(255,255,255,.98);
+      border-bottom:4px solid;
+      border-image:linear-gradient(to right,#43cea2,#ff4fd8,#ff9f1c,#185a9d) 1;
+      padding:.9rem 2rem;
+      display:flex;
+      justify-content:center;
+      gap:1.2rem;
+      flex-wrap:wrap;
+    }
+
+    .site-nav a{
+      color:#000;
+      text-decoration:none;
+      font-weight:700;
+      font-size:.95rem;
+    }
+
+    .site-nav a:hover{
+      color:#ff4fd8;
+    }
+
+    header{
+      padding:4rem 1rem 2rem;
+      background:
+        radial-gradient(circle at top left, rgba(255,79,216,.22), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(67,206,162,.24), transparent 36%),
+        linear-gradient(135deg,#185a9d,#11131a);
+    }
+
+    header p{
+      max-width:850px;
+      margin:1rem auto 0;
+      line-height:1.7;
+      color:#f3f7ff;
+      font-weight:700;
+    }
+
+    main{
+      max-width:1050px;
+      margin:auto;
+      padding:2rem 1rem;
+    }
+
+    .hero-img{
+      width:100%;
+      max-width:900px;
+      border-radius:20px;
+      box-shadow:0 10px 30px rgba(0,0,0,.4);
+      margin-bottom:2rem;
+    }
+
+    .card{
+      background:#fff;
+      color:#263238;
+      border-radius:20px;
+      padding:2rem;
+      margin-bottom:2rem;
+      text-align:left;
+      box-shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+
+    .card h2{
+      color:#185a9d;
+      margin-top:0;
+      text-align:center;
+    }
+
+    .card p{
+      line-height:1.7;
+    }
+
+    .guide-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:1.25rem;
+      margin-top:1.5rem;
+    }
+
+    .guide-card{
+      background:#f6f7fb;
+      border:1px solid rgba(24,90,157,.12);
+      border-radius:18px;
+      padding:1.25rem;
+      min-width:0;
+      box-shadow:0 6px 18px rgba(0,0,0,.06);
+    }
+
+    .guide-card h3{
+      color:#185a9d;
+      margin:0 0 .75rem;
+      line-height:1.25;
+    }
+
+    .guide-card p{
+      color:#5f6f7a;
+      margin:0;
+      line-height:1.65;
+    }
+
+    .map-placeholder{
+      background:
+        linear-gradient(135deg,rgba(67,206,162,.18),rgba(255,79,216,.12)),
+        #f6f7fb;
+      border:2px dashed rgba(24,90,157,.25);
+      border-radius:20px;
+      padding:2rem;
+      text-align:center;
+    }
+
+    a.button{
+      display:inline-block;
+      background:#185a9d;
+      color:#fff;
+      padding:.8rem 1.3rem;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:bold;
+      margin:.35rem;
+    }
+
+    a.button:hover{
+      background:#ff4fd8;
+    }
+
+    footer{
+      text-align:center;
+      padding:2rem;
+      color:#d7e4f3;
+    }
+
+    @media (max-width:760px){
+      .guide-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width:620px){
+      .site-nav{
+        padding:.8rem .7rem;
+        gap:.7rem;
+      }
+
+      .site-nav a{
+        font-size:.85rem;
+      }
+
+      header{
+        padding:3rem 1rem 2rem;
+      }
+
+      .card{
+        padding:1.4rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="site-nav">
+    <a href="../index.html#universe">The Universe</a>
+    <a href="../index.html#podcast">Podcast</a>
+    <a href="../index.html#latest">Latest Episode</a>
+    <a href="../index.html#book">Books</a>
+    <a href="../index.html#adventures">Adventures</a>
+    <a href="../index.html#blog">Blog</a>
+    <a href="../index.html#contact">Contact</a>
+  </nav>
+
+  <header>
+    <h1>🌴 Maui Guide</h1>
+    <p>
+      Our growing guide to Maui — favorite beaches, whale watching adventures, scenic drives, sunsets, local food, unforgettable views, and the places that keep bringing us back to the Valley Isle.
+    </p>
+  </header>
+
+  <main>
+
+    <img class="hero-img" src="../images/hawaii-maui.jpg" alt="Maui adventures">
+
+    <section class="card">
+      <h2>Why This Guide Exists</h2>
+
+      <p>
+        Maui has been part of our story for years. From incredible sunsets and whale watching adventures to favorite restaurants, beaches, scenic drives, and unforgettable ocean views, Maui continues to be one of our favorite places in Hawaii.
+      </p>
+
+      <p>
+        This guide will become a collection of places we have personally visited, loved, photographed, and recommended. Rather than a generic travel guide, this will be Maui through the eyes of 3Dudes1Life.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>What Will Be Added</h2>
+
+      <div class="guide-grid">
+
+        <div class="guide-card">
+          <h3>🏖️ Beaches + Sunsets</h3>
+          <p>Favorite beaches, sunset spots, ocean views, and places worth returning to again and again.</p>
+        </div>
+
+        <div class="guide-card">
+          <h3>🐋 Whale Watching + Ocean Life</h3>
+          <p>Seasonal whale sightings, snorkeling locations, marine life experiences, and unforgettable ocean moments.</p>
+        </div>
+
+        <div class="guide-card">
+          <h3>🍍 Food + Local Favorites</h3>
+          <p>Restaurants, food trucks, coffee stops, shave ice, and local spots we would recommend.</p>
+        </div>
+
+        <div class="guide-card">
+          <h3>🚗 Road to Hana + Scenic Drives</h3>
+          <p>Waterfalls, overlooks, roadside stops, and adventures beyond the resort areas.</p>
+        </div>
+
+        <div class="guide-card">
+          <h3>📸 Photo Memories</h3>
+          <p>Personal photos, favorite views, travel notes, and visual memories from our Maui trips.</p>
+        </div>
+
+        <div class="guide-card">
+          <h3>🎙️ Podcast + Blog Connections</h3>
+          <p>Stories connected to the podcast, blog archive, travel memories, and future creative projects.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Future Maui Map</h2>
+
+      <div class="map-placeholder">
+        <h3>🗺️ Maui Map Coming Soon</h3>
+        <p>
+          This page will eventually include a clickable Maui map featuring beaches, restaurants, whale watching locations, sunset spots, photo opportunities, and personal 3Dudes1Life recommendations.
+        </p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Where This Connects</h2>
+
+      <p>
+        The Maui guide will connect into the podcast, blog archive, travel memories, photo collections, island recommendations, and future creative projects tied to some of our favorite Hawaii experiences.
+      </p>
+
+      <p>
+        Over time, this page can become the Maui hub inside 3Dudes1Life Creative — starting simple now, then growing into a full island guide with photos, stories, favorite stops, maps, and recommendations.
+      </p>
+
+      <a class="button" href="../index.html#adventures">🌎 More Adventures</a>
+      <a class="button" href="hawaii-maui.html">🌺 Hawaii & Maui Page</a>
+      <a class="button" href="big-island-guide.html">🌋 Big Island Guide</a>
+      <a class="button" href="../index.html">🏠 Back to Creative</a>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 3Dudes1Life Creative • Three Men. One Life. Endless Stories.
+  </footer>
+
+</body>
+</html>
