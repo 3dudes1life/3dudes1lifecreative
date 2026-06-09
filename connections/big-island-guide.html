@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Big Island Guide | 3Dudes1Life Creative</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body{
+      margin:0;
+      font-family:Arial, sans-serif;
+      background:#11131a;
+      color:#fff;
+      text-align:center;
+    }
+
+    .site-nav{
+      position:sticky;
+      top:0;
+      z-index:99999;
+      background:rgba(255,255,255,.98);
+      border-bottom:4px solid;
+      border-image:linear-gradient(to right,#43cea2,#ff4fd8,#ff9f1c,#185a9d) 1;
+      padding:.9rem 2rem;
+      display:flex;
+      justify-content:center;
+      gap:1.2rem;
+      flex-wrap:wrap;
+    }
+
+    .site-nav a{
+      color:#000;
+      text-decoration:none;
+      font-weight:700;
+      font-size:.95rem;
+    }
+
+    .site-nav a:hover{
+      color:#ff4fd8;
+    }
+
+    header{
+      padding:4rem 1rem 2rem;
+      background:
+        radial-gradient(circle at top left, rgba(255,79,216,.22), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(67,206,162,.24), transparent 36%),
+        linear-gradient(135deg,#185a9d,#11131a);
+    }
+
+    header p{
+      max-width:850px;
+      margin:1rem auto 0;
+      line-height:1.7;
+      color:#f3f7ff;
+      font-weight:700;
+    }
+
+    main{
+      max-width:1050px;
+      margin:auto;
+      padding:2rem 1rem;
+    }
+
+    .hero-img{
+      width:100%;
+      max-width:900px;
+      border-radius:20px;
+      box-shadow:0 10px 30px rgba(0,0,0,.4);
+      margin-bottom:2rem;
+    }
+
+    .card{
+      background:#fff;
+      color:#263238;
+      border-radius:20px;
+      padding:2rem;
+      margin-bottom:2rem;
+      text-align:left;
+      box-shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+
+    .card h2{
+      color:#185a9d;
+      margin-top:0;
+      text-align:center;
+    }
+
+    .card p{
+      line-height:1.7;
+    }
+
+    .guide-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1rem;
+      margin-top:1.4rem;
+    }
+
+    .guide-card{
+      background:#f6f7fb;
+      border:1px solid rgba(24,90,157,.12);
+      border-radius:18px;
+      padding:1.25rem;
+      min-height:100%;
+    }
+
+    .guide-card h3{
+      color:#185a9d;
+      margin-top:0;
+    }
+
+    .guide-card p{
+      color:#5f6f7a;
+      margin-bottom:0;
+    }
+
+    .map-placeholder{
+      background:
+        linear-gradient(135deg,rgba(67,206,162,.18),rgba(255,79,216,.12)),
+        #f6f7fb;
+      border:2px dashed rgba(24,90,157,.25);
+      border-radius:20px;
+      padding:2rem;
+      text-align:center;
+    }
+
+    a.button{
+      display:inline-block;
+      background:#185a9d;
+      color:#fff;
+      padding:.8rem 1.3rem;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:bold;
+      margin:.35rem;
+    }
+
+    a.button:hover{
+      background:#ff4fd8;
+    }
+
+    footer{
+      text-align:center;
+      padding:2rem;
+      color:#d7e4f3;
+    }
+
+    @media (max-width:900px){
+      .guide-grid{
+        grid-template-columns:1fr 1fr;
+      }
+    }
+
+    @media (max-width:620px){
+      .site-nav{
+        padding:.8rem .7rem;
+        gap:.7rem;
+      }
+
+      .site-nav a{
+        font-size:.85rem;
+      }
+
+      header{
+        padding:3rem 1rem 2rem;
+      }
+
+      .guide-grid{
+        grid-template-columns:1fr;
+      }
+
+      .card{
+        padding:1.4rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="site-nav">
+    <a href="../index.html#universe">The Universe</a>
+    <a href="../index.html#podcast">Podcast</a>
+    <a href="../index.html#latest">Latest Episode</a>
+    <a href="../index.html#book">Books</a>
+    <a href="../index.html#adventures">Adventures</a>
+    <a href="../index.html#blog">Blog</a>
+    <a href="../index.html#contact">Contact</a>
+  </nav>
+
+  <header>
+    <h1>🌺 Big Island Guide</h1>
+    <p>
+      Our growing guide to the Big Island — favorite stops, food, coffee, beaches, volcano moments, Hilo-side adventures, and the places we would actually recommend from our 3Dudes1Life travels.
+    </p>
+  </header>
+
+  <main>
+
+    <img class="hero-img" src="../images/hawaii-maui.jpg" alt="Big Island and Hawaii adventures">
+
+    <section class="card">
+      <h2>Why This Guide Exists</h2>
+
+      <p>
+        The Big Island is becoming one of the most important places in the 3Dudes1Life universe. This guide will grow into a living travel resource built from places we have personally visited, loved, photographed, researched, or would recommend to someone following our journey.
+      </p>
+
+      <p>
+        This is not about sharing private details. This is about sharing the adventure: the roads, beaches, food stops, coffee runs, volcanic landscapes, small towns, local gems, and memories that make the Big Island feel unforgettable.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>What Will Be Added</h2>
+
+      <div class="guide-grid">
+        <div class="guide-card">
+          <h3>☕ Food + Coffee</h3>
+          <p>Favorite coffee stops, casual food finds, bakeries, snacks, farmers markets, and places worth saving.</p>
+        </div>
+
+        <div class="guide-card">
+          <h3>🏖️ Beaches + Coastlines</h3>
+          <p>Beach stops, ocean views, lava coastlines, photo spots, and places that feel special.</p>
+        </div>
+
+        <div class="guide-card">
+          <h3>🌋 Volcano + Nature</h3>
+          <p>Volcano moments, rainforest stops, scenic drives, lava fields, gardens, and wild Big Island landscapes.</p>
+        </div>
+
+        <div class="guide-card">
+          <h3>🌈 LGBTQ+ Friendly Energy</h3>
+          <p>Places that felt welcoming, relaxed, creative, inclusive, or aligned with the 3Dudes1Life vibe.</p>
+        </div>
+
+        <div class="guide-card">
+          <h3>🚗 Road Trip Stops</h3>
+          <p>Drive routes, pull-offs, towns, scenic views, and places we would build into a day trip.</p>
+        </div>
+
+        <div class="guide-card">
+          <h3>📸 Photo Memories</h3>
+          <p>Personal photos, travel notes, favorite views, and visual moments from our visits.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Future Interactive Map</h2>
+
+      <div class="map-placeholder">
+        <h3>🗺️ Map Coming Soon</h3>
+        <p>
+          This page will eventually include a clickable Big Island map with 3Dudes1Life recommendations, personal notes, photos, and links to related blog posts or podcast stories.
+        </p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Where This Connects</h2>
+
+      <p>
+        The Big Island guide will connect into the podcast, book universe, blog archive, photo memories, travel recommendations, and future island-based creative projects.
+      </p>
+
+      <p>
+        Over time, this page can become the first real “map-style” experience inside 3Dudes1Life Creative — starting simple now, then growing into something more interactive as more photos, pins, stories, and recommendations are added.
+      </p>
+
+      <a class="button" href="../index.html#adventures">🌎 More Adventures</a>
+      <a class="button" href="hawaii-maui.html">🌺 Hawaii & Maui Page</a>
+      <a class="button" href="../index.html">🏠 Back to Creative</a>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 3Dudes1Life Creative • Three Men. One Life. Endless Stories.
+  </footer>
+
+</body>
+</html>
