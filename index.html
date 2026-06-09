@@ -3,16 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>3Dudes1Life Creative</title>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+  <title>3Dudes1Life Creative | Podcast, Books, Adventures & Real-Life Throuple Stories</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="logo.png" />
-  <meta name="description" content="3Dudes1Life Creative — home of A Little Throuple Tea, Tres Amigos Una Vida, and the real-life gay throuple story of William, Caleb, and Daniel." />
+
+  <meta name="description" content="3Dudes1Life Creative is the connected world of William, Caleb, and Daniel — a real-life gay throuple sharing A Little Throuple Tea podcast, Tres Amigos Una Vida books, travel adventures, blog stories, and life together." />
+  <meta name="keywords" content="gay throuple podcast, throuple podcast, LGBTQ relationship podcast, three men in love, real-life throuple, A Little Throuple Tea, Tres Amigos Una Vida, 3Dudes1Life, gay relationship podcast" />
+
   <meta property="og:title" content="3Dudes1Life Creative" />
-  <meta property="og:description" content="Three men. One life. Endless stories. Podcast, books, blog, and real-life throuple chaos from William, Caleb, and Daniel." />
+  <meta property="og:description" content="Three men. One life. A connected world of podcast episodes, books, travel adventures, blog stories, and real-life throuple chaos from William, Caleb, and Daniel." />
   <meta property="og:image" content="logo.png" />
   <meta property="og:type" content="website" />
 
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0JTFMYWEFZ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -25,55 +29,317 @@
     :root{
       --teal:#43cea2;
       --blue:#185a9d;
-      --bg:#222;
-      --card:#fff;
-      --text:#333;
+      --pink:#ff4fd8;
+      --orange:#ff9f1c;
+      --purple:#6c4cff;
+      --bg:#11131a;
+      --card:#ffffff;
+      --soft:#f6f7fb;
+      --text:#263238;
+      --muted:#5f6f7a;
+      --sunset:linear-gradient(135deg,var(--pink),var(--orange));
     }
+
     *{box-sizing:border-box}
-    body{margin:0;font-family:'Quicksand',sans-serif;background:var(--bg);color:var(--text);}
+    html{scroll-behavior:smooth;}
+    body{
+      margin:0;
+      font-family:'Quicksand',sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+
     nav{
-      position:sticky;top:0;z-index:1000;background:#fff;
-      border-bottom:4px solid;border-image:linear-gradient(to right,var(--teal),var(--blue)) 1;
-      padding:.9rem 2rem;display:flex;justify-content:flex-end;gap:1.5rem;
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(255,255,255,.96);
+      border-bottom:4px solid;
+      border-image:linear-gradient(to right,var(--teal),var(--pink),var(--orange),var(--blue)) 1;
+      padding:.9rem 2rem;
+      display:flex;
+      justify-content:center;
+      gap:1.2rem;
+      flex-wrap:wrap;
+      backdrop-filter:blur(10px);
     }
-    nav a{color:#000;text-decoration:none;font-weight:600;}
-    nav a:hover{color:var(--teal);}
+
+    nav a{
+      color:#000;
+      text-decoration:none;
+      font-weight:700;
+      font-size:.95rem;
+    }
+
+    nav a:hover{color:var(--pink);}
+
     header{
-      text-align:center;color:#fff;background:linear-gradient(135deg,var(--teal),var(--blue));
-      padding:4rem 1rem 2rem;position:relative;
+      text-align:center;
+      color:#fff;
+      background:
+        radial-gradient(circle at top left, rgba(255,79,216,.32), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(67,206,162,.28), transparent 34%),
+        linear-gradient(135deg,#141824 0%,#181d2b 45%,#0f1724 100%);
+      padding:5rem 1rem 4rem;
+      position:relative;
+      overflow:hidden;
     }
-    header::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.35);}
-    header .wrap{position:relative;z-index:1;}
-    header img.logo{max-width:120px;margin-bottom:1rem;}
-    header h1{margin:.5rem 0;font-size:2.2rem;}
-    header .intro{max-width:720px;margin:0 auto 1rem;line-height:1.6;}
-    main{max-width:1000px;margin:auto;padding:2rem 1rem;}
+
+    header .wrap{
+      position:relative;
+      z-index:1;
+      max-width:980px;
+      margin:0 auto;
+    }
+
+    header img.logo{
+      max-width:140px;
+      margin-bottom:1rem;
+      filter:drop-shadow(0 8px 18px rgba(0,0,0,.45));
+    }
+
+    .eyebrow{
+      display:inline-block;
+      margin-bottom:1rem;
+      padding:.45rem .9rem;
+      border:1px solid rgba(255,255,255,.35);
+      border-radius:999px;
+      background:rgba(255,255,255,.09);
+      font-weight:700;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      font-size:.78rem;
+    }
+
+    header h1{
+      margin:.5rem auto;
+      font-size:clamp(2.2rem,6vw,4.8rem);
+      line-height:1.02;
+      max-width:920px;
+    }
+
+    header h1 span{
+      background:var(--sunset);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    header .intro{
+      max-width:790px;
+      margin:1.2rem auto 1.6rem;
+      line-height:1.7;
+      font-size:1.12rem;
+      color:#f2f5ff;
+    }
+
+    main{
+      max-width:1120px;
+      margin:auto;
+      padding:2rem 1rem 3rem;
+    }
+
     .card{
-      background:var(--card);color:var(--text);border-radius:12px;padding:2rem;margin-bottom:2rem;
-      box-shadow:0 6px 18px rgba(0,0,0,.4);text-align:center;
+      background:var(--card);
+      color:var(--text);
+      border-radius:22px;
+      padding:2rem;
+      margin-bottom:2rem;
+      box-shadow:0 10px 30px rgba(0,0,0,.35);
+      text-align:center;
+      overflow:hidden;
     }
-    .card h2{margin-top:0;color:var(--blue);}
-    .book-cover,.podcast-art{
-      display:block;max-width:280px;width:100%;height:auto;margin:1rem auto 1.5rem;border-radius:8px;
-      box-shadow:0 4px 12px rgba(0,0,0,.3);
+
+    .card h2{
+      margin-top:0;
+      color:var(--blue);
+      font-size:clamp(1.7rem,4vw,2.55rem);
     }
-    .card p{max-width:700px;margin:0 auto 1rem;}
+
+    .card h3{
+      color:var(--blue);
+      margin-bottom:.4rem;
+    }
+
+    .card p{
+      max-width:760px;
+      margin:0 auto 1rem;
+      line-height:1.7;
+    }
+
+    .lead{
+      font-size:1.08rem;
+      color:var(--muted);
+    }
+
+    .highlight{
+      background:linear-gradient(135deg,rgba(67,206,162,.14),rgba(255,79,216,.12));
+      border:1px solid rgba(24,90,157,.12);
+    }
+
+    .buttons{
+      display:flex;
+      justify-content:center;
+      gap:.7rem;
+      flex-wrap:wrap;
+    }
+
     .buttons a{
-      display:inline-block;margin:.35rem;padding:.6rem 1.2rem;background:var(--blue);color:#fff;
-      text-decoration:none;font-weight:700;border-radius:50px;transition:transform .2s,background .3s;
+      display:inline-block;
+      margin:.2rem;
+      padding:.75rem 1.25rem;
+      background:var(--blue);
+      color:#fff;
+      text-decoration:none;
+      font-weight:800;
+      border-radius:50px;
+      transition:transform .2s,box-shadow .3s,background .3s;
+      box-shadow:0 8px 18px rgba(0,0,0,.18);
     }
-    .buttons a:hover{background:var(--teal);transform:translateY(-2px);}
-    footer{text-align:center;background:var(--blue);color:#fff;padding:1.5rem;margin-top:2rem;}
-    @media (max-width:768px){nav{justify-content:center;flex-wrap:wrap}header h1{font-size:1.85rem}}
+
+    .buttons a:hover{
+      background:var(--pink);
+      transform:translateY(-2px);
+      box-shadow:0 12px 24px rgba(0,0,0,.24);
+    }
+
+    .badge-row{
+      display:flex;
+      justify-content:center;
+      gap:.8rem;
+      flex-wrap:wrap;
+      margin-top:1.2rem;
+    }
+
+    .badge{
+      padding:.75rem 1rem;
+      border-radius:999px;
+      background:#fff;
+      border:1px solid rgba(24,90,157,.14);
+      font-weight:800;
+      color:var(--blue);
+      box-shadow:0 5px 16px rgba(0,0,0,.08);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1rem;
+      margin-top:1.5rem;
+    }
+
+    .mini-card{
+      background:var(--soft);
+      border-radius:18px;
+      padding:1.25rem;
+      border:1px solid rgba(24,90,157,.1);
+      text-align:left;
+      min-height:100%;
+    }
+
+    .mini-card h3{
+      margin-top:0;
+      font-size:1.2rem;
+    }
+
+    .mini-card p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.55;
+    }
+
+    .mini-card .tag{
+      display:inline-block;
+      margin-top:.85rem;
+      font-size:.82rem;
+      font-weight:800;
+      color:#fff;
+      background:var(--blue);
+      border-radius:999px;
+      padding:.35rem .7rem;
+    }
+
+    .podcast-art,
+    .book-cover{
+      display:block;
+      max-width:280px;
+      width:100%;
+      height:auto;
+      margin:1rem auto 1.5rem;
+      border-radius:14px;
+      box-shadow:0 8px 22px rgba(0,0,0,.3);
+    }
+
+    .connection-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:1rem;
+      margin-top:1.4rem;
+    }
+
+    .connection-step{
+      background:#fff;
+      border-radius:18px;
+      padding:1.2rem;
+      border:2px solid rgba(67,206,162,.22);
+      box-shadow:0 6px 18px rgba(0,0,0,.08);
+    }
+
+    .connection-step strong{
+      display:block;
+      color:var(--blue);
+      font-size:1.1rem;
+      margin:.35rem 0;
+    }
+
+    footer{
+      text-align:center;
+      background:linear-gradient(135deg,var(--blue),#0f1724);
+      color:#fff;
+      padding:1.5rem;
+      margin-top:2rem;
+    }
+
+    @media (max-width:900px){
+      .grid,
+      .connection-grid{
+        grid-template-columns:1fr 1fr;
+      }
+    }
+
+    @media (max-width:620px){
+      nav{
+        padding:.8rem .7rem;
+        gap:.7rem;
+      }
+
+      nav a{
+        font-size:.85rem;
+      }
+
+      .grid,
+      .connection-grid{
+        grid-template-columns:1fr;
+      }
+
+      header{
+        padding:3.5rem 1rem 3rem;
+      }
+
+      .card{
+        padding:1.4rem;
+      }
+    }
   </style>
 </head>
+
 <body>
 
   <nav>
-    <a href="#who">Who We Are</a>
+    <a href="#universe">The Universe</a>
     <a href="#podcast">Podcast</a>
-    <a href="#youtube">Watch</a>
-    <a href="#book">The Book</a>
+    <a href="#book">Books</a>
+    <a href="#adventures">Adventures</a>
     <a href="#blog">Blog</a>
     <a href="#contact">Contact</a>
   </nav>
@@ -81,33 +347,70 @@
   <header>
     <div class="wrap">
       <img src="logo.png" alt="3Dudes1Life Creative logo" class="logo" loading="lazy" />
-      <h1>Three Men. One Life. Endless Stories.</h1>
+      <div class="eyebrow">Real life. Real love. Real stories.</div>
+      <h1>Welcome to the <span>3Dudes1Life Universe</span></h1>
       <p class="intro">
-        Welcome to the home of 3Dudes1Life — a real-life gay throuple sharing our adventures, relationship, travels, books, and podcast with the world.
-        Follow William, Caleb, and Daniel as they navigate love, laughter, side hustles, home projects, and the beautiful chaos of building a life together.
+        We’re William, Caleb, and Daniel — a real-life gay throuple turning our life together into a connected world of podcast episodes, books, travel adventures, blog stories, photos, and future Hawaii dreams.
       </p>
       <div class="buttons">
+        <a href="#universe">✨ Start Exploring</a>
         <a href="https://throupletea.com" target="_blank" rel="noopener">🎙️ Listen to the Podcast</a>
         <a href="https://tresamigosunavida.com" target="_blank" rel="noopener">📚 Read the Book</a>
-        <a href="https://3dudes1life.com" target="_blank" rel="noopener">🌴 Follow Our Journey</a>
       </div>
     </div>
   </header>
 
   <main>
-    <section class="card" id="who">
-      <h2>Meet the Dudes</h2>
-      <p>
-        We’re William, Caleb, and Daniel — a real-life throuple who have spent nearly a decade building a life together.
-        Along the way we've written books, launched a podcast, traveled thousands of miles, built businesses, raised dogs, survived home renovations, and collected more stories than we know what to do with.
+
+    <section class="card highlight" id="universe">
+      <h2>More Than a Podcast. More Than a Book.</h2>
+      <p class="lead">
+        3Dudes1Life Creative is where everything connects — the conversations from <strong>A Little Throuple Tea</strong>, the emotional story world of <strong>Tres Amigos, Una Vida</strong>, the memories from our blog, and the real places that shaped our life together.
       </p>
+
+      <div class="badge-row">
+        <div class="badge">🏆 #1 Throuple Podcast</div>
+        <div class="badge">🎙️ New Episodes Every Friday</div>
+        <div class="badge">📚 Inspired by True Events</div>
+        <div class="badge">🌺 Hawaii Journey</div>
+      </div>
+    </section>
+
+    <section class="card" id="connects">
+      <h2>Where It All Connects</h2>
       <p>
-        Through 3Dudes1Life, we share the reality of our relationship — the funny moments, the challenges, the adventures, and everything in between. Whether you're here for the podcast, the book, the blog, or simply because you're curious about how three men make a relationship work, we're glad you're here.
+        The podcast gives you the conversations. The books give you the emotional story. The blog gives you the memories. The adventures show you where it all happened.
       </p>
+
+      <div class="connection-grid">
+        <div class="connection-step">
+          <div>🎙️</div>
+          <strong>Podcast</strong>
+          <p>Real-time stories, chaos, laughter, and relationship moments from three men building a life together.</p>
+        </div>
+
+        <div class="connection-step">
+          <div>📚</div>
+          <strong>Books</strong>
+          <p>Fiction inspired by true events, emotional history, haunted houses, travel memories, and the heart of the relationship.</p>
+        </div>
+
+        <div class="connection-step">
+          <div>🌎</div>
+          <strong>Adventures</strong>
+          <p>Alaska, Maui, Big Island, Costa Rica, California, and the places that became part of our story.</p>
+        </div>
+
+        <div class="connection-step">
+          <div>📝</div>
+          <strong>Blog</strong>
+          <p>The real-life archive behind the podcast, books, photos, trips, projects, and everyday throuple life.</p>
+        </div>
+      </div>
     </section>
 
     <section class="card" id="podcast">
-      <h2>🎙️ A Little Throuple Tea — Podcast</h2>
+      <h2>🎙️ A Little Throuple Tea</h2>
 
       <a href="https://throupletea.com" target="_blank" rel="noopener">
         <img
@@ -123,86 +426,116 @@
       </p>
 
       <p>
-        Real stories, real love, and plenty of tea from a real-life throuple.
+        A Little Throuple Tea is our weekly video podcast about love, chaos, relationship dynamics, travel, family, reality TV, and what it actually feels like to be three men in love.
       </p>
 
       <p>
-        <strong>New episodes every Friday.</strong> Join William, Caleb, and Daniel as they share relationship stories, travel adventures, life updates, reality TV obsessions, and the beautiful chaos of building a life together.
+        <strong>New episodes every Friday.</strong> Available on Spotify, Apple Podcasts, YouTube, Amazon Music, iHeartRadio, and everywhere you listen.
       </p>
 
       <div class="buttons">
         <a href="https://podcasts.apple.com/us/podcast/3dudes1life-a-little-throuple-tea/id1837237399" target="_blank" rel="noopener">🍎 Apple Podcasts</a>
         <a href="https://open.spotify.com/show/6cb9Y7qcyDO1L7O15X2oL5" target="_blank" rel="noopener">🟢 Spotify</a>
-        <a href="https://www.youtube.com/channel/UCswzye8bcm8bByqLlW0QaFQ" target="_blank" rel="noopener">▶️ YouTube</a>
+        <a href="https://www.youtube.com/@ThroupleTea" target="_blank" rel="noopener">▶️ YouTube</a>
         <a href="https://www.iheart.com/podcast/269-3dudes1life-a-little-throu-289987978/" target="_blank" rel="noopener">❤️ iHeartRadio</a>
         <a href="https://music.amazon.com/podcasts/2a3cfc8f-2a79-4aac-b48b-625a20f08421/3dudes1life-a-little-throuple-tea" target="_blank" rel="noopener">🛒 Amazon Music</a>
-        <a href="https://anchor.fm/s/1087008c4/podcast/rss" target="_blank" rel="noopener">📰 RSS</a>
-        <a href="https://throupletea.com" target="_blank" rel="noopener">🌐 Visit Site</a>
+        <a href="https://throupletea.com" target="_blank" rel="noopener">🌐 Podcast Site</a>
       </div>
     </section>
 
-    <section class="card" id="youtube">
-  <h2>▶️ Watch on YouTube</h2>
-
-  <p>
-    Every episode of <strong>A Little Throuple Tea</strong> is available on YouTube, including full video episodes, clips, and Shorts.
-  </p>
-
-  <img
-    src="3Dudes1Life_Podcastartwork2_Season2_listen%20copy.jpg"
-    alt="A Little Throuple Tea on YouTube"
-    class="podcast-art"
-    loading="lazy"
-  />
-
-  <div class="buttons">
-    <a href="https://www.youtube.com/@ThroupleTea" target="_blank" rel="noopener">
-      ▶️ Watch on YouTube
-    </a>
-  </div>
-</section>
-
     <section class="card" id="book">
       <h2>📚 Tres Amigos, Una Vida</h2>
+
       <img src="book-cover.png" alt="Tres Amigos, Una Vida book cover" class="book-cover" loading="lazy" />
+
       <p>
-        What happens when three wildly different men—an emotionally guarded Navy mechanic from Oklahoma, a tattooed culinary specialist
-        from a tiny Florida town, and a sharp-tongued tech heir from San Francisco—collide at exactly the wrong time... and it feels perfectly right?
+        <em>Tres Amigos, Una Vida</em> is the book series inspired by true events from a real-life throuple — a love story about vulnerability, devotion, humor, healing, and the messy magic of choosing each other.
       </p>
+
       <p>
-        From secret glances in the mess hall to fights that end in laughter under the same blanket, <em>Tres Amigos, Una Vida</em>
-        follows a raw and unforgettable path through love, vulnerability, and devotion.
+        The books and podcast live side by side: one gives you the fictionalized emotional journey, while the other lets you hear the real voices, stories, and chaos behind the world.
       </p>
-      <p>Inspired by true events from a real-life throuple who’ve spent a decade building a life—and love—together.</p>
+
       <div class="buttons">
         <a href="https://www.etsy.com/shop/TresAmigosUnaVida" target="_blank" rel="noopener">🛒 Buy the Paperback</a>
         <a href="https://www.amazon.com/Tres-Amigos-Una-Vida-Throuple-ebook/dp/B0F98W6S5N" target="_blank" rel="noopener">📖 Get the eBook</a>
         <a href="https://www.instagram.com/tresamigosunavida" target="_blank" rel="noopener">📱 Follow the Story</a>
-        <a href="https://tresamigosunavida.com" target="_blank" rel="noopener">🌐 Visit Book Site</a>
+        <a href="https://tresamigosunavida.com" target="_blank" rel="noopener">🌐 Book Site</a>
+      </div>
+    </section>
+
+    <section class="card" id="adventures">
+      <h2>🌎 Adventures & Story Places</h2>
+
+      <p>
+        Some places are more than vacation stops. They become chapters. These are the locations that connect our real life, blog stories, podcast moments, and book universe.
+      </p>
+
+      <div class="grid">
+        <div class="mini-card">
+          <h3>🌺 Hawaii & Maui</h3>
+          <p>Big Island land, Maui memories, future move energy, and the Hawaii chapters already finding their way into the story.</p>
+          <span class="tag">Book • Blog • Podcast</span>
+        </div>
+
+        <div class="mini-card">
+          <h3>🏔️ Alaska</h3>
+          <p>Thousands of miles, birthday adventures, glaciers, northern roads, and stories that still feel larger than life.</p>
+          <span class="tag">Blog • Photos • Future Episodes</span>
+        </div>
+
+        <div class="mini-card">
+          <h3>🇨🇷 Costa Rica</h3>
+          <p>Celebrations, beaches, monkeys, resort chaos, and travel memories from the three of us outside everyday life.</p>
+          <span class="tag">Travel • Photos • Podcast</span>
+        </div>
+
+        <div class="mini-card">
+          <h3>🌈 California Years</h3>
+          <p>Hillcrest, fairs, road trips, Pride events, friendships, work, reinvention, and the life that shaped the brand.</p>
+          <span class="tag">History • Blog • Podcast</span>
+        </div>
+
+        <div class="mini-card">
+          <h3>🚗 Road Trip Archive</h3>
+          <p>From long drives to unexpected stops, our travel archive is becoming a map of the life we built together.</p>
+          <span class="tag">Coming Soon</span>
+        </div>
       </div>
     </section>
 
     <section class="card" id="blog">
       <h2>🌈 3Dudes1Life Blog</h2>
+
       <p>
-        The blog is a window into our world—garden updates, vacation stories, recipes, how we met,
-        and the beautiful chaos of everyday throuple life.
+        The blog is our real-life archive — garden updates, vacation stories, recipes, how we met, Alaska adventures, Hawaii dreams, and the beautiful chaos of everyday throuple life.
       </p>
+
+      <p>
+        For now, our blog lives on 3Dudes1Life.com while Creative becomes the place where the whole story connects.
+      </p>
+
       <div class="buttons">
         <a href="https://3dudes1life.com" target="_blank" rel="noopener">📰 Read the Blog</a>
         <a href="https://www.instagram.com/3dudes1life" target="_blank" rel="noopener">📸 Follow Us</a>
-        <a href="https://3dudes1life.com" target="_blank" rel="noopener">🌐 Visit Our Website</a>
+        <a href="https://www.instagram.com/throupletea" target="_blank" rel="noopener">☕ Follow the Podcast</a>
       </div>
     </section>
 
     <section class="card contact" id="contact">
       <h2>📬 Get In Touch</h2>
+      <p>
+        For podcast inquiries, book connections, collaborations, press, or creative opportunities, reach out anytime.
+      </p>
       <p><a href="mailto:3dudes1lifecreative@outatinc.com">3dudes1lifecreative@outatinc.com</a></p>
     </section>
+
   </main>
 
   <footer>
     <p>© 2026 3Dudes1Life Creative. All rights reserved.</p>
+    <p>Three men. One life. Endless stories.</p>
   </footer>
+
 </body>
 </html>
