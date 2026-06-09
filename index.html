@@ -347,7 +347,30 @@
   font-weight:800;
   margin-bottom:.4rem;
 }
+.adventure-link{
+  display:block;
+  text-decoration:none;
+  color:inherit;
+}
 
+.adventure-link:hover .mini-card{
+  transform:translateY(-4px);
+  box-shadow:0 12px 28px rgba(0,0,0,.18);
+  border-color:rgba(255,79,216,.35);
+}
+
+.mini-card{
+  transition:transform .2s, box-shadow .25s, border-color .25s;
+}
+
+.mini-card img{
+  width:100%;
+  height:150px;
+  object-fit:cover;
+  border-radius:14px;
+  margin-bottom:1rem;
+  box-shadow:0 6px 16px rgba(0,0,0,.18);
+}
 @media (max-width:620px){
   .latest-episode-card{
     grid-template-columns:1fr;
@@ -544,38 +567,54 @@
         Some places are more than vacation stops. They become chapters. These are the locations that connect our real life, blog stories, podcast moments, and book universe.
       </p>
 
-      <div class="grid">
-        <div class="mini-card">
-          <h3>🌺 Hawaii & Maui</h3>
-          <p>Big Island land, Maui memories, future move energy, and the Hawaii chapters already finding their way into the story.</p>
-          <span class="tag">Book • Blog • Podcast</span>
-        </div>
+<div class="grid">
 
-        <div class="mini-card">
-          <h3>🏔️ Alaska</h3>
-          <p>Thousands of miles, birthday adventures, glaciers, northern roads, and stories that still feel larger than life.</p>
-          <span class="tag">Blog • Photos • Future Episodes</span>
-        </div>
+  <a class="adventure-link" href="connections/hawaii-maui.html">
+    <div class="mini-card">
+      <img src="images/hawaii-maui.jpg" alt="Hawaii and Maui adventures">
+      <h3>🌺 Hawaii & Maui</h3>
+      <p>Big Island and Maui memories, favorite places, travel stories, and the Hawaii chapters already finding their way into the story.</p>
+      <span class="tag">Coming Soon</span>
+    </div>
+  </a>
 
-        <div class="mini-card">
-          <h3>🇨🇷 Costa Rica</h3>
-          <p>Celebrations, beaches, monkeys, resort chaos, and travel memories from the three of us outside everyday life.</p>
-          <span class="tag">Travel • Photos • Podcast</span>
-        </div>
+  <a class="adventure-link" href="connections/alaska.html">
+    <div class="mini-card">
+      <img src="images/alaska.jpg" alt="Alaska road trip adventures">
+      <h3>🏔️ Alaska</h3>
+      <p>Thousands of miles, birthday adventures, glaciers, northern roads, and stories that still feel larger than life.</p>
+      <span class="tag">Explore Alaska</span>
+    </div>
+  </a>
 
-        <div class="mini-card">
-          <h3>🌈 California Years</h3>
-          <p>Hillcrest, fairs, road trips, Pride events, friendships, work, reinvention, and the life that shaped the brand.</p>
-          <span class="tag">History • Blog • Podcast</span>
-        </div>
+  <a class="adventure-link" href="connections/costa-rica.html">
+    <div class="mini-card">
+      <img src="images/costa-rica.jpg" alt="Costa Rica adventures">
+      <h3>🇨🇷 Costa Rica</h3>
+      <p>Celebrations, beaches, monkeys, resort chaos, and travel memories from the three of us outside everyday life.</p>
+      <span class="tag">Coming Soon</span>
+    </div>
+  </a>
 
-        <div class="mini-card">
-          <h3>🚗 Road Trip Archive</h3>
-          <p>From long drives to unexpected stops, our travel archive is becoming a map of the life we built together.</p>
-          <span class="tag">Coming Soon</span>
-        </div>
-      </div>
-    </section>
+  <a class="adventure-link" href="connections/california.html">
+    <div class="mini-card">
+      <img src="images/california.jpg" alt="California years and Pride events">
+      <h3>🌈 California Years</h3>
+      <p>Hillcrest, fairs, road trips, Pride events, friendships, work, reinvention, and the life that shaped the brand.</p>
+      <span class="tag">Coming Soon</span>
+    </div>
+  </a>
+
+  <a class="adventure-link" href="connections/road-trips.html">
+    <div class="mini-card">
+      <img src="images/road-trips.jpg" alt="3Dudes1Life road trips">
+      <h3>🚗 Road Trip Archive</h3>
+      <p>From long drives to unexpected stops, our travel archive is becoming a map of the life we built together.</p>
+      <span class="tag">Coming Soon</span>
+    </div>
+  </a>
+
+</div>
 
     <section class="card" id="blog">
       <h2>🌈 3Dudes1Life Blog</h2>
