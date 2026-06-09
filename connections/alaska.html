@@ -18,22 +18,21 @@
       position:sticky;
       top:0;
       z-index:99999;
-      background:#ffffff;
-      padding:1rem;
+      background:rgba(255,255,255,.98);
+      border-bottom:4px solid;
+      border-image:linear-gradient(to right,#43cea2,#ff4fd8,#ff9f1c,#185a9d) 1;
+      padding:.9rem 2rem;
       display:flex;
       justify-content:center;
-      align-items:center;
-      gap:1rem;
+      gap:1.2rem;
       flex-wrap:wrap;
-      border-bottom:4px solid #43cea2;
-      box-shadow:0 4px 18px rgba(0,0,0,.25);
     }
 
     .site-nav a{
+      color:#000;
       text-decoration:none;
-      color:#185a9d;
       font-weight:700;
-      font-size:1rem;
+      font-size:.95rem;
     }
 
     .site-nav a:hover{
@@ -43,24 +42,6 @@
     header{
       padding:4rem 1rem 2rem;
       background:linear-gradient(135deg,#185a9d,#11131a);
-    }
-
-    .breadcrumb{
-      max-width:900px;
-      margin:0 auto 1.5rem;
-      text-align:left;
-      color:#d7e4f3;
-      font-size:.95rem;
-    }
-
-    .breadcrumb a{
-      color:#43cea2;
-      text-decoration:none;
-      font-weight:bold;
-    }
-
-    .breadcrumb a:hover{
-      color:#ff4fd8;
     }
 
     main{
@@ -109,12 +90,12 @@
 
     @media (max-width:620px){
       .site-nav{
-        gap:.65rem;
-        padding:.85rem;
+        padding:.8rem .7rem;
+        gap:.7rem;
       }
 
       .site-nav a{
-        font-size:.9rem;
+        font-size:.85rem;
       }
 
       header{
@@ -131,23 +112,16 @@
 <body>
 
   <nav class="site-nav">
-    <a href="../index.html">🏠 Home</a>
-    <a href="../index.html#podcast">🎙️ Podcast</a>
-    <a href="../index.html#book">📚 Books</a>
-    <a href="../index.html#adventures">🌎 Adventures</a>
-    <a href="../index.html#blog">📝 Blog</a>
-    <a href="../index.html#contact">📬 Contact</a>
+    <a href="../index.html#universe">The Universe</a>
+    <a href="../index.html#podcast">Podcast</a>
+    <a href="../index.html#latest">Latest Episode</a>
+    <a href="../index.html#book">Books</a>
+    <a href="../index.html#adventures">Adventures</a>
+    <a href="../index.html#blog">Blog</a>
+    <a href="../index.html#contact">Contact</a>
   </nav>
 
   <header>
-    <div class="breadcrumb">
-      <a href="../index.html">3Dudes1Life Creative</a>
-      →
-      <a href="../index.html#adventures">Adventures</a>
-      →
-      Alaska
-    </div>
-
     <h1>🏔️ Alaska Adventure</h1>
     <p>Thousands of miles, wild roads, birthday memories, glaciers, and one of the biggest adventures in the 3Dudes1Life story.</p>
   </header>
