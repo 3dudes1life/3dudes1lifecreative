@@ -89,25 +89,21 @@
       line-height:1.7;
     }
 
-    .guide-grid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:1.5rem;
-      margin-top:1.5rem;
-      align-items:stretch;
-    }
+.guide-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:1.25rem;
+  margin-top:1.5rem;
+}
 
-    .guide-card{
-      background:#f6f7fb;
-      border:1px solid rgba(24,90,157,.12);
-      border-radius:18px;
-      padding:1.5rem;
-      min-height:100%;
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-start;
-      box-shadow:0 6px 18px rgba(0,0,0,.06);
-    }
+.guide-card{
+  background:#f6f7fb;
+  border:1px solid rgba(24,90,157,.12);
+  border-radius:18px;
+  padding:1.25rem;
+  min-width:0;
+  box-shadow:0 6px 18px rgba(0,0,0,.06);
+}
 
     .guide-card h3{
       color:#185a9d;
