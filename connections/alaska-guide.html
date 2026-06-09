@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Alaska Guide | 3Dudes1Life Creative</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body{
+      margin:0;
+      font-family:Arial, sans-serif;
+      background:#11131a;
+      color:#fff;
+      text-align:center;
+    }
+
+    .site-nav{
+      position:sticky;
+      top:0;
+      z-index:99999;
+      background:rgba(255,255,255,.98);
+      border-bottom:4px solid;
+      border-image:linear-gradient(to right,#43cea2,#ff4fd8,#ff9f1c,#185a9d) 1;
+      padding:.9rem 2rem;
+      display:flex;
+      justify-content:center;
+      gap:1.2rem;
+      flex-wrap:wrap;
+    }
+
+    .site-nav a{
+      color:#000;
+      text-decoration:none;
+      font-weight:700;
+      font-size:.95rem;
+    }
+
+    .site-nav a:hover{
+      color:#ff4fd8;
+    }
+
+    header{
+      padding:4rem 1rem 2rem;
+      background:
+        radial-gradient(circle at top left, rgba(255,79,216,.22), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(67,206,162,.24), transparent 36%),
+        linear-gradient(135deg,#185a9d,#11131a);
+    }
+
+    header p{
+      max-width:850px;
+      margin:1rem auto 0;
+      line-height:1.7;
+      color:#f3f7ff;
+      font-weight:700;
+    }
+
+    main{
+      max-width:1050px;
+      margin:auto;
+      padding:2rem 1rem;
+    }
+
+    .hero-img{
+      width:100%;
+      max-width:900px;
+      border-radius:20px;
+      box-shadow:0 10px 30px rgba(0,0,0,.4);
+      margin-bottom:2rem;
+    }
+
+    .card{
+      background:#fff;
+      color:#263238;
+      border-radius:20px;
+      padding:2rem;
+      margin-bottom:2rem;
+      text-align:left;
+      box-shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+
+    .card h2{
+      color:#185a9d;
+      margin-top:0;
+      text-align:center;
+    }
+
+    .card p{
+      line-height:1.7;
+    }
+
+    .guide-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:1.5rem;
+      margin-top:1.5rem;
+      align-items:stretch;
+    }
+
+    .guide-card{
+      background:#f6f7fb;
+      border:1px solid rgba(24,90,157,.12);
+      border-radius:18px;
+      padding:1.5rem;
+      min-height:100%;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-start;
+      box-shadow:0 6px 18px rgba(0,0,0,.06);
+    }
+
+    .guide-card h3{
+      color:#185a9d;
+      margin:0 0 .75rem;
+      line-height:1.25;
+    }
+
+    .guide-card p{
+      color:#5f6f7a;
+      margin:0;
+      line-height:1.65;
+    }
+
+    .map-placeholder{
+      background:
+        linear-gradient(135deg,rgba(67,206,162,.18),rgba(255,79,216,.12)),
+        #f6f7fb;
+      border:2px dashed rgba(24,90,157,.25);
+      border-radius:20px;
+      padding:2rem;
+      text-align:center;
+    }
+
+    a.button{
+      display:inline-block;
+      background:#185a9d;
+      color:#fff;
+      padding:.8rem 1.3rem;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:bold;
+      margin:.35rem;
+    }
+
+    a.button:hover{
+      background:#ff4fd8;
+    }
+
+    footer{
+      text-align:center;
+      padding:2rem;
+      color:#d7e4f3;
+    }
+
+    @media (max-width:760px){
+      .guide-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width:620px){
+      .site-nav{
+        padding:.8rem .7rem;
+        gap:.7rem;
+      }
+
+      .site-nav a{
+        font-size:.85rem;
+      }
+
+      header{
+        padding:3rem 1rem 2rem;
+      }
+
+      .card{
+        padding:1.4rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="site-nav">
+    <a href="../index.html#universe">The Universe</a>
+    <a href="../index.html#podcast">Podcast</a>
+    <a href="../index.html#latest">Latest Episode</a>
+    <a href="../index.html#book">Books</a>
+    <a href="../index.html#adventures">Adventures</a>
+    <a href="../index.html#blog">Blog</a>
+    <a href="../index.html#contact">Contact</a>
+  </nav>
+
+  <header>
+    <h1>🏔️ Alaska Guide</h1>
+    <p>
+      Our growing guide to Alaska — from the Arctic Circle to the Homer Spit, 3,000+ miles of roads, glaciers, mountain passes, wildlife, small towns, and one of the greatest adventures in the 3Dudes1Life story.
+    </p>
+  </header>
+
+  <main>
+
+    <img class="hero-img" src="../images/alaska.jpg" alt="Alaska adventure">
+
+    <section class="card">
+      <h2>Why This Guide Exists</h2>
+
+      <p>
+        Alaska is one of the biggest adventures we have ever taken together. What started as a birthday celebration became a massive road trip across America's last frontier, covering more than 3,000 miles from the Arctic Circle in the north to the Homer Spit on the Kenai Peninsula.
+      </p>
+
+      <p>
+        This guide will become a place to organize the route, favorite stops, photos, travel notes, blog links, podcast memories, and the stories that still come up in our conversations today.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>What Will Be Added</h2>
+
+      <div class="guide-grid">
+        <div class="guide-card">
+          <h3>🛣️ Route + Road Trip Stops</h3>
+          <p>Major drives, route notes, long-haul stretches, unexpected stops, and the full Alaska road trip flow.</p>
+        </div>
+
+        <div class="guide-card">
+          <h3>❄️ Glaciers + Landscapes</h3>
+          <p>Glacier views, mountain passes, wild scenery, coastal views, and the places that made Alaska feel unreal.</p>
+        </div>
+
+        <div class="guide-card">
+          <h3>🐻 Wildlife + Remote Moments</h3>
+          <p>Wildlife sightings, remote roads, quiet places, big sky moments, and memories from the edge of everything.</p>
+        </div>
+
+        <div class="guide-card">
+          <h3>🏘️ Towns + Favorite Stops</h3>
+          <p>Fairbanks, Homer, Anchorage, small towns, roadside finds, food stops, and places worth remembering.</p>
+        </div>
+
+        <div class="guide-card">
+          <h3>📸 Photo Memories</h3>
+          <p>Personal photos, travel notes, favorite views, and visual moments from thousands of miles across Alaska.</p>
+        </div>
+
+        <div class="guide-card">
+          <h3>🎙️ Podcast + Blog Connections</h3>
+          <p>Related blog stories, future podcast references, behind-the-scenes memories, and creative connections.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Future Alaska Route Map</h2>
+
+      <div class="map-placeholder">
+        <h3>🗺️ Route Map Coming Soon</h3>
+        <p>
+          This page will eventually include a clickable Alaska route map showing our 3,000+ mile adventure from the Arctic Circle to the Homer Spit, with photos, notes, favorite stops, and links to related stories.
+        </p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Where This Connects</h2>
+
+      <p>
+        The Alaska guide will connect into the blog archive, podcast universe, travel memories, photo collections, road trip recommendations, and future creative projects tied to one of the most epic trips we have ever taken together.
+      </p>
+
+      <p>
+        Over time, this page can become the Alaska hub inside 3Dudes1Life Creative — starting simple now, then growing into a full route guide with photos, stories, pins, stops, and memories.
+      </p>
+
+      <a class="button" href="../index.html#adventures">🌎 More Adventures</a>
+      <a class="button" href="alaska.html">🏔️ Alaska Adventure Page</a>
+      <a class="button" href="https://www.3dudes1life.com/post/post-10-will-s-40th-birthday-an-alaskan-adventure-to-remember" target="_blank" rel="noopener">📰 Read the Alaska Blog</a>
+      <a class="button" href="../index.html">🏠 Back to Creative</a>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 3Dudes1Life Creative • Three Men. One Life. Endless Stories.
+  </footer>
+
+</body>
+</html>
