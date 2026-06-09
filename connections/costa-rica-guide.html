@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Costa Rica Guide | 3Dudes1Life Creative</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body{
+      margin:0;
+      font-family:Arial, sans-serif;
+      background:#11131a;
+      color:#fff;
+      text-align:center;
+    }
+
+    .site-nav{
+      position:sticky;
+      top:0;
+      z-index:99999;
+      background:rgba(255,255,255,.98);
+      border-bottom:4px solid;
+      border-image:linear-gradient(to right,#43cea2,#ff4fd8,#ff9f1c,#185a9d) 1;
+      padding:.9rem 2rem;
+      display:flex;
+      justify-content:center;
+      gap:1.2rem;
+      flex-wrap:wrap;
+    }
+
+    .site-nav a{
+      color:#000;
+      text-decoration:none;
+      font-weight:700;
+      font-size:.95rem;
+    }
+
+    .site-nav a:hover{
+      color:#ff4fd8;
+    }
+
+    header{
+      padding:4rem 1rem 2rem;
+      background:
+        radial-gradient(circle at top left, rgba(255,79,216,.22), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(67,206,162,.24), transparent 36%),
+        linear-gradient(135deg,#185a9d,#11131a);
+    }
+
+    header p{
+      max-width:850px;
+      margin:1rem auto 0;
+      line-height:1.7;
+      color:#f3f7ff;
+      font-weight:700;
+    }
+
+    main{
+      max-width:1050px;
+      margin:auto;
+      padding:2rem 1rem;
+    }
+
+    .hero-img{
+      width:100%;
+      max-width:900px;
+      border-radius:20px;
+      box-shadow:0 10px 30px rgba(0,0,0,.4);
+      margin-bottom:2rem;
+    }
+
+    .card{
+      background:#fff;
+      color:#263238;
+      border-radius:20px;
+      padding:2rem;
+      margin-bottom:2rem;
+      text-align:left;
+      box-shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+
+    .card h2{
+      color:#185a9d;
+      margin-top:0;
+      text-align:center;
+    }
+
+    .card p{
+      line-height:1.7;
+    }
+
+    .guide-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:1.25rem;
+      margin-top:1.5rem;
+    }
+
+    .guide-card{
+      background:#f6f7fb;
+      border:1px solid rgba(24,90,157,.12);
+      border-radius:18px;
+      padding:1.25rem;
+      min-width:0;
+      box-shadow:0 6px 18px rgba(0,0,0,.06);
+    }
+
+    .guide-card h3{
+      color:#185a9d;
+      margin:0 0 .75rem;
+      line-height:1.25;
+    }
+
+    .guide-card p{
+      color:#5f6f7a;
+      margin:0;
+      line-height:1.65;
+    }
+
+    .map-placeholder{
+      background:
+        linear-gradient(135deg,rgba(67,206,162,.18),rgba(255,79,216,.12)),
+        #f6f7fb;
+      border:2px dashed rgba(24,90,157,.25);
+      border-radius:20px;
+      padding:2rem;
+      text-align:center;
+    }
+
+    a.button{
+      display:inline-block;
+      background:#185a9d;
+      color:#fff;
+      padding:.8rem 1.3rem;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:bold;
+      margin:.35rem;
+    }
+
+    a.button:hover{
+      background:#ff4fd8;
+    }
+
+    footer{
+      text-align:center;
+      padding:2rem;
+      color:#d7e4f3;
+    }
+
+    @media (max-width:760px){
+      .guide-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width:620px){
+      .site-nav{
+        padding:.8rem .7rem;
+        gap:.7rem;
+      }
+
+      .site-nav a{
+        font-size:.85rem;
+      }
+
+      header{
+        padding:3rem 1rem 2rem;
+      }
+
+      .card{
+        padding:1.4rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="site-nav">
+    <a href="../index.html#universe">The Universe</a>
+    <a href="../index.html#podcast">Podcast</a>
+    <a href="../index.html#latest">Latest Episode</a>
+    <a href="../index.html#book">Books</a>
+    <a href="../index.html#adventures">Adventures</a>
+    <a href="../index.html#blog">Blog</a>
+    <a href="../index.html#contact">Contact</a>
+  </nav>
+
+  <header>
+    <h1>🇨🇷 Costa Rica Guide</h1>
+    <p>
+      Our growing guide to Costa Rica — beaches, wildlife, resort memories, tropical chaos, celebration energy, and one of our most beautiful 3Dudes1Life adventures outside everyday life.
+    </p>
+  </header>
+
+  <main>
+
+    <img class="hero-img" src="../images/costa-rica.jpg" alt="Costa Rica adventure">
+
+    <section class="card">
+      <h2>Why This Guide Exists</h2>
+
+      <p>
+        Costa Rica became one of those trips where the three of us got to step away from normal life and just be together somewhere tropical, beautiful, chaotic, and unforgettable. It was a celebration, an escape, and another piece of the larger 3Dudes1Life travel story.
+      </p>
+
+      <p>
+        This guide will become a place to organize our favorite memories, photos, resort moments, beach days, wildlife encounters, travel notes, podcast references, and the stories that still make us laugh.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>What Will Be Added</h2>
+
+      <div class="guide-grid">
+        <div class="guide-card">
+          <h3>🏖️ Beaches + Ocean Views</h3>
+          <p>Beach moments, coastal views, sunsets, warm water, and the places that made Costa Rica feel unforgettable.</p>
+        </div>
+
+        <div class="guide-card">
+          <h3>🐒 Wildlife + Nature</h3>
+          <p>Monkeys, tropical landscapes, lush scenery, animal moments, and the wild little surprises from the trip.</p>
+        </div>
+
+        <div class="guide-card">
+          <h3>🍹 Resort Life + Chaos</h3>
+          <p>Pool days, drinks, resort memories, funny moments, celebration energy, and the chaos that always follows us.</p>
+        </div>
+
+        <div class="guide-card">
+          <h3>🚗 Day Trips + Stops</h3>
+          <p>Excursions, scenic stops, local experiences, travel notes, and places we would recommend or remember.</p>
+        </div>
+
+        <div class="guide-card">
+          <h3>📸 Photo Memories</h3>
+          <p>Personal photos, favorite views, travel notes, and visual moments from our Costa Rica adventure.</p>
+        </div>
+
+        <div class="guide-card">
+          <h3>🎙️ Podcast + Story Connections</h3>
+          <p>Future podcast references, behind-the-scenes memories, blog connections, and how Costa Rica fits into the 3Dudes1Life universe.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Future Costa Rica Travel Map</h2>
+
+      <div class="map-placeholder">
+        <h3>🗺️ Map Coming Soon</h3>
+        <p>
+          This page will eventually include a clickable Costa Rica travel map with photos, favorite memories, notes, recommendations, and links to related podcast or blog stories.
+        </p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Where This Connects</h2>
+
+      <p>
+        The Costa Rica guide will connect into the podcast universe, travel memories, photo collections, future blog stories, and the larger 3Dudes1Life adventure archive.
+      </p>
+
+      <p>
+        Over time, this page can become the Costa Rica hub inside 3Dudes1Life Creative — starting simple now, then growing into a fuller guide with photos, stories, stops, memories, and recommendations.
+      </p>
+
+      <a class="button" href="../index.html#adventures">🌎 More Adventures</a>
+      <a class="button" href="costa-rica.html">🇨🇷 Costa Rica Adventure Page</a>
+      <a class="button" href="../index.html">🏠 Back to Creative</a>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 3Dudes1Life Creative • Three Men. One Life. Endless Stories.
+  </footer>
+
+</body>
+</html>
