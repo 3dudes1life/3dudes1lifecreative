@@ -461,8 +461,96 @@
       rating: '9/10',
       category: 'Southbound Route Stop',
       note: 'A major stop as the trip moved back through mountain roads, glacier country, and south-central Alaska.'
-    }
-  ];
+    },
+ {
+  name: '🏕️ Knik River Glacier',
+  coords: [61.4335, -148.9200],
+  rating: '10/10',
+  category: 'Glacier',
+  note: 'One of our favorite Alaska memories.'
+},
+
+{
+  name: '🚇 Anton Anderson Memorial Tunnel',
+  coords: [60.7896, -148.8644],
+  rating: '10/10',
+  category: 'Tunnel / Road Trip Moment',
+  note: 'The tunnel into Whittier — one of the most unique drives in Alaska.'
+},
+
+{
+  name: '🏔️ Girdwood',
+  coords: [60.9425, -149.1664],
+  rating: '9/10',
+  category: 'Mountain Town',
+  note: 'Beautiful mountain town surrounded by forests and dramatic scenery.'
+},
+
+{
+  name: '🌊 Whittier',
+  coords: [60.7731, -148.6839],
+  rating: '10/10',
+  category: 'Coastal Town',
+  note: 'Reached through the famous tunnel and surrounded by towering mountains.'
+},
+
+{
+  name: '🐟 Kenai',
+  coords: [60.5544, -151.2583],
+  rating: '8/10',
+  category: 'Kenai Peninsula',
+  note: 'Part of our drive south through the Kenai Peninsula.'
+},
+
+{
+  name: '🌲 Cooper Landing',
+  coords: [60.4897, -149.8347],
+  rating: '10/10',
+  category: 'River / Scenic Stop',
+  note: 'One of the prettiest river and mountain areas we visited.'
+},
+
+{
+  name: '🏕️ River Campground',
+  coords: [60.4875, -149.8185],
+  rating: '10/10',
+  category: 'Camping',
+  note: 'Camping by the river surrounded by mountains and Alaska wilderness.'
+},
+
+{
+  name: '🌅 Homer',
+  coords: [59.6425, -151.5483],
+  rating: '10/10',
+  category: 'Town',
+  note: 'The southern destination of our road trip with incredible coastal views.'
+},
+
+{
+  name: '🍻 Homer Town & Bars',
+  coords: [59.6441, -151.5406],
+  rating: '9/10',
+  category: 'Food & Nightlife',
+  note: 'Restaurants, bars, and exploring one of Alaska’s coolest towns.'
+},
+
+{
+  name: '🏕️ Homer Spit Campground',
+  coords: [59.6036, -151.4317],
+  rating: '10/10',
+  category: 'Camping',
+  note: 'Camping directly on the Homer Spit surrounded by water.'
+},
+
+{
+  name: '🌊 Land’s End / Homer Spit',
+  coords: [59.6006, -151.4107],
+  rating: '10/10',
+  category: 'End of the Road',
+  note: 'Literally the end of the road. One of the most memorable stops of the entire trip.'
+}
+
+];
 
   stops.forEach((place) => {
     L.marker(place.coords).addTo(map).bindPopup(`
