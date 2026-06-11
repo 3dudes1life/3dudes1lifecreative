@@ -464,14 +464,6 @@
     }
   ];
 
-  const route = stops.map(stop => stop.coords);
-
-  L.polyline(route, {
-    color: '#ff4fd8',
-    weight: 4,
-    opacity: 0.8
-  }).addTo(map);
-
   stops.forEach((place) => {
     L.marker(place.coords).addTo(map).bindPopup(`
       <h3>${place.name}</h3>
