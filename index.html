@@ -260,7 +260,112 @@
       gap:1rem;
       margin-top:1.5rem;
     }
+.signup-popup{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:100000;
+}
 
+.signup-popup.active{
+  display:block;
+}
+
+.signup-overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.68);
+  backdrop-filter:blur(4px);
+}
+
+.signup-box{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:min(92vw,560px);
+  max-height:88vh;
+  overflow:auto;
+  background:#fff;
+  color:var(--text);
+  border-radius:24px;
+  padding:1.5rem;
+  text-align:center;
+  box-shadow:0 24px 70px rgba(0,0,0,.5);
+  border:3px solid rgba(67,206,162,.35);
+}
+
+.signup-box h2{
+  color:var(--blue);
+  margin:.5rem 2rem .7rem;
+  font-size:clamp(1.55rem,4vw,2.15rem);
+}
+
+.signup-box p{
+  max-width:460px;
+  margin:0 auto 1rem;
+  line-height:1.6;
+  color:var(--muted);
+}
+
+.signup-box iframe{
+  width:100%;
+  height:540px;
+  border:0;
+  border-radius:16px;
+  background:#fff;
+}
+
+.signup-close{
+  position:absolute;
+  top:.7rem;
+  right:.9rem;
+  width:38px;
+  height:38px;
+  border:0;
+  border-radius:999px;
+  background:var(--blue);
+  color:#fff;
+  font-size:1.6rem;
+  line-height:1;
+  cursor:pointer;
+  box-shadow:0 6px 16px rgba(0,0,0,.18);
+}
+
+.signup-close:hover{
+  background:var(--pink);
+}
+
+.newsletter-trigger{
+  position:fixed;
+  right:1rem;
+  bottom:1rem;
+  z-index:99998;
+  border:0;
+  border-radius:999px;
+  background:var(--sunset);
+  color:#fff;
+  font-weight:900;
+  padding:.85rem 1.2rem;
+  cursor:pointer;
+  box-shadow:0 12px 28px rgba(0,0,0,.35);
+}
+
+@media (max-width:620px){
+  .signup-box{
+    padding:1.2rem;
+  }
+
+  .signup-box iframe{
+    height:560px;
+  }
+
+  .newsletter-trigger{
+    left:1rem;
+    right:1rem;
+    width:auto;
+  }
+}
     .mini-card{
       background:var(--soft);
       border-radius:18px;
@@ -442,16 +547,17 @@
 
 <nav class="site-nav">
 
-  <a href="../index.html" class="nav-logo">
-    <img src="../logo.png" alt="3Dudes1Life Creative Logo">
-  </a>
+<a href="index.html" class="nav-logo">
+  <img src="logo.png" alt="3Dudes1Life Creative Logo">
+</a>
 
-  <a href="../index.html#universe">The Universe</a>
-  <a href="../index.html#podcast">Podcast</a>
-  <a href="../index.html#latest">Latest Episode</a>
-  <a href="../index.html#book">Books</a>
-  <a href="../index.html#adventures">Adventures</a>
-  <a href="../index.html#blog">Blog</a>
+  <a href="#universe">The Universe</a>
+  <a href="#podcast">Podcast</a>
+  <a href="#latest">Latest Episode</a>
+  <a href="#book">Books</a>
+  <a href="#adventures">Adventures</a>
+  <a href="#blog">Blog</a>
+  <a href="#contact">Contact</a>
   <a href="../index.html#contact">Contact</a>
 
 </nav>
@@ -678,6 +784,30 @@
     <p>Three men. One life. Endless stories.</p>
   </footer>
 
+<button class="newsletter-trigger" id="newsletter-trigger" type="button">
+  📬 Join the Universe
+</button>
+
+<div class="signup-popup" id="signup-popup" aria-hidden="true">
+  <div class="signup-overlay" id="signup-overlay"></div>
+
+  <div class="signup-box" role="dialog" aria-modal="true" aria-labelledby="signup-title">
+    <button class="signup-close" id="signup-close" type="button" aria-label="Close signup popup">×</button>
+
+    <h2 id="signup-title">📬 Join the 3Dudes1Life Community</h2>
+    <p>
+      Get new podcast episodes, book updates, travel guides, behind-the-scenes stories,
+      and special announcements delivered directly to your inbox.
+    </p>
+
+    <iframe
+      src="https://OutAtInc.wixforms.com/f/7470862817348813888"
+      title="3Dudes1Life Creative Signup Form"
+      loading="lazy">
+    </iframe>
+  </div>
+</div>
+  
   <script>
 const RSS_FEED = 'https://anchor.fm/s/1087008c4/podcast/rss';
 const DEFAULT_ART = 'https://throupletea.com/podcastartwork.jpg?v=4';
@@ -822,7 +952,50 @@ async function loadLatestEpisode() {
     </div>
   `;
 }
+const signupPopup = document.getElementById('signup-popup');
+const signupClose = document.getElementById('signup-close');
+const signupOverlay = document.getElementById('signup-overlay');
+const newsletterTrigger = document.getElementById('newsletter-trigger');
 
+function openSignupPopup() {
+  signupPopup.classList.add('active');
+  signupPopup.setAttribute('aria-hidden', 'false');
+
+  if (typeof gtag === 'function') {
+    gtag('event', 'newsletter_popup_open');
+  }
+}
+
+function closeSignupPopup() {
+  signupPopup.classList.remove('active');
+  signupPopup.setAttribute('aria-hidden', 'true');
+  localStorage.setItem('creativeNewsletterPopupClosed', Date.now().toString());
+
+  if (typeof gtag === 'function') {
+    gtag('event', 'newsletter_popup_closed');
+  }
+}
+
+newsletterTrigger.addEventListener('click', openSignupPopup);
+signupClose.addEventListener('click', closeSignupPopup);
+signupOverlay.addEventListener('click', closeSignupPopup);
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && signupPopup.classList.contains('active')) {
+    closeSignupPopup();
+  }
+});
+
+(function showSignupPopupOnceInAWhile(){
+  const lastClosed = Number(localStorage.getItem('creativeNewsletterPopupClosed') || 0);
+  const thirtyDays = 1000 * 60 * 60 * 24 * 30;
+  const shouldShow = !lastClosed || Date.now() - lastClosed > thirtyDays;
+
+  if (shouldShow) {
+    setTimeout(openSignupPopup, 18000);
+  }
+})();
+    
 loadLatestEpisode();
 </script>
   
