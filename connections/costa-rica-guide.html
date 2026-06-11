@@ -5,6 +5,9 @@
   <title>Costa Rica Guide | 3Dudes1Life Creative</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
   <style>
     body{
       margin:0;
@@ -15,47 +18,47 @@
     }
 
     .site-nav{
-  position:sticky;
-  top:0;
-  z-index:99999;
-  background:rgba(255,255,255,.98);
-  border-bottom:4px solid;
-  border-image:linear-gradient(to right,#43cea2,#ff4fd8,#ff9f1c,#185a9d) 1;
-  padding:.75rem 1.5rem;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:1rem;
-  flex-wrap:wrap;
-}
+      position:sticky;
+      top:0;
+      z-index:99999;
+      background:rgba(255,255,255,.98);
+      border-bottom:4px solid;
+      border-image:linear-gradient(to right,#43cea2,#ff4fd8,#ff9f1c,#185a9d) 1;
+      padding:.75rem 1.5rem;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:1rem;
+      flex-wrap:wrap;
+    }
 
-.nav-logo{
-  display:flex;
-  align-items:center;
-  margin-right:1rem;
-}
+    .nav-logo{
+      display:flex;
+      align-items:center;
+      margin-right:1rem;
+    }
 
-.nav-logo img{
-  height:42px;
-  width:auto;
-  display:block;
-  transition:transform .2s ease;
-}
+    .nav-logo img{
+      height:42px;
+      width:auto;
+      display:block;
+      transition:transform .2s ease;
+    }
 
-.nav-logo:hover img{
-  transform:scale(1.05);
-}
+    .nav-logo:hover img{
+      transform:scale(1.05);
+    }
 
-.site-nav a{
-  color:#000;
-  text-decoration:none;
-  font-weight:700;
-  font-size:.95rem;
-}
+    .site-nav a{
+      color:#000;
+      text-decoration:none;
+      font-weight:700;
+      font-size:.95rem;
+    }
 
-.site-nav a:hover{
-  color:#ff4fd8;
-}
+    .site-nav a:hover{
+      color:#ff4fd8;
+    }
 
     header{
       padding:4rem 1rem 2rem;
@@ -135,14 +138,29 @@
       line-height:1.65;
     }
 
-    .map-placeholder{
-      background:
-        linear-gradient(135deg,rgba(67,206,162,.18),rgba(255,79,216,.12)),
-        #f6f7fb;
-      border:2px dashed rgba(24,90,157,.25);
+    #costa-rica-map{
+      height:600px;
       border-radius:20px;
-      padding:2rem;
+      overflow:hidden;
+      box-shadow:0 10px 30px rgba(0,0,0,.25);
+      border:3px solid rgba(67,206,162,.25);
+    }
+
+    .map-note{
       text-align:center;
+      color:#5f6f7a;
+      margin-top:1rem;
+      font-size:.95rem;
+    }
+
+    .leaflet-popup-content h3{
+      margin:.25rem 0 .5rem;
+      color:#185a9d;
+    }
+
+    .leaflet-popup-content p{
+      margin:.35rem 0;
+      line-height:1.45;
     }
 
     a.button{
@@ -169,6 +187,10 @@
     @media (max-width:760px){
       .guide-grid{
         grid-template-columns:1fr;
+      }
+
+      #costa-rica-map{
+        height:480px;
       }
     }
 
@@ -209,97 +231,177 @@
   <a href="../index.html#contact">Contact</a>
 </nav>
 
-  <header>
-    <h1>🇨🇷 Costa Rica Guide</h1>
+<header>
+  <h1>🇨🇷 Costa Rica Guide</h1>
+  <p>
+    Our growing guide to Costa Rica — beaches, wildlife, resort memories, tropical chaos, celebration energy, and one of our most beautiful 3Dudes1Life adventures outside everyday life.
+  </p>
+</header>
+
+<main>
+
+  <img class="hero-img" src="../images/costa-rica.jpg" alt="Costa Rica adventure">
+
+  <section class="card">
+    <h2>Why This Guide Exists</h2>
+
     <p>
-      Our growing guide to Costa Rica — beaches, wildlife, resort memories, tropical chaos, celebration energy, and one of our most beautiful 3Dudes1Life adventures outside everyday life.
+      Costa Rica became one of those trips where the three of us got to step away from normal life and just be together somewhere tropical, beautiful, chaotic, and unforgettable. It was a celebration, an escape, and another piece of the larger 3Dudes1Life travel story.
     </p>
-  </header>
 
-  <main>
+    <p>
+      This guide is starting as a real travel recommendation map with places we visited, stayed near, or used as part of the trip. Over time, we can add photos, resort moments, beach days, wildlife encounters, podcast references, and the stories that still make us laugh.
+    </p>
+  </section>
 
-    <img class="hero-img" src="../images/costa-rica.jpg" alt="Costa Rica adventure">
+  <section class="card">
+    <h2>🇨🇷 Trip Snapshot</h2>
 
-    <section class="card">
-      <h2>Why This Guide Exists</h2>
-
-      <p>
-        Costa Rica became one of those trips where the three of us got to step away from normal life and just be together somewhere tropical, beautiful, chaotic, and unforgettable. It was a celebration, an escape, and another piece of the larger 3Dudes1Life travel story.
-      </p>
-
-      <p>
-        This guide will become a place to organize our favorite memories, photos, resort moments, beach days, wildlife encounters, travel notes, podcast references, and the stories that still make us laugh.
-      </p>
-    </section>
-
-    <section class="card">
-      <h2>What Will Be Added</h2>
-
-      <div class="guide-grid">
-        <div class="guide-card">
-          <h3>🏖️ Beaches + Ocean Views</h3>
-          <p>Beach moments, coastal views, sunsets, warm water, and the places that made Costa Rica feel unforgettable.</p>
-        </div>
-
-        <div class="guide-card">
-          <h3>🐒 Wildlife + Nature</h3>
-          <p>Monkeys, tropical landscapes, lush scenery, animal moments, and the wild little surprises from the trip.</p>
-        </div>
-
-        <div class="guide-card">
-          <h3>🍹 Resort Life + Chaos</h3>
-          <p>Pool days, drinks, resort memories, funny moments, celebration energy, and the chaos that always follows us.</p>
-        </div>
-
-        <div class="guide-card">
-          <h3>🚗 Day Trips + Stops</h3>
-          <p>Excursions, scenic stops, local experiences, travel notes, and places we would recommend or remember.</p>
-        </div>
-
-        <div class="guide-card">
-          <h3>📸 Photo Memories</h3>
-          <p>Personal photos, favorite views, travel notes, and visual moments from our Costa Rica adventure.</p>
-        </div>
-
-        <div class="guide-card">
-          <h3>🎙️ Podcast + Story Connections</h3>
-          <p>Future podcast references, behind-the-scenes memories, blog connections, and how Costa Rica fits into the 3Dudes1Life universe.</p>
-        </div>
+    <div class="guide-grid">
+      <div class="guide-card">
+        <h3>📅 Trip</h3>
+        <p>April 2025 Costa Rica adventure.</p>
       </div>
-    </section>
 
-    <section class="card">
-      <h2>Future Costa Rica Travel Map</h2>
-
-      <div class="map-placeholder">
-        <h3>🗺️ Map Coming Soon</h3>
-        <p>
-          This page will eventually include a clickable Costa Rica travel map with photos, favorite memories, notes, recommendations, and links to related podcast or blog stories.
-        </p>
+      <div class="guide-card">
+        <h3>🎂 Why We Went</h3>
+        <p>A tropical celebration trip for Caleb’s 40th birthday.</p>
       </div>
-    </section>
 
-    <section class="card">
-      <h2>Where This Connects</h2>
+      <div class="guide-card">
+        <h3>🏨 Home Base</h3>
+        <p>RIU Guanacaste near Playa Matapalo.</p>
+      </div>
 
-      <p>
-        The Costa Rica guide will connect into the podcast universe, travel memories, photo collections, future blog stories, and the larger 3Dudes1Life adventure archive.
-      </p>
+      <div class="guide-card">
+        <h3>⭐ Overall Vibe</h3>
+        <p>Wildlife, beach sunsets, resort chaos, pool days, and tropical recharge energy.</p>
+      </div>
+    </div>
+  </section>
 
-      <p>
-        Over time, this page can become the Costa Rica hub inside 3Dudes1Life Creative — starting simple now, then growing into a fuller guide with photos, stories, stops, memories, and recommendations.
-      </p>
+  <section class="card">
+    <h2>What This Guide Will Grow Into</h2>
 
-      <a class="button" href="../index.html#adventures">🌎 More Adventures</a>
-      <a class="button" href="costa-rica.html">🇨🇷 Costa Rica Adventure Page</a>
-      <a class="button" href="../index.html">🏠 Back to Creative</a>
-    </section>
+    <div class="guide-grid">
+      <div class="guide-card">
+        <h3>🏖️ Beaches + Ocean Views</h3>
+        <p>Beach moments, coastal views, sunsets, warm water, and the places that made Costa Rica feel unforgettable.</p>
+      </div>
 
-  </main>
+      <div class="guide-card">
+        <h3>🐒 Wildlife + Nature</h3>
+        <p>Monkeys, tropical landscapes, lush scenery, animal moments, and the wild little surprises from the trip.</p>
+      </div>
 
-  <footer>
-    © 2026 3Dudes1Life Creative • Three Men. One Life. Endless Stories.
-  </footer>
+      <div class="guide-card">
+        <h3>🍹 Resort Life + Chaos</h3>
+        <p>Pool days, drinks, resort memories, funny moments, celebration energy, and the chaos that always follows us.</p>
+      </div>
+
+      <div class="guide-card">
+        <h3>🚗 Day Trips + Stops</h3>
+        <p>Excursions, scenic stops, local experiences, travel notes, and places we would recommend or remember.</p>
+      </div>
+
+      <div class="guide-card">
+        <h3>📸 Photo Memories</h3>
+        <p>Personal photos, favorite views, travel notes, and visual moments from our Costa Rica adventure.</p>
+      </div>
+
+      <div class="guide-card">
+        <h3>🎙️ Podcast + Story Connections</h3>
+        <p>Future podcast references, behind-the-scenes memories, blog connections, and how Costa Rica fits into the 3Dudes1Life universe.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Interactive Costa Rica Travel Map</h2>
+
+    <div id="costa-rica-map"></div>
+
+    <p class="map-note">
+      Version 1 of our Costa Rica map. More stops, photos, ratings, and recommendations will be added as we organize the trip memories.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>Where This Connects</h2>
+
+    <p>
+      The Costa Rica guide connects into the podcast universe, travel memories, photo collections, future blog stories, and the larger 3Dudes1Life adventure archive.
+    </p>
+
+    <p>
+      Over time, this page can become the Costa Rica hub inside 3Dudes1Life Creative — starting simple now, then growing into a fuller guide with photos, stories, stops, memories, and recommendations.
+    </p>
+
+    <a class="button" href="../index.html#adventures">🌎 More Adventures</a>
+    <a class="button" href="costa-rica.html">🇨🇷 Costa Rica Adventure Page</a>
+    <a class="button" href="../index.html">🏠 Back to Creative</a>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 3Dudes1Life Creative • Three Men. One Life. Endless Stories.
+</footer>
+
+<script>
+  const map = L.map('costa-rica-map').setView([10.55, -85.69], 9);
+
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  const locations = [
+    {
+      name: '🏨 RIU Guanacaste',
+      coords: [10.5859, -85.6941],
+      rating: '9/10',
+      category: 'Resort / Home Base',
+      note: 'Our home base for the trip. Pools, beach access, wildlife, drinks, and the center of the whole Costa Rica adventure.'
+    },
+    {
+      name: '✈️ Liberia Airport',
+      coords: [10.5933, -85.5444],
+      rating: '8/10',
+      category: 'Airport',
+      note: 'The gateway to our Guanacaste trip. Small, easy, and the start of the adventure.'
+    },
+    {
+      name: '🏖️ Playa Matapalo',
+      coords: [10.5635, -85.6958],
+      rating: '10/10',
+      category: 'Beach',
+      note: 'The beach area connected to the trip memories — sunsets, ocean views, warm air, and that full tropical reset feeling.'
+    },
+    {
+      name: '🐒 Wildlife Moments',
+      coords: [10.5795, -85.6922],
+      rating: '10/10',
+      category: 'Wildlife',
+      note: 'Monkey sightings, tropical animals, and the little wild moments that made Costa Rica feel magical.'
+    },
+    {
+      name: '🌴 Guanacaste Coast',
+      coords: [10.60, -85.72],
+      rating: '9/10',
+      category: 'Region',
+      note: 'The larger coastal area around the trip. Beaches, resort energy, nature, and future places we want to explore more.'
+    }
+  ];
+
+  locations.forEach((place) => {
+    L.marker(place.coords).addTo(map).bindPopup(`
+      <h3>${place.name}</h3>
+      <p><strong>Category:</strong> ${place.category}</p>
+      <p><strong>3Dudes Rating:</strong> ${place.rating}</p>
+      <p>${place.note}</p>
+    `);
+  });
+</script>
 
 </body>
 </html>
