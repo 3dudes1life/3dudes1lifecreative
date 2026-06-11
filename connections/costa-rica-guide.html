@@ -354,50 +354,85 @@
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap contributors'
   }).addTo(map);
-
-  const locations = [
-    {
-      name: '🏨 RIU Guanacaste',
-      coords: [10.5339, -85.7544],
-      rating: '9/10',
-      category: 'Resort / Home Base',
-      note: 'Our home base for the trip. Pools, beach access, wildlife, drinks, and the center of the whole Costa Rica adventure.'
-    },
-{
-  name: '🏨 RIU Guanacaste',
-  coords: [10.5385, -85.7218],
-  rating: '9/10',
-  category: 'Resort / Home Base',
-  note: 'Our home base for the trip. Pools, beach access, wildlife, drinks, and the center of the whole Costa Rica adventure.'
-},
-{
-  name: '✈️ Liberia Airport',
-  coords: [10.5933, -85.5444],
-  rating: '8/10',
-  category: 'Airport',
-  note: 'The gateway to our Guanacaste trip. Small, easy, and the start of the adventure.'
-},
-{
-  name: '🏖️ Playa Matapalo',
-  coords: [10.5475, -85.7345],
-  rating: '10/10',
-  category: 'Beach',
-  note: 'The beach area connected to the trip memories — sunsets, ocean views, warm air, and that full tropical reset feeling.'
-},
-{
-  name: '🐒 Monkey & Wildlife Area',
-  coords: [10.5518, -85.7130],
-  rating: '10/10',
-  category: 'Wildlife',
-  note: 'Monkey sightings, tropical animals, and the little wild moments that made Costa Rica feel magical.'
-},
-{
-  name: '🌴 Playas del Coco',
-  coords: [10.5509, -85.6978],
-  rating: '9/10',
-  category: 'Town / Excursion',
-  note: 'A lively beach town nearby with restaurants, shopping, local culture, and one of the best-known destinations in the area.'
-}
+const stops = [
+  {
+    name: '🏨 RIU Guanacaste',
+    coords: [10.5308, -85.7569],
+    rating: '9/10',
+    category: 'Resort / Home Base',
+    note: 'Our home base for the trip. Pools, beach access, wildlife, drinks, and the center of the whole Costa Rica adventure.'
+  },
+  {
+    name: '🏖️ Playa Matapalo',
+    coords: [10.5328, -85.7604],
+    rating: '10/10',
+    category: 'Beach',
+    note: 'The beach area connected to the trip memories — sunsets, ocean views, warm air, and that full tropical reset feeling.'
+  },
+  {
+    name: '🐒 Monkey Bar / Wildlife Area',
+    coords: [10.5319, -85.7548],
+    rating: '10/10',
+    category: 'Wildlife / Resort Area',
+    note: 'Monkey sightings, tropical animals, and the wild little moments near the hotel that made Costa Rica feel magical.'
+  },
+  {
+    name: '🌴 Guanacaste Coast',
+    coords: [10.5485, -85.7215],
+    rating: '9/10',
+    category: 'Coast / Scenic Drive',
+    note: 'The larger coastal area around the trip. Beaches, resort energy, nature, and future places we want to explore more.'
+  },
+  {
+    name: '🌊 Playas del Coco Area',
+    coords: [10.5521, -85.6970],
+    rating: '9/10',
+    category: 'Beach Town',
+    note: 'A nearby coastal area connected to the Guanacaste beach route, ocean views, and local Costa Rica travel memories.'
+  },
+  {
+    name: '✈️ Liberia Airport',
+    coords: [10.5933, -85.5444],
+    rating: '8/10',
+    category: 'Airport',
+    note: 'The gateway to our Guanacaste trip. Small, easy, and the start of the adventure.'
+  },
+  {
+    name: '🐎 Horseback Riding Adventure',
+    coords: [10.6750, -85.4200],
+    rating: '10/10',
+    category: 'Excursion',
+    note: 'One of our favorite excursions. Horses, trails, tropical scenery, and memories we still talk about today.'
+  },
+  {
+    name: '🌿 Bagaces Scenic Drive',
+    coords: [10.5255, -85.2538],
+    rating: '8/10',
+    category: 'Scenic Drive',
+    note: 'A beautiful inland stretch of the trip with countryside views, open roads, and the feeling of heading deeper into Costa Rica.'
+  },
+  {
+    name: '🌋 Miravalles Volcano View Area',
+    coords: [10.7440, -85.1530],
+    rating: '10/10',
+    category: 'Volcano / Scenic View',
+    note: 'One of the most dramatic landscapes we experienced in Costa Rica. Volcano views, open countryside, and incredible photo memories.'
+  },
+  {
+    name: '🌿 Bijagua Village',
+    coords: [10.7317, -85.0560],
+    rating: '9/10',
+    category: 'Jungle Town',
+    note: 'Small Costa Rican town surrounded by rainforest, wildlife, volcano views, and the inland jungle part of our adventure.'
+  },
+  {
+    name: '🦥 Sloth Sanctuary / Bijagua Wildlife Stop',
+    coords: [10.7355, -85.0435],
+    rating: '10/10',
+    category: 'Wildlife Excursion',
+    note: 'One of the highlights of the entire trip. Sloths, rainforest energy, tropical plants, and some of our favorite Costa Rica wildlife memories.'
+  }
+];
   ];
 
   locations.forEach((place) => {
