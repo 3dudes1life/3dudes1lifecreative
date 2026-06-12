@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <title>California Guide | 3Dudes1Life Creative</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<!-- Add these two lines inside <head>, before <style> -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <style>
     body{
       margin:0;
@@ -269,15 +271,21 @@
     </section>
 
     <section class="card">
-      <h2>Future California Map</h2>
+<section class="card">
+  <h2>🗺️ Interactive California Adventure Map</h2>
 
-      <div class="map-placeholder">
-        <h3>🗺️ California Map Coming Soon</h3>
-        <p>
-          This page will eventually include a clickable California map with places, memories, photos, recommendations, podcast references, event history, and links to related stories.
-        </p>
-      </div>
-    </section>
+  <div id="california-map" style="
+    height:650px;
+    border-radius:20px;
+    overflow:hidden;
+    border:3px solid rgba(67,206,162,.25);
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+  "></div>
+
+  <p style="text-align:center;margin-top:1rem;color:#5f6f7a;line-height:1.7;">
+    Version 1 of our California map featuring places from our road trips, event years, mountain drives, desert stops, LGBTQ+ memories, and the California chapters of 3Dudes1Life.
+  </p>
+</section>
 
     <section class="card">
       <h2>Where This Connects</h2>
@@ -300,6 +308,70 @@
   <footer>
     © 2026 3Dudes1Life Creative • Three Men. One Life. Endless Stories.
   </footer>
+<script>
+const map = L.map('california-map').setView([37.2, -119.7], 6);
 
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
+
+const stops = [
+  { name:'🌈 Hillcrest / San Diego', coords:[32.7488,-117.1604], rating:'10/10', category:'LGBTQ+ History', note:'One of the major roots of our California story — nightlife, Pride, friendships, community, and early 3Dudes1Life memories.' },
+  { name:'🔥 En Fuego Cantina & Grill', coords:[32.9592,-117.2654], rating:'10/10', category:'Restaurant', note:'One of our favorite Del Mar spots for Mexican food, drinks, and coastal California vibes.' },
+  { name:'🌊 The Cliff Restaurant', coords:[33.5424,-117.7854], rating:'10/10', category:'Restaurant / Ocean View', note:'Laguna Beach dining with incredible ocean views and unforgettable sunsets.' },
+  { name:'🌲 Yreka', coords:[41.7354,-122.6345], rating:'8/10', category:'Northern CA Stop', note:'Northern California road trip stop near the Oregon border.' },
+  { name:'🏔️ Mount Shasta', coords:[41.4099,-122.1949], rating:'10/10', category:'Mountain / Scenic Stop', note:'Iconic Northern California mountain energy, road trip views, and a major landmark on the route.' },
+  { name:'🌉 Redding', coords:[40.5865,-122.3917], rating:'8/10', category:'Road Trip City', note:'Northern California stop connected to long drives and travel days.' },
+  { name:'🌋 Lava Beds National Monument', coords:[41.7594,-121.5080], rating:'9/10', category:'National Monument', note:'Caves, volcanic landscape, and one of the more unique Northern California adventure stops.' },
+  { name:'🪿 Goose Lake', coords:[41.9935,-120.3398], rating:'8/10', category:'Lake / Scenic Drive', note:'Remote lake area near the California/Oregon border.' },
+  { name:'🌾 Alturas', coords:[41.4871,-120.5425], rating:'8/10', category:'Small Town', note:'Remote Northern California road trip stop with wide open country energy.' },
+  { name:'🌲 Susanville', coords:[40.4163,-120.6530], rating:'8/10', category:'Small Town / Road Trip', note:'Northern Sierra road trip stop on the way through inland California.' },
+  { name:'❄️ Truckee', coords:[39.3279,-120.1833], rating:'10/10', category:'Mountain Town', note:'Mountain town, Tahoe gateway, snow energy, and road trip memories.' },
+  { name:'🏔️ Donner Pass', coords:[39.3153,-120.3269], rating:'10/10', category:'Mountain Pass', note:'Historic Sierra pass with dramatic mountain views and road trip energy.' },
+  { name:'💙 North Lake Tahoe', coords:[39.1966,-120.2354], rating:'10/10', category:'Lake / Scenic', note:'Clear water, alpine views, and one of California’s most beautiful lake areas.' },
+  { name:'💙 South Lake Tahoe', coords:[38.9399,-119.9772], rating:'10/10', category:'Lake / Scenic', note:'Classic Tahoe stop with lake views, mountain air, and vacation memories.' },
+  { name:'🏔️ Bridgeport', coords:[38.2558,-119.2313], rating:'9/10', category:'Eastern Sierra Town', note:'Eastern Sierra stop surrounded by mountains, lakes, and road trip views.' },
+  { name:'⛷️ Mammoth Lakes', coords:[37.6485,-118.9721], rating:'10/10', category:'Mountain Town', note:'One of the biggest Eastern Sierra anchors — mountains, lakes, snow, and adventure energy.' },
+  { name:'🏔️ Mount Ritter', coords:[37.6927,-119.1993], rating:'9/10', category:'Mountain Landmark', note:'Sierra Nevada landmark connected to the Mammoth and Eastern Sierra region.' },
+  { name:'🏜️ Bishop', coords:[37.3614,-118.3997], rating:'9/10', category:'Eastern Sierra Town', note:'Classic Highway 395 stop with mountain views, desert edges, and road trip fuel.' },
+  { name:'🏜️ Independence', coords:[36.8027,-118.2001], rating:'8/10', category:'Highway 395 Stop', note:'Eastern Sierra town along the 395 route.' },
+  { name:'🌊 Owens Lake', coords:[36.4333,-117.9500], rating:'8/10', category:'Lake / Desert View', note:'Wide-open desert lakebed views along the Eastern Sierra route.' },
+  { name:'☠️ Death Valley', coords:[36.5323,-116.9325], rating:'10/10', category:'National Park', note:'Extreme desert, massive views, heat, weird beauty, and unforgettable California road trip energy.' },
+  { name:'🌴 Palm Desert', coords:[33.7222,-116.3745], rating:'9/10', category:'Desert City', note:'Coachella Valley desert stop with resort energy, heat, palms, and Southern California memories.' },
+  { name:'🌵 Borrego Springs', coords:[33.2559,-116.3750], rating:'10/10', category:'Desert Town', note:'Desert skies, sculptures, road trips, and Anza-Borrego adventure energy.' },
+  { name:'🥧 Julian', coords:[33.0787,-116.6019], rating:'10/10', category:'Mountain Town', note:'Small mountain town, pie, cooler air, and San Diego County road trip memories.' },
+  { name:'🌲 Mount Laguna', coords:[32.8670,-116.4186], rating:'9/10', category:'Mountain / Scenic Drive', note:'Mountain views, pine trees, and a quick escape from San Diego heat.' },
+  { name:'🎬 Los Angeles', coords:[34.0522,-118.2437], rating:'9/10', category:'City', note:'Creative energy, events, media, nightlife, and Southern California chapters.' },
+  { name:'🏛️ Sacramento', coords:[38.5816,-121.4944], rating:'8/10', category:'City / Event Stop', note:'Capital city stop connected to travel, events, and California road years.' },
+  { name:'🌉 San Francisco', coords:[37.7749,-122.4194], rating:'10/10', category:'City / LGBTQ+ History', note:'A major California story city with queer history, travel memories, and emotional connections.' },
+  { name:'🌲 Marin County', coords:[38.0834,-122.7633], rating:'9/10', category:'Bay Area / Scenic', note:'Northern Bay Area beauty, coastal drives, and fair/event travel energy.' },
+  { name:'🍷 Sonoma', coords:[38.2919,-122.4580], rating:'9/10', category:'Wine Country', note:'Wine country, rolling hills, road trips, and Northern California beauty.' },
+  { name:'🍷 Santa Rosa', coords:[38.4404,-122.7141], rating:'9/10', category:'Wine Country City', note:'Sonoma County city connected to road trips and Northern California memories.' },
+  { name:'🌊 Monterey', coords:[36.6002,-121.8947], rating:'10/10', category:'Coastal City', note:'Ocean views, coastal drives, seafood, and classic California coast energy.' },
+  { name:'💻 San Jose', coords:[37.3382,-121.8863], rating:'8/10', category:'Bay Area City', note:'Bay Area stop connected to California travel and creative life.' },
+  { name:'🌵 Barstow', coords:[34.8958,-117.0173], rating:'7/10', category:'Desert Road Stop', note:'Classic desert road trip stop between Southern California and the open desert.' },
+  { name:'🌡️ Baker', coords:[35.2650,-116.0747], rating:'8/10', category:'Desert Road Stop', note:'Gateway desert stop with big road trip energy.' },
+  { name:'🌵 Twentynine Palms', coords:[34.1356,-116.0542], rating:'9/10', category:'Desert Town', note:'Desert base near Joshua Tree with rugged Southern California energy.' },
+  { name:'🌵 Joshua Tree', coords:[34.1347,-116.3131], rating:'10/10', category:'National Park / Desert', note:'Iconic desert landscape, Joshua trees, rocks, stars, and unforgettable road trip energy.' },
+  { name:'🌴 Palm Springs', coords:[33.8303,-116.5453], rating:'10/10', category:'Desert City / LGBTQ+ Favorite', note:'A favorite desert escape with queer energy, pool days, heat, and classic SoCal magic.' }
+];
+
+stops.forEach((place) => {
+  L.marker(place.coords).addTo(map).bindPopup(`
+    <h3>${place.name}</h3>
+    <p><strong>Category:</strong> ${place.category}</p>
+    <p><strong>3Dudes Rating:</strong> ${place.rating}</p>
+    <p>${place.note}</p>
+  `);
+});
+
+const group = L.featureGroup(
+  stops.map(place => L.marker(place.coords))
+);
+
+map.fitBounds(group.getBounds(), {
+  padding:[45,45]
+});
+</script>
 </body>
 </html>
