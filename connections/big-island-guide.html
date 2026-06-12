@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <title>Big Island Guide | 3Dudes1Life Creative</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <style>
     body{
       margin:0;
@@ -269,15 +270,21 @@
     </section>
 
     <section class="card">
-      <h2>Future Interactive Map</h2>
+<section class="card">
+  <h2>🗺️ Interactive Big Island Adventure Map</h2>
 
-      <div class="map-placeholder">
-        <h3>🗺️ Map Coming Soon</h3>
-        <p>
-          This page will eventually include a clickable Big Island map with 3Dudes1Life recommendations, personal notes, photos, and links to related blog posts or podcast stories.
-        </p>
-      </div>
-    </section>
+  <div id="bigisland-map" style="
+    height:650px;
+    border-radius:20px;
+    overflow:hidden;
+    border:3px solid rgba(67,206,162,.25);
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+  "></div>
+
+  <p style="text-align:center;margin-top:1rem;color:#5f6f7a;line-height:1.7;">
+    Version 1 of our Big Island map featuring volcanoes, lava coastlines, beaches, food stops, photo locations, and favorite places we've explored across East Hawaiʻi.
+  </p>
+</section>
 
     <section class="card">
       <h2>Where This Connects</h2>
@@ -300,6 +307,175 @@
   <footer>
     © 2026 3Dudes1Life Creative • Three Men. One Life. Endless Stories.
   </footer>
+<script>
 
+const map = L.map('bigisland-map').setView([19.48,-154.95], 10);
+
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{
+  attribution:'&copy; OpenStreetMap contributors'
+}).addTo(map);
+
+const stops = [
+
+{
+  name:'🥤 Kalapana Smoothie Shack',
+  coords:[19.4687,-154.9140],
+  rating:'9/10',
+  category:'Food',
+  note:'One of our favorite local stops while exploring Kalapana.'
+},
+
+{
+  name:'🌴 Kaimū Beach',
+  coords:[19.3545,-154.9690],
+  rating:'10/10',
+  category:'Black Sand Beach',
+  note:'New black sand coastline created by lava flows.'
+},
+
+{
+  name:'🏖️ Kehena Beach',
+  coords:[19.3563,-154.9312],
+  rating:'10/10',
+  category:'Beach',
+  note:'One of the most unique beaches on the Big Island.'
+},
+
+{
+  name:'🌊 Pohoiki',
+  coords:[19.4594,-154.8424],
+  rating:'10/10',
+  category:'Lava Coast',
+  note:'Beautiful coastline transformed by the 2018 eruption.'
+},
+
+{
+  name:'🪨 Pohoiki Lava Arch',
+  coords:[19.4580,-154.8440],
+  rating:'10/10',
+  category:'Geological Feature',
+  note:'Natural lava arch carved by the ocean.'
+},
+
+{
+  name:'🌺 Kapoho Crater',
+  coords:[19.5050,-154.8460],
+  rating:'10/10',
+  category:'Volcanic Landmark',
+  note:'Historic crater dramatically changed by lava.'
+},
+
+{
+  name:'🌳 Government Beach Road',
+  coords:[19.5220,-154.8500],
+  rating:'10/10',
+  category:'Scenic Drive',
+  note:'Jungle drive through old Puna Hawaii.'
+},
+
+{
+  name:'🌊 Honolulu Landing',
+  coords:[19.5935,-154.8945],
+  rating:'9/10',
+  category:'Ocean View',
+  note:'Remote lava coastline with Pacific views.'
+},
+
+{
+  name:'🌋 Maunaulu Lava Shield',
+  coords:[19.3820,-155.1080],
+  rating:'10/10',
+  category:'Volcano',
+  note:'Ancient lava shield and volcanic landscape.'
+},
+
+{
+  name:'🛣️ Earthquake Crack Road',
+  coords:[19.3860,-155.1280],
+  rating:'9/10',
+  category:'Historic Site',
+  note:'Visible roadway damage from volcanic activity.'
+},
+
+{
+  name:'🌅 Volcano Scenic Overlook',
+  coords:[19.3650,-155.0950],
+  rating:'10/10',
+  category:'Viewpoint',
+  note:'One of our favorite sunset and crater views.'
+},
+
+{
+  name:'🍽️ Kaleo’s Bar & Grill',
+  coords:[19.5047,-154.9508],
+  rating:'10/10',
+  category:'Restaurant',
+  note:'One of the best meals we have had on the Big Island.'
+},
+
+{
+  name:'🛒 Keaʻau Foodland',
+  coords:[19.6200,-155.0410],
+  rating:'8/10',
+  category:'Shopping',
+  note:'Local stop for supplies and snacks.'
+},
+
+{
+  name:'🌋 Hawaiʻi Volcanoes National Park',
+  coords:[19.4194,-155.2885],
+  rating:'10/10',
+  category:'National Park',
+  note:'One of the most incredible national parks in America.'
+},
+
+{
+  name:'🌋 Kīlauea Visitor Center',
+  coords:[19.4190,-155.2870],
+  rating:'10/10',
+  category:'Visitor Center',
+  note:'Gateway to volcano exploration.'
+},
+
+{
+  name:'🌋 Kīlauea Caldera',
+  coords:[19.4210,-155.2875],
+  rating:'10/10',
+  category:'Volcano',
+  note:'The iconic summit caldera.'
+},
+
+{
+  name:'🌊 Paradise Cliffs',
+  coords:[19.6155,-154.9365],
+  rating:'10/10',
+  category:'Coastline',
+  note:'Dramatic lava cliffs and ocean views.'
+},
+
+{
+  name:'🌴 Kalapana Lava Viewing Area',
+  coords:[19.3470,-154.9720],
+  rating:'10/10',
+  category:'Lava Coast',
+  note:'Historic lava flow viewing area.'
+}
+
+];
+
+stops.forEach((place)=>{
+
+  L.marker(place.coords)
+    .addTo(map)
+    .bindPopup(`
+      <h3>${place.name}</h3>
+      <p><strong>Category:</strong> ${place.category}</p>
+      <p><strong>3Dudes Rating:</strong> ${place.rating}</p>
+      <p>${place.note}</p>
+    `);
+
+});
+
+</script>
 </body>
 </html>
