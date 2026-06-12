@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <title>Maui Guide | 3Dudes1Life Creative</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <style>
     body{
       margin:0;
@@ -270,16 +271,22 @@
       </div>
     </section>
 
-    <section class="card">
-      <h2>Future Maui Map</h2>
+<section class="card">
+  <h2>🗺️ Interactive Maui Adventure Map</h2>
 
-      <div class="map-placeholder">
-        <h3>🗺️ Maui Map Coming Soon</h3>
-        <p>
-          This page will eventually include a clickable Maui map featuring beaches, restaurants, whale watching locations, sunset spots, photo opportunities, and personal 3Dudes1Life recommendations.
-        </p>
-      </div>
-    </section>
+  <div id="maui-map" style="
+    height:650px;
+    border-radius:20px;
+    overflow:hidden;
+    border:3px solid rgba(67,206,162,.25);
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+  "></div>
+
+  <p style="text-align:center;margin-top:1rem;color:#5f6f7a;line-height:1.7;">
+    Version 1 of our Maui map featuring real locations from our trips including Lahaina, Wailea, Road to Hana, waterfalls, beaches, restaurants, scenic overlooks, and some of our favorite Maui memories.
+  </p>
+</section>
+
 
     <section class="card">
       <h2>Where This Connects</h2>
@@ -303,6 +310,186 @@
   <footer>
     © 2026 3Dudes1Life Creative • Three Men. One Life. Endless Stories.
   </footer>
+<script>
+const map = L.map('maui-map').setView([20.80, -156.35], 10);
+
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
+
+const stops = [
+
+{
+  name:'✈️ Kahului Airport',
+  coords:[20.8986,-156.4305],
+  rating:'8/10',
+  category:'Airport',
+  note:'Arrival point for our Maui adventures.'
+},
+
+{
+  name:'🏨 Maui Beach Hotel',
+  coords:[20.8890,-156.4680],
+  rating:'8/10',
+  category:'Hotel',
+  note:'One of our Maui home bases.'
+},
+
+{
+  name:'🍍 Cupies Maui',
+  coords:[20.8850,-156.4675],
+  rating:'9/10',
+  category:'Food',
+  note:'Local Maui food stop.'
+},
+
+{
+  name:'🏖️ Kanaha Beach Park',
+  coords:[20.9107,-156.4420],
+  rating:'9/10',
+  category:'Beach',
+  note:'Beautiful beach near Kahului.'
+},
+
+{
+  name:'🏖️ Baldwin Beach',
+  coords:[20.9285,-156.3708],
+  rating:'10/10',
+  category:'Beach',
+  note:'One of our favorite north shore beaches.'
+},
+
+{
+  name:'🐢 Ho‘okipa Beach',
+  coords:[20.9345,-156.3550],
+  rating:'10/10',
+  category:'Beach / Turtles',
+  note:'Sea turtles and incredible ocean views.'
+},
+
+{
+  name:'🌞 Paia Town',
+  coords:[20.9147,-156.3822],
+  rating:'10/10',
+  category:'Town',
+  note:'Gateway to the Road to Hana.'
+},
+
+{
+  name:'🌴 Lahaina Front Street',
+  coords:[20.8788,-156.6825],
+  rating:'10/10',
+  category:'Historic Town',
+  note:'Restaurants, shopping, bars, sunsets, and memories.'
+},
+
+{
+  name:'🌅 Lahaina Waterfront',
+  coords:[20.8735,-156.6815],
+  rating:'10/10',
+  category:'Waterfront',
+  note:'Oceanfront views and sunset photos.'
+},
+
+{
+  name:'🌺 Wailea',
+  coords:[20.6895,-156.4417],
+  rating:'9/10',
+  category:'Resort Area',
+  note:'Beautiful beaches, resorts, and coastal walks.'
+},
+
+{
+  name:'🍽️ Cafe O’Lei Wailea',
+  coords:[20.6930,-156.4390],
+  rating:'9/10',
+  category:'Restaurant',
+  note:'Favorite Wailea dining stop.'
+},
+
+{
+  name:'🏖️ Big Beach',
+  coords:[20.6328,-156.4466],
+  rating:'10/10',
+  category:'Beach',
+  note:'Massive beach and one of Maui’s most iconic spots.'
+},
+
+{
+  name:'🌈 Little Beach',
+  coords:[20.6390,-156.4490],
+  rating:'10/10',
+  category:'Hidden Beach',
+  note:'The famous neighboring beach with a unique reputation.'
+},
+
+{
+  name:'🖤 Waiʻānapanapa Black Sand Beach',
+  coords:[20.7865,-156.0030],
+  rating:'10/10',
+  category:'Black Sand Beach',
+  note:'One of the most famous locations on Maui.'
+},
+
+{
+  name:'🌺 Hana Town',
+  coords:[20.7580,-155.9880],
+  rating:'10/10',
+  category:'Town',
+  note:'Road to Hana destination and classic Maui stop.'
+},
+
+{
+  name:'🏪 Hasegawa General Store',
+  coords:[20.7560,-155.9888],
+  rating:'9/10',
+  category:'Local Landmark',
+  note:'Historic Hana general store.'
+},
+
+{
+  name:'🍍 Hana Ranch Store',
+  coords:[20.7565,-155.9915],
+  rating:'9/10',
+  category:'Food Stop',
+  note:'Food and shopping stop in Hana.'
+},
+
+{
+  name:'🥾 Pipiwai Trail',
+  coords:[20.6620,-156.0430],
+  rating:'10/10',
+  category:'Hike',
+  note:'Bamboo forest hike and one of Maui’s best adventures.'
+},
+
+{
+  name:'💧 Makahiku Falls',
+  coords:[20.6670,-156.0420],
+  rating:'9/10',
+  category:'Waterfall',
+  note:'Waterfall stop along the Pipiwai Trail.'
+},
+
+{
+  name:'💧 Waimoku Falls',
+  coords:[20.6760,-156.0410],
+  rating:'10/10',
+  category:'Waterfall',
+  note:'Massive waterfall at the end of the trail.'
+}
+
+];
+
+stops.forEach((place) => {
+  L.marker(place.coords).addTo(map).bindPopup(`
+    <h3>${place.name}</h3>
+    <p><strong>Category:</strong> ${place.category}</p>
+    <p><strong>3Dudes Rating:</strong> ${place.rating}</p>
+    <p>${place.note}</p>
+  `);
+});
+</script>
 
 </body>
 </html>
