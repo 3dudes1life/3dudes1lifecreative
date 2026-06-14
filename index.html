@@ -505,6 +505,74 @@
   margin-bottom:1rem;
   box-shadow:0 6px 16px rgba(0,0,0,.18);
 }
+    .app-install{
+  background:#fff;
+  color:#263238;
+  border-radius:20px;
+  padding:2rem;
+  margin:2rem auto;
+  max-width:950px;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+
+.app-install h2{
+  color:#185a9d;
+  margin-top:0;
+}
+
+.app-features{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:.75rem;
+  margin:1.5rem 0;
+}
+
+.app-features span{
+  background:#f6f7fb;
+  padding:.6rem 1rem;
+  border-radius:999px;
+  font-weight:700;
+}
+
+.install-btn{
+  background:#185a9d;
+  color:white;
+  border:none;
+  border-radius:999px;
+  padding:.9rem 1.4rem;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.install-btn:hover{
+  background:#ff4fd8;
+}
+    .install-modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.75);
+  z-index:999999;
+}
+
+.install-content{
+  background:white;
+  color:#263238;
+  max-width:500px;
+  margin:10vh auto;
+  padding:2rem;
+  border-radius:20px;
+  position:relative;
+}
+
+.close-install{
+  position:absolute;
+  top:12px;
+  right:18px;
+  font-size:2rem;
+  cursor:pointer;
+}
 @media (max-width:620px){
   .latest-episode-card{
     grid-template-columns:1fr;
@@ -585,7 +653,58 @@
   </header>
 
   <main>
+    
+  <section class="app-install">
+  <h2>📱 Turn 3Dudes1Life Into an App</h2>
 
+  <p>
+    Save 3Dudes1Life Creative to your Home Screen for instant access to our
+    adventure maps, Hawaii guides, podcast episodes, books, travel photos,
+    and future Big Island projects.
+  </p>
+
+  <div class="app-features">
+    <span>🗺️ Adventure Maps</span>
+    <span>🌺 Hawaii Guides</span>
+    <span>🎙️ Podcast</span>
+    <span>📚 Books</span>
+    <span>📸 Travel Photos</span>
+  </div>
+
+  <button onclick="openInstallModal()" class="install-btn">
+    📲 How to Install
+  </button>
+</section>
+
+<div id="installModal" class="install-modal">
+  <div class="install-content">
+
+    <span class="close-install" onclick="closeInstallModal()">&times;</span>
+
+    <h2>📲 Add 3Dudes1Life to Your Home Screen</h2>
+
+    <p><strong>iPhone / iPad:</strong></p>
+
+    <ol>
+      <li>Tap the Share button in Safari.</li>
+      <li>Select <strong>Add to Home Screen</strong>.</li>
+      <li>Tap <strong>Add</strong>.</li>
+    </ol>
+
+    <p><strong>Android:</strong></p>
+
+    <ol>
+      <li>Tap the browser menu.</li>
+      <li>Select <strong>Install App</strong> or <strong>Add to Home Screen</strong>.</li>
+      <li>Confirm installation.</li>
+    </ol>
+
+    <p>
+      🌴 Once installed, 3Dudes1Life opens just like an app with one tap.
+    </p>
+
+  </div>
+</div>
     <section class="card highlight" id="universe">
       <h2>More Than a Podcast. More Than a Book.</h2>
       <p class="lead">
@@ -999,6 +1118,13 @@ document.addEventListener('keydown', (event) => {
     
 loadLatestEpisode();
 </script>
-  
+ <script>
+function openInstallModal(){
+  document.getElementById('installModal').style.display='block';
+}
+function closeInstallModal(){
+  document.getElementById('installModal').style.display='none';
+}
+</script> 
 </body>
 </html>
