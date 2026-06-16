@@ -181,6 +181,42 @@
   border-radius:10px;
   cursor:pointer;
 }
+    .photo-lightbox{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:999999;
+  background:rgba(0,0,0,.88);
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+}
+
+.photo-lightbox.active{
+  display:flex;
+}
+
+.photo-lightbox img{
+  max-width:92vw;
+  max-height:86vh;
+  object-fit:contain;
+  border-radius:16px;
+  box-shadow:0 20px 60px rgba(0,0,0,.6);
+}
+
+.photo-lightbox-close{
+  position:absolute;
+  top:20px;
+  right:24px;
+  width:46px;
+  height:46px;
+  border:0;
+  border-radius:999px;
+  background:rgba(255,255,255,.18);
+  color:#fff;
+  font-size:2rem;
+  cursor:pointer;
+}
     footer{
       text-align:center;
       padding:2rem;
@@ -320,12 +356,16 @@
       <a class="button" href="hawaii-maui.html">🌺 Hawaii & Maui Page</a>
       <a class="button" href="../index.html">🏠 Back to Creative</a>
     </section>
+</main>
 
-  </main>
+<div id="photoLightbox" class="photo-lightbox">
+  <button class="photo-lightbox-close" onclick="closePhotoLightbox()">×</button>
+  <img id="photoLightboxImg" src="" alt="Big Island photo">
+</div>
 
-  <footer>
-    © 2026 3Dudes1Life Creative • Three Men. One Life. Endless Stories.
-  </footer>
+<footer>
+  © 2026 3Dudes1Life Creative • Three Men. One Life. Endless Stories.
+</footer>
 <script>
 
 const map = L.map('bigisland-map').setView([19.48,-154.95], 10);
@@ -579,14 +619,28 @@ stops.forEach((place)=>{
 ${place.images ? `
   <div class="place-images">
     ${place.images.map(img => `
-      <img src="${img}" alt="${place.name}" onclick="window.open('${img}', '_blank')">
+      <img src="${img}" alt="${place.name}" onclick="openPhotoLightbox('${img}')">
     `).join('')}
   </div>
 ` : ''}
     `);
 
 });
+function openPhotoLightbox(img){
+  document.getElementById('photoLightboxImg').src = img;
+  document.getElementById('photoLightbox').classList.add('active');
+}
 
+function closePhotoLightbox(){
+  document.getElementById('photoLightbox').classList.remove('active');
+  document.getElementById('photoLightboxImg').src = '';
+}
+
+document.getElementById('photoLightbox').addEventListener('click', function(event){
+  if(event.target.id === 'photoLightbox'){
+    closePhotoLightbox();
+  }
+});
 </script>
 </body>
 </html>
