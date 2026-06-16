@@ -581,13 +581,15 @@ stops.forEach((place)=>{
       <p><strong>3Dudes Rating:</strong> ${place.rating}</p>
       <p>${place.note}</p>
 
-      ${place.images ? `
-        <div class="place-images">
-          ${place.images.map(img => `
-            <img src="${img}" alt="${place.name}">
-          `).join('')}
-        </div>
-      ` : ''}
+${place.images ? `
+  <div class="place-images">
+    ${place.images.map(img => `
+   <a href="${img}" target="_blank" rel="noopener">
+      <img src="${img}" alt="${place.name}">
+   </a>
+    `).join('')}
+  </div>
+` : ''}
     `);
 
 });
