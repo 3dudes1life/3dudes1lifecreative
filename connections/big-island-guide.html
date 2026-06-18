@@ -757,25 +757,6 @@ const stops = [
 
 ];
 
-stops.forEach((place)=>{
-
-  L.marker(place.coords)
-    .addTo(map)
-    .bindPopup(`
-      <h3>${place.name}</h3>
-      <p><strong>Category:</strong> ${place.category}</p>
-      <p><strong>3Dudes Rating:</strong> ${place.rating}</p>
-      <p>${place.note}</p>
-
-${place.images ? `
-  <div class="place-images">
-    ${place.images.map((img, index) => `
-      <img src="${img}" alt="${place.name}" onclick="openPhotoLightboxByIndex('${place.name}', ${index})">
-    `).join('')}
-  </div>
-` : ''}
-    `);
-
 });
 const photoGalleries = {};
 let currentPhotoSet = [];
@@ -794,8 +775,7 @@ stops.forEach((place, placeIndex)=>{
 ${place.images ? `
   <div class="place-images">
     ${place.images.map((img, imgIndex) => `
-      <img src="${img}" alt="${place.name}" onclick="openPhotoLightboxByIndex('${place.name}', ${index})">
-    `).join('')}
+<img src="${img}" alt="${place.name}" onclick="openPhotoLightboxByIndex(${placeIndex}, ${imgIndex})">    `).join('')}
   </div>
 ` : ''}
     `);
