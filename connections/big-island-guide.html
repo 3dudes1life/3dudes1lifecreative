@@ -203,19 +203,28 @@
   border-radius:16px;
   box-shadow:0 20px 60px rgba(0,0,0,.6);
 }
-
-.photo-lightbox-close{
+.photo-lightbox-nav{
   position:absolute;
-  top:20px;
-  right:24px;
-  width:46px;
-  height:46px;
+  top:50%;
+  transform:translateY(-50%);
+  width:48px;
+  height:48px;
   border:0;
   border-radius:999px;
   background:rgba(255,255,255,.18);
   color:#fff;
-  font-size:2rem;
+  font-size:3rem;
+  line-height:1;
   cursor:pointer;
+  z-index:2;
+}
+
+.photo-prev{
+  left:20px;
+}
+
+.photo-next{
+  right:20px;
 }
     footer{
       text-align:center;
@@ -360,7 +369,9 @@
 
 <div id="photoLightbox" class="photo-lightbox">
   <button class="photo-lightbox-close" onclick="closePhotoLightbox()">×</button>
+  <button class="photo-lightbox-nav photo-prev" onclick="changePhoto(-1)">‹</button>
   <img id="photoLightboxImg" src="" alt="Big Island photo">
+  <button class="photo-lightbox-nav photo-next" onclick="changePhoto(1)">›</button>
 </div>
 
 <footer>
@@ -758,16 +769,31 @@ stops.forEach((place)=>{
 
 ${place.images ? `
   <div class="place-images">
-    ${place.images.map(img => `
-      <img src="${img}" alt="${place.name}" onclick="openPhotoLightbox('${img}')">
+    ${place.images.map((img, index) => `
+      <img src="${img}" alt="${place.name}" onclick="openPhotoLightboxByIndex('${place.name}', ${index})">
     `).join('')}
   </div>
 ` : ''}
     `);
 
 });
-function openPhotoLightbox(img){
-  document.getElementById('photoLightboxImg').src = img;
+const photoGalleries = {};
+let currentPhotoSet = [];
+let currentPhotoIndex = 0;
+
+stops.forEach((place)=>{
+  if(place.images){
+    photoGalleries[place.name] = place.images;
+  }
+});
+
+function openPhotoLightboxByIndex(placeName, index){
+  currentPhotoSet = photoGalleries[placeName] || [];
+  currentPhotoIndex = index;
+
+  if(!currentPhotoSet.length) return;
+
+  document.getElementById('photoLightboxImg').src = currentPhotoSet[currentPhotoIndex];
   document.getElementById('photoLightbox').classList.add('active');
 }
 
@@ -776,9 +802,53 @@ function closePhotoLightbox(){
   document.getElementById('photoLightboxImg').src = '';
 }
 
+function changePhoto(direction){
+  if(!currentPhotoSet.length) return;
+
+  currentPhotoIndex += direction;
+
+  if(currentPhotoIndex < 0){
+    currentPhotoIndex = currentPhotoSet.length - 1;
+  }
+
+  if(currentPhotoIndex >= currentPhotoSet.length){
+    currentPhotoIndex = 0;
+  }
+
+  document.getElementById('photoLightboxImg').src = currentPhotoSet[currentPhotoIndex];
+}
+
 document.getElementById('photoLightbox').addEventListener('click', function(event){
   if(event.target.id === 'photoLightbox'){
     closePhotoLightbox();
+  }
+});
+
+document.addEventListener('keydown', function(event){
+  if(event.key === 'Escape'){
+    closePhotoLightbox();
+  }
+
+  if(event.key === 'ArrowLeft'){
+    changePhoto(-1);
+  }
+
+  if(event.key === 'ArrowRight'){
+    changePhoto(1);
+  }
+});
+
+document.addEventListener('keydown', function(event){
+  if(event.key === 'Escape'){
+    closePhotoLightbox();
+  }
+
+  if(event.key === 'ArrowLeft'){
+    changePhoto(-1);
+  }
+
+  if(event.key === 'ArrowRight'){
+    changePhoto(1);
   }
 });
 </script>
