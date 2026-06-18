@@ -672,7 +672,7 @@ const stops = [
   category:'Scenic View',
   note:'Classic Hāmākua Coast views overlooking the bay and dramatic cliffs.',
     images:[
-    '/images/big-island/hakalau-bay-lookout-1.jpg',
+    '/images/big-island/hakalau-bay-lookout-1.jpg'
   ]
 },
 {
@@ -781,14 +781,29 @@ const photoGalleries = {};
 let currentPhotoSet = [];
 let currentPhotoIndex = 0;
 
-stops.forEach((place)=>{
-  if(place.images){
-    photoGalleries[place.name] = place.images;
-  }
+stops.forEach((place, placeIndex)=>{
+
+  L.marker(place.coords)
+    .addTo(map)
+    .bindPopup(`
+      <h3>${place.name}</h3>
+      <p><strong>Category:</strong> ${place.category}</p>
+      <p><strong>3Dudes Rating:</strong> ${place.rating}</p>
+      <p>${place.note}</p>
+
+${place.images ? `
+  <div class="place-images">
+    ${place.images.map((img, imgIndex) => `
+      <img src="${img}" alt="${place.name}" onclick="openPhotoLightboxByIndex('${place.name}', ${index})">
+    `).join('')}
+  </div>
+` : ''}
+    `);
+
 });
 
-function openPhotoLightboxByIndex(placeName, index){
-  currentPhotoSet = photoGalleries[placeName] || [];
+function openPhotoLightboxByIndex(placeIndex, index){
+  currentPhotoSet = stops[placeIndex].images || [];
   currentPhotoIndex = index;
 
   if(!currentPhotoSet.length) return;
