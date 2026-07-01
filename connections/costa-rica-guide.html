@@ -13,211 +13,321 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-  <style>
-    body{
-      margin:0;
-      font-family:Arial, sans-serif;
-      background:#11131a;
-      color:#fff;
-      text-align:center;
-    }
+<style>
+  body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#11131a;
+    color:#fff;
+    text-align:center;
+  }
 
-    .site-nav{
-      position:sticky;
-      top:0;
-      z-index:99999;
-      background:rgba(255,255,255,.98);
-      border-bottom:4px solid;
-      border-image:linear-gradient(to right,#43cea2,#ff4fd8,#ff9f1c,#185a9d) 1;
-      padding:.75rem 1.5rem;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:1rem;
-      flex-wrap:wrap;
-    }
+  .site-nav{
+    position:sticky;
+    top:0;
+    z-index:99999;
+    background:rgba(255,255,255,.98);
+    border-bottom:4px solid;
+    border-image:linear-gradient(to right,#43cea2,#ff4fd8,#ff9f1c,#185a9d) 1;
+    padding:.75rem 1.5rem;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:1rem;
+    flex-wrap:wrap;
+  }
 
-    .nav-logo{
-      display:flex;
-      align-items:center;
-      margin-right:1rem;
-    }
+  .nav-logo{
+    display:flex;
+    align-items:center;
+    margin-right:1rem;
+  }
 
-    .nav-logo img{
-      height:42px;
-      width:auto;
-      display:block;
-      transition:transform .2s ease;
-    }
+  .nav-logo img{
+    height:42px;
+    width:auto;
+    display:block;
+    transition:transform .2s ease;
+  }
 
-    .nav-logo:hover img{
-      transform:scale(1.05);
-    }
+  .nav-logo:hover img{
+    transform:scale(1.05);
+  }
 
-    .site-nav a{
-      color:#000;
-      text-decoration:none;
-      font-weight:700;
-      font-size:.95rem;
-    }
+  .site-nav a{
+    color:#000;
+    text-decoration:none;
+    font-weight:700;
+    font-size:.95rem;
+  }
 
-    .site-nav a:hover{
-      color:#ff4fd8;
-    }
+  .site-nav a:hover{
+    color:#ff4fd8;
+  }
 
-    header{
-      padding:4rem 1rem 2rem;
-      background:
-        radial-gradient(circle at top left, rgba(255,79,216,.22), transparent 34%),
-        radial-gradient(circle at bottom right, rgba(67,206,162,.24), transparent 36%),
-        linear-gradient(135deg,#185a9d,#11131a);
-    }
+  header{
+    padding:4rem 1rem 2rem;
+    background:
+      radial-gradient(circle at top left, rgba(255,79,216,.22), transparent 34%),
+      radial-gradient(circle at bottom right, rgba(67,206,162,.24), transparent 36%),
+      linear-gradient(135deg,#185a9d,#11131a);
+  }
 
-    header p{
-      max-width:850px;
-      margin:1rem auto 0;
-      line-height:1.7;
-      color:#f3f7ff;
-      font-weight:700;
-    }
+  header p{
+    max-width:850px;
+    margin:1rem auto 0;
+    line-height:1.7;
+    color:#f3f7ff;
+    font-weight:700;
+  }
 
-    main{
-      max-width:1050px;
-      margin:auto;
-      padding:2rem 1rem;
-    }
+  main{
+    max-width:1050px;
+    margin:auto;
+    padding:2rem 1rem;
+  }
 
-    .hero-img{
-      width:100%;
-      max-width:900px;
-      border-radius:20px;
-      box-shadow:0 10px 30px rgba(0,0,0,.4);
-      margin-bottom:2rem;
-    }
+  .hero-img{
+    width:100%;
+    max-width:900px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.4);
+    margin-bottom:2rem;
+  }
 
-    .card{
-      background:#fff;
-      color:#263238;
-      border-radius:20px;
-      padding:2rem;
-      margin-bottom:2rem;
-      text-align:left;
-      box-shadow:0 10px 30px rgba(0,0,0,.35);
-    }
+  .card{
+    background:#fff;
+    color:#263238;
+    border-radius:20px;
+    padding:2rem;
+    margin-bottom:2rem;
+    text-align:left;
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+  }
 
-    .card h2{
-      color:#185a9d;
-      margin-top:0;
-      text-align:center;
-    }
+  .card h2{
+    color:#185a9d;
+    margin-top:0;
+    text-align:center;
+  }
 
-    .card p{
-      line-height:1.7;
-    }
+  .card p{
+    line-height:1.7;
+  }
 
+  .guide-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:1.25rem;
+    margin-top:1.5rem;
+  }
+
+  .guide-card{
+    background:#f6f7fb;
+    border:1px solid rgba(24,90,157,.12);
+    border-radius:18px;
+    padding:1.25rem;
+    min-width:0;
+    box-shadow:0 6px 18px rgba(0,0,0,.06);
+  }
+
+  .guide-card h3{
+    color:#185a9d;
+    margin:0 0 .75rem;
+    line-height:1.25;
+  }
+
+  .guide-card p{
+    color:#5f6f7a;
+    margin:0;
+    line-height:1.65;
+  }
+
+  #costa-rica-map{
+    height:600px;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+    border:3px solid rgba(67,206,162,.25);
+  }
+
+  .map-note{
+    text-align:center;
+    color:#5f6f7a;
+    margin-top:1rem;
+    font-size:.95rem;
+  }
+
+  .leaflet-popup-content-wrapper{
+    border-radius:16px;
+  }
+
+  .leaflet-popup-content{
+    width:320px !important;
+    max-width:75vw;
+    max-height:380px;
+    overflow-y:auto;
+    padding-right:6px;
+  }
+
+  .leaflet-popup-content h3{
+    margin-top:0;
+    color:#185a9d;
+    line-height:1.25;
+  }
+
+  .leaflet-popup-content p{
+    font-size:.9rem;
+    line-height:1.55;
+    margin:.55rem 0;
+  }
+
+  .place-images{
+    display:flex;
+    gap:8px;
+    margin-top:12px;
+    overflow-x:auto;
+    max-width:100%;
+    padding-bottom:6px;
+  }
+
+  .place-images img{
+    width:82px;
+    height:82px;
+    object-fit:cover;
+    border-radius:10px;
+    cursor:pointer;
+    flex:0 0 auto;
+  }
+
+  .photo-lightbox{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:999999;
+    background:rgba(0,0,0,.88);
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+  }
+
+  .photo-lightbox.active{
+    display:flex;
+  }
+
+  .photo-lightbox img{
+    max-width:92vw;
+    max-height:86vh;
+    object-fit:contain;
+    border-radius:16px;
+    box-shadow:0 20px 60px rgba(0,0,0,.6);
+  }
+
+  .photo-lightbox-nav{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:48px;
+    height:48px;
+    border:0;
+    border-radius:999px;
+    background:rgba(255,255,255,.18);
+    color:#fff;
+    font-size:3rem;
+    line-height:1;
+    cursor:pointer;
+    z-index:2;
+  }
+
+  .photo-prev{
+    left:20px;
+  }
+
+  .photo-next{
+    right:20px;
+  }
+
+  .photo-lightbox-close{
+    position:absolute;
+    top:18px;
+    right:18px;
+    width:48px;
+    height:48px;
+    border:none;
+    border-radius:50%;
+    background:rgba(0,0,0,.6);
+    color:#fff;
+    font-size:2rem;
+    cursor:pointer;
+    z-index:9999999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .photo-lightbox-close:hover{
+    background:rgba(255,79,216,.8);
+  }
+
+  a.button{
+    display:inline-block;
+    background:#185a9d;
+    color:#fff;
+    padding:.8rem 1.3rem;
+    border-radius:999px;
+    text-decoration:none;
+    font-weight:bold;
+    margin:.35rem;
+  }
+
+  a.button:hover{
+    background:#ff4fd8;
+  }
+
+  footer{
+    text-align:center;
+    padding:2rem;
+    color:#d7e4f3;
+  }
+
+  @media (max-width:760px){
     .guide-grid{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:1.25rem;
-      margin-top:1.5rem;
-    }
-
-    .guide-card{
-      background:#f6f7fb;
-      border:1px solid rgba(24,90,157,.12);
-      border-radius:18px;
-      padding:1.25rem;
-      min-width:0;
-      box-shadow:0 6px 18px rgba(0,0,0,.06);
-    }
-
-    .guide-card h3{
-      color:#185a9d;
-      margin:0 0 .75rem;
-      line-height:1.25;
-    }
-
-    .guide-card p{
-      color:#5f6f7a;
-      margin:0;
-      line-height:1.65;
+      grid-template-columns:1fr;
     }
 
     #costa-rica-map{
-      height:600px;
-      border-radius:20px;
-      overflow:hidden;
-      box-shadow:0 10px 30px rgba(0,0,0,.25);
-      border:3px solid rgba(67,206,162,.25);
+      height:480px;
+    }
+  }
+
+  @media (max-width:620px){
+    .site-nav{
+      padding:.8rem .7rem;
+      gap:.7rem;
     }
 
-    .map-note{
-      text-align:center;
-      color:#5f6f7a;
-      margin-top:1rem;
-      font-size:.95rem;
+    .site-nav a{
+      font-size:.85rem;
     }
 
-    .leaflet-popup-content h3{
-      margin:.25rem 0 .5rem;
-      color:#185a9d;
+    header{
+      padding:3rem 1rem 2rem;
+    }
+
+    .card{
+      padding:1.4rem;
+    }
+
+    .leaflet-popup-content{
+      width:260px !important;
+      max-height:340px;
     }
 
     .leaflet-popup-content p{
-      margin:.35rem 0;
-      line-height:1.45;
+      font-size:.85rem;
     }
-
-    a.button{
-      display:inline-block;
-      background:#185a9d;
-      color:#fff;
-      padding:.8rem 1.3rem;
-      border-radius:999px;
-      text-decoration:none;
-      font-weight:bold;
-      margin:.35rem;
-    }
-
-    a.button:hover{
-      background:#ff4fd8;
-    }
-
-    footer{
-      text-align:center;
-      padding:2rem;
-      color:#d7e4f3;
-    }
-
-    @media (max-width:760px){
-      .guide-grid{
-        grid-template-columns:1fr;
-      }
-
-      #costa-rica-map{
-        height:480px;
-      }
-    }
-
-    @media (max-width:620px){
-      .site-nav{
-        padding:.8rem .7rem;
-        gap:.7rem;
-      }
-
-      .site-nav a{
-        font-size:.85rem;
-      }
-
-      header{
-        padding:3rem 1rem 2rem;
-      }
-
-      .card{
-        padding:1.4rem;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 
 <body>
@@ -348,6 +458,13 @@
   </section>
 
 </main>
+  
+  <div id="photoLightbox" class="photo-lightbox">
+  <button class="photo-lightbox-close" onclick="closePhotoLightbox()">×</button>
+  <button class="photo-lightbox-nav photo-prev" onclick="changePhoto(-1)">‹</button>
+  <img id="photoLightboxImg" src="" alt="Costa Rica photo">
+  <button class="photo-lightbox-nav photo-next" onclick="changePhoto(1)">›</button>
+</div>
 
 <footer>
   © 2026 3Dudes1Life Creative • Three Men. One Life. Endless Stories.
@@ -433,14 +550,90 @@
     }
   ];
 
-  stops.forEach((place) => {
-    L.marker(place.coords).addTo(map).bindPopup(`
+let currentPhotoSet = [];
+let currentPhotoIndex = 0;
+
+stops.forEach((place, placeIndex)=>{
+
+  L.marker(place.coords)
+    .addTo(map)
+    .bindPopup(`
       <h3>${place.name}</h3>
       <p><strong>Category:</strong> ${place.category}</p>
       <p><strong>3Dudes Rating:</strong> ${place.rating}</p>
       <p>${place.note}</p>
+
+      ${place.images ? `
+        <div class="place-images">
+          ${place.images.map((img, imgIndex)=>`
+            <img
+              src="${img}"
+              alt="${place.name}"
+              onclick="openPhotoLightboxByIndex(${placeIndex}, ${imgIndex})">
+          `).join('')}
+        </div>
+      ` : ''}
     `);
+
+});
+
+function openPhotoLightboxByIndex(placeIndex,index){
+  currentPhotoSet = stops[placeIndex].images || [];
+  currentPhotoIndex = index;
+
+  if(!currentPhotoSet.length) return;
+
+  document.getElementById('photoLightboxImg').src =
+    currentPhotoSet[currentPhotoIndex];
+
+  document.getElementById('photoLightbox')
+    .classList.add('active');
+}
+
+function closePhotoLightbox(){
+  document.getElementById('photoLightbox')
+    .classList.remove('active');
+
+  document.getElementById('photoLightboxImg').src = '';
+}
+
+function changePhoto(direction){
+  if(!currentPhotoSet.length) return;
+
+  currentPhotoIndex += direction;
+
+  if(currentPhotoIndex < 0){
+    currentPhotoIndex = currentPhotoSet.length - 1;
+  }
+
+  if(currentPhotoIndex >= currentPhotoSet.length){
+    currentPhotoIndex = 0;
+  }
+
+  document.getElementById('photoLightboxImg').src =
+    currentPhotoSet[currentPhotoIndex];
+}
+
+document.getElementById('photoLightbox')
+  .addEventListener('click', function(event){
+    if(event.target.id === 'photoLightbox'){
+      closePhotoLightbox();
+    }
   });
+
+document.addEventListener('keydown', function(event){
+  if(event.key === 'Escape'){
+    closePhotoLightbox();
+  }
+
+  if(event.key === 'ArrowLeft'){
+    changePhoto(-1);
+  }
+
+  if(event.key === 'ArrowRight'){
+    changePhoto(1);
+  }
+});
 </script>
 
 </body>
