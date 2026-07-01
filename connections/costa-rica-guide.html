@@ -585,11 +585,21 @@ stops.forEach((place, placeIndex)=>{
       <p><strong>3Dudes Rating:</strong> ${place.rating}</p>
       <p>${place.note}</p>
 
-      ${place.video ? `
-        <video controls playsinline preload="metadata" style="width:100%;border-radius:12px;margin-top:12px;">
-          <source src="${place.video}" type="video/mp4">
-        </video>
-      ` : ''}
+${place.video ? `
+  <video controls playsinline preload="metadata" style="width:100%;border-radius:12px;margin-top:12px;">
+    <source src="${place.video}" type="video/mp4">
+  </video>
+` : ''}
+
+${place.videos ? `
+  <div style="display:grid;gap:10px;margin-top:12px;">
+    ${place.videos.map((video)=>`
+      <video controls playsinline preload="metadata" style="width:100%;border-radius:12px;">
+        <source src="${video}" type="video/mp4">
+      </video>
+    `).join('')}
+  </div>
+` : ''}
 
       ${place.images ? `
         <div class="place-images">
