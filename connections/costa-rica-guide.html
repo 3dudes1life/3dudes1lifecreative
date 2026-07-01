@@ -268,20 +268,40 @@
   .photo-lightbox-close:hover{
     background:rgba(255,79,216,.8);
   }
-  .video-gallery{
+.video-gallery{
   display:flex;
   gap:8px;
   margin-top:12px;
   overflow-x:auto;
-  max-width:260px;
+  max-width:100%;
+  padding-bottom:6px;
 }
 
-.video-gallery video{
+.video-thumb{
+  position:relative;
+  flex:0 0 auto;
+  cursor:pointer;
+}
+
+.video-thumb video{
   width:120px;
   height:82px;
   object-fit:cover;
   border-radius:10px;
-  cursor:pointer;
+  display:block;
+}
+
+.video-thumb::after{
+  content:"▶";
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:2rem;
+  background:rgba(0,0,0,.25);
+  border-radius:10px;
 }
 
   a.button{
@@ -608,10 +628,12 @@ ${place.video ? `
 
 ${place.videos ? `
   <div class="video-gallery">
-    ${place.videos.map(video => `
-      <video controls preload="metadata">
-        <source src="${video}" type="video/mp4">
-      </video>
+    ${place.videos.map((video)=>`
+      <div class="video-thumb" onclick="window.open('${video}', '_blank')">
+        <video muted playsinline preload="metadata">
+          <source src="${video}" type="video/mp4">
+        </video>
+      </div>
     `).join('')}
   </div>
 ` : ''}
