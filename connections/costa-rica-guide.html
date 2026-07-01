@@ -629,8 +629,12 @@ ${place.video ? `
 ${place.videos ? `
   <div class="video-gallery">
     ${place.videos.map((video)=>`
-      <div class="video-thumb" onclick="window.open('${video}', '_blank')">
-        <video muted playsinline preload="metadata">
+      <div class="video-thumb" onclick="window.open('${video}','_blank')">
+        <video
+          muted
+          playsinline
+          preload="auto"
+          onloadeddata="this.currentTime=1;">
           <source src="${video}" type="video/mp4">
         </video>
       </div>
