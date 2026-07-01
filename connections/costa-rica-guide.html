@@ -512,13 +512,14 @@
     '/images/costa-rica/liberia-airport-4.jpg'
   ]
 },
-    {
+{
   name: '🏙️ Liberia',
   coords: [10.6350, -85.4377],
   rating: '8/10',
   category: 'City',
-  note: 'Known as the "White City" of Guanacaste, Liberia was our introduction to Costa Rican culture beyond the resort. We passed through the city several times during our adventures and got a glimpse of everyday life in northwestern Costa Rica.'
- },
+  note: 'Known as the "White City" of Guanacaste, Liberia was our introduction to Costa Rican culture beyond the resort. We passed through the city several times during our adventures and got a real glimpse of everyday life in northwestern Costa Rica.',
+  video:'/videos/costa-rica/liberia-drive.mp4'
+},
     {
       name: '🐎 Horseback Riding Adventure',
       coords: [10.6750, -85.4200],
@@ -568,6 +569,12 @@ stops.forEach((place, placeIndex)=>{
       <p><strong>Category:</strong> ${place.category}</p>
       <p><strong>3Dudes Rating:</strong> ${place.rating}</p>
       <p>${place.note}</p>
+
+      ${place.video ? `
+        <video controls playsinline preload="metadata" style="width:100%;border-radius:12px;margin-top:12px;">
+          <source src="${place.video}" type="video/mp4">
+        </video>
+      ` : ''}
 
       ${place.images ? `
         <div class="place-images">
