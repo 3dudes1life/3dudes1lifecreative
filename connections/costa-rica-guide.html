@@ -290,8 +290,6 @@
 }
 
 .video-thumb video{
-  position:relative;
-  z-index:1;
   width:120px;
   height:82px;
   object-fit:cover;
@@ -300,11 +298,10 @@
   pointer-events:none;
 }
 
-.video-thumb::after{
-  content:"▶";
+.video-play-button{
   position:absolute;
   inset:0;
-  z-index:5;
+  z-index:999;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -312,9 +309,8 @@
   font-size:2rem;
   line-height:1;
   background:rgba(0,0,0,.25);
-  border-radius:10px;
   pointer-events:none;
-  text-shadow:0 2px 8px rgba(0,0,0,.8);
+  text-shadow:0 2px 8px rgba(0,0,0,.9);
 }
 
   a.button{
@@ -786,6 +782,8 @@ ${place.videos ? `
           onloadeddata="this.currentTime=1;">
           <source src="${video}" type="video/mp4">
         </video>
+
+        <span class="video-play-button">▶</span>
       </div>
     `).join('')}
   </div>
