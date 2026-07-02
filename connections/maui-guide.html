@@ -804,35 +804,42 @@ stops.forEach((place, placeIndex)=>{
     .addTo(map)
     .bindPopup(`
       <h3>${place.name}</h3>
-
       <p><strong>Category:</strong> ${place.category}</p>
-
       <p><strong>3Dudes Rating:</strong> ${place.rating}</p>
-
       <p>${place.note}</p>
 
-    <p>${place.note}</p>
+      ${place.videos ? `
+        <div class="video-gallery">
+          ${place.videos.map((video)=>`
+            <div class="video-thumb" onclick="window.open('${video}','_blank')">
+              <video
+                muted
+                playsinline
+                preload="auto"
+                onloadeddata="this.currentTime=1;">
+                <source src="${video}" type="video/mp4">
+              </video>
 
-${place.videos ? `
-  <div class="video-gallery">
-    ${place.videos.map((video)=>`
-      <div class="video-thumb" onclick="window.open('${video}','_blank')">
-        <video
-          muted
-          playsinline
-          preload="auto"
-          onloadeddata="this.currentTime=1;">
-          <source src="${video}" type="video/mp4">
-        </video>
+              <span class="video-play-button">▶</span>
+            </div>
+          `).join('')}
+        </div>
+      ` : ''}
 
-        <span class="video-play-button">▶</span>
-      </div>
-    `).join('')}
-  </div>
-` : ''}
+      ${place.images ? `
+        <div class="place-images">
+          ${place.images.map((img, imgIndex)=>`
+            <img
+              src="${img}"
+              alt="${place.name}"
+              onclick="openPhotoLightboxByIndex(${placeIndex}, ${imgIndex})">
+          `).join('')}
+        </div>
+      ` : ''}
+    `);
 
-${place.images ? `
 });
+  
   function openPhotoLightboxByIndex(placeIndex,index){
 
   currentPhotoSet = stops[placeIndex].images || [];
