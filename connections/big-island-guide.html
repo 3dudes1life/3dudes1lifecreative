@@ -279,7 +279,50 @@
   .photo-lightbox-close:hover{
     background:rgba(255,79,216,.8);
   }
+.video-gallery{
+  display:flex;
+  gap:8px;
+  margin-top:12px;
+  overflow-x:auto;
+  max-width:100%;
+  padding-bottom:6px;
+}
 
+.video-thumb{
+  position:relative;
+  flex:0 0 auto;
+  width:120px;
+  height:82px;
+  border-radius:10px;
+  overflow:hidden;
+  cursor:pointer;
+  background:#222;
+}
+
+.video-thumb video{
+  width:120px;
+  height:82px;
+  object-fit:cover;
+  border-radius:10px;
+  display:block;
+  pointer-events:none;
+}
+
+.video-play-button{
+  position:absolute;
+  inset:0;
+  z-index:999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:2rem;
+  line-height:1;
+  background:rgba(0,0,0,.25);
+  pointer-events:none;
+  text-shadow:0 2px 8px rgba(0,0,0,.9);
+}
+  
   footer{
     text-align:center;
     padding:2rem;
@@ -847,15 +890,27 @@ stops.forEach((place, placeIndex)=>{
       <p><strong>3Dudes Rating:</strong> ${place.rating}</p>
       <p>${place.note}</p>
 
-${place.images ? `
-  <div class="place-images">
-    ${place.images.map((img, imgIndex) => `
-<img src="${img}" alt="${place.name}" onclick="openPhotoLightboxByIndex(${placeIndex}, ${imgIndex})">    `).join('')}
+<p>${place.note}</p>
+
+${place.videos ? `
+  <div class="video-gallery">
+    ${place.videos.map((video)=>`
+      <div class="video-thumb" onclick="window.open('${video}','_blank')">
+        <video
+          muted
+          playsinline
+          preload="auto"
+          onloadeddata="this.currentTime=1;">
+          <source src="${video}" type="video/mp4">
+        </video>
+
+        <span class="video-play-button">▶</span>
+      </div>
+    `).join('')}
   </div>
 ` : ''}
-    `);
 
-});
+${place.images ? `
 
 function openPhotoLightboxByIndex(placeIndex, index){
   currentPhotoSet = stops[placeIndex].images || [];
