@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Alaska Guide | 3Dudes1Life Creative</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#11131a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="3Dudes1Life">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="/app-icon.png">
+  
+  <style>
+    body{
+      margin:0;
+      font-family:Arial, sans-serif;
+      background:#11131a;
+      color:#fff;
+      text-align:center;
+    }
+
+    .site-nav{
+      position:sticky;
+      top:0;
+      z-index:99999;
+      background:rgba(255,255,255,.98);
+      border-bottom:4px solid;
+      border-image:linear-gradient(to right,#43cea2,#ff4fd8,#ff9f1c,#185a9d) 1;
+      padding:.75rem 1.5rem;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:1rem;
+      flex-wrap:wrap;
+    }
+
+    .nav-logo{
+      display:flex;
+      align-items:center;
+      margin-right:1rem;
+    }
+
+    .nav-logo img{
+      height:42px;
+      width:auto;
+      display:block;
+      transition:transform .2s ease;
+    }
+
+    .nav-logo:hover img{
+      transform:scale(1.05);
+    }
+
+    .site-nav a{
+      color:#000;
+      text-decoration:none;
+      font-weight:700;
+      font-size:.95rem;
+    }
+
+    .site-nav a:hover{
+      color:#ff4fd8;
+    }
+
+    header{
+      padding:4rem 1rem 2rem;
+      background:
+        radial-gradient(circle at top left, rgba(255,79,216,.22), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(67,206,162,.24), transparent 36%),
+        linear-gradient(135deg,#185a9d,#11131a);
+    }
+
+    header p{
+      max-width:850px;
+      margin:1rem auto 0;
+      line-height:1.7;
+      color:#f3f7ff;
+      font-weight:700;
+    }
+
+    main{
+      max-width:1050px;
+      margin:auto;
+      padding:2rem 1rem;
+    }
+
+    .hero-img{
+      width:100%;
+      max-width:900px;
+      border-radius:20px;
+      box-shadow:0 10px 30px rgba(0,0,0,.4);
+      margin-bottom:2rem;
+    }
+
+    .card{
+      background:#fff;
+      color:#263238;
+      border-radius:20px;
+      padding:2rem;
+      margin-bottom:2rem;
+      text-align:left;
+      box-shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+
+    .card h2{
+      color:#185a9d;
+      margin-top:0;
+      text-align:center;
+    }
+
+    .card p{
+      line-height:1.7;
+    }
+
+    .guide-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:1.25rem;
+      margin-top:1.5rem;
+    }
+
+    .guide-card{
+      background:#f6f7fb;
+      border:1px solid rgba(24,90,157,.12);
+      border-radius:18px;
+      padding:1.25rem;
+      min-width:0;
+      box-shadow:0 6px 18px rgba(0,0,0,.06);
+    }
+
+    .guide-card h3{
+      color:#185a9d;
+      margin:0 0 .75rem;
+      line-height:1.25;
+    }
+
+    .guide-card p{
+      color:#5f6f7a;
+      margin:0;
+      line-height:1.65;
+    }
+
+    #alaska-map{
+      height:650px;
+      border-radius:20px;
+      overflow:hidden;
+      box-shadow:0 10px 30px rgba(0,0,0,.25);
+      border:3px solid rgba(67,206,162,.25);
+    }
+
+    .map-note{
+      text-align:center;
+      color:#5f6f7a;
+      margin-top:1rem;
+      font-size:.95rem;
+    }
+
+    .leaflet-popup-content h3{
+      margin:.25rem 0 .5rem;
+      color:#185a9d;
+    }
+
+    .leaflet-popup-content p{
+      margin:.35rem 0;
+      line-height:1.45;
+    }
+
+    a.button{
+      display:inline-block;
+      background:#185a9d;
+      color:#fff;
+      padding:.8rem 1.3rem;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:bold;
+      margin:.35rem;
+    }
+
+    a.button:hover{
+      background:#ff4fd8;
+    }
+
+    footer{
+      text-align:center;
+      padding:2rem;
+      color:#d7e4f3;
+    }
+
+    @media (max-width:760px){
+      .guide-grid{
+        grid-template-columns:1fr;
+      }
+
+      #alaska-map{
+        height:500px;
+      }
+    }
+
+    @media (max-width:620px){
+      .site-nav{
+        padding:.8rem .7rem;
+        gap:.7rem;
+      }
+
+      .site-nav a{
+        font-size:.85rem;
+      }
+
+      header{
+        padding:3rem 1rem 2rem;
+      }
+
+      .card{
+        padding:1.4rem;
+      }
+    }
+  
+
+/* ===== 3DUDES GUIDE MEDIA SYSTEM: YOUTUBE + MP4 ===== */
+.video-gallery{display:flex;gap:10px;margin-top:14px;overflow-x:auto;max-width:100%;padding:2px 2px 9px;scrollbar-width:thin}
+.video-thumb{position:relative;flex:0 0 auto;width:132px;height:86px;padding:0;border:0;border-radius:12px;overflow:hidden;cursor:pointer;background:#11131a;box-shadow:0 6px 18px rgba(0,0,0,.24);transition:transform .18s ease,box-shadow .18s ease}
+.video-thumb:hover,.video-thumb:focus-visible{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.34);outline:3px solid rgba(255,79,216,.45);outline-offset:2px}
+.video-thumb img,.video-thumb video{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+.video-play-button{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;color:#fff;font-size:2rem;line-height:1;background:linear-gradient(180deg,rgba(0,0,0,.06),rgba(0,0,0,.48));pointer-events:none;text-shadow:0 2px 10px rgba(0,0,0,.95)}
+.video-source-badge{position:absolute;left:7px;bottom:7px;z-index:3;padding:3px 7px;border-radius:999px;color:#fff;background:rgba(0,0,0,.74);font-size:.67rem;font-weight:800;letter-spacing:.02em;pointer-events:none}
+.guide-video-lightbox{display:none;position:fixed;inset:0;z-index:10000000;background:rgba(0,0,0,.93);align-items:center;justify-content:center;padding:22px}
+.guide-video-lightbox.active{display:flex}
+.guide-video-shell{position:relative;width:min(1000px,94vw);max-height:92vh}
+.guide-video-frame,.guide-video-player{display:block;width:100%;aspect-ratio:16/9;max-height:84vh;border:0;border-radius:16px;background:#000;box-shadow:0 24px 70px rgba(0,0,0,.7)}
+.guide-video-close{position:absolute;top:-18px;right:-18px;z-index:4;width:48px;height:48px;border:0;border-radius:50%;background:#185a9d;color:#fff;font-size:1.9rem;line-height:1;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.45)}
+.guide-video-close:hover,.guide-video-close:focus-visible{background:#ff4fd8;outline:3px solid rgba(255,255,255,.65)}
+.guide-video-title{color:#fff;margin:12px 52px 0 2px;font-weight:800;text-align:left}
+@media(max-width:620px){.video-thumb{width:116px;height:76px}.guide-video-lightbox{padding:14px}.guide-video-close{top:-14px;right:-8px}}
+/* ===== END 3DUDES GUIDE MEDIA SYSTEM ===== */
+</style>
+</head>
+
+<body>
+
+<nav class="site-nav">
+  <a href="../index.html" class="nav-logo">
+    <img src="../logo.png" alt="3Dudes1Life Creative Logo">
+  </a>
+
+  <a href="../index.html#universe">The Universe</a>
+  <a href="../index.html#podcast">Podcast</a>
+  <a href="../index.html#latest">Latest Episode</a>
+  <a href="../index.html#book">Books</a>
+  <a href="../index.html#adventures">Adventures</a>
+  <a href="../index.html#blog">Blog</a>
+  <a href="../index.html#contact">Contact</a>
+</nav>
+
+<header>
+  <h1>🏔️ Alaska Guide</h1>
+  <p>
+    Our growing guide to Alaska — from Anchorage to the Arctic Circle, Coldfoot, the Brooks Range, glaciers, mountain passes, wildlife, small towns, and one of the greatest adventures in the 3Dudes1Life story.
+  </p>
+</header>
+
+<main>
+
+  <img class="hero-img" src="../images/alaska.jpg" alt="Alaska adventure">
+
+  <section class="card">
+    <h2>Why This Guide Exists</h2>
+
+    <p>
+      Alaska is one of the biggest adventures we have ever taken together. What started as a birthday celebration became a massive road trip across America's last frontier, covering thousands of miles from Anchorage through Fairbanks, the Dalton Highway, the Arctic Circle, Coldfoot, and deep into Alaska’s northern wilderness.
+    </p>
+
+    <p>
+      This guide is starting as a real interactive route map with the major places we visited, drove through, stayed near, or photographed. Over time, we can add more exact stops, photos, ratings, travel notes, blog links, podcast memories, and the stories that still come up in our conversations today.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>🏔️ Trip Snapshot</h2>
+
+    <div class="guide-grid">
+      <div class="guide-card">
+        <h3>🛣️ Route</h3>
+        <p>Anchorage to Palmer, Wasilla, Denali, Fairbanks, Coldfoot, the Brooks Range, and back south through more glacier country.</p>
+      </div>
+
+      <div class="guide-card">
+        <h3>⭕ Furthest North</h3>
+        <p>Past the Arctic Circle, through Coldfoot, and into tundra and mountain country most travelers never reach.</p>
+      </div>
+
+      <div class="guide-card">
+        <h3>❄️ Big Moments</h3>
+        <p>Glaciers, mountain passes, remote roads, wildlife sightings, Arctic scenery, and some of the wildest drives of our lives.</p>
+      </div>
+
+      <div class="guide-card">
+        <h3>⭐ Overall Vibe</h3>
+        <p>Massive, remote, emotional, dramatic, beautiful, and completely unforgettable.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Interactive Alaska Route Map</h2>
+
+    <div id="alaska-map"></div>
+
+    <p class="map-note">
+      Version 1 of our Alaska map. More stops, photos, ratings, and recommendations will be added as we organize the trip memories.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>What This Guide Will Grow Into</h2>
+
+    <div class="guide-grid">
+      <div class="guide-card">
+        <h3>🛣️ Route + Road Trip Stops</h3>
+        <p>Major drives, route notes, long-haul stretches, unexpected stops, and the full Alaska road trip flow.</p>
+      </div>
+
+      <div class="guide-card">
+        <h3>❄️ Glaciers + Landscapes</h3>
+        <p>Glacier views, mountain passes, wild scenery, coastal views, and the places that made Alaska feel unreal.</p>
+      </div>
+
+      <div class="guide-card">
+        <h3>🐻 Wildlife + Remote Moments</h3>
+        <p>Wildlife sightings, remote roads, quiet places, big sky moments, and memories from the edge of everything.</p>
+      </div>
+
+      <div class="guide-card">
+        <h3>🏘️ Towns + Favorite Stops</h3>
+        <p>Fairbanks, North Pole, Anchorage, small towns, roadside finds, food stops, and places worth remembering.</p>
+      </div>
+
+      <div class="guide-card">
+        <h3>📸 Photo Memories</h3>
+        <p>Personal photos, travel notes, favorite views, and visual moments from thousands of miles across Alaska.</p>
+      </div>
+
+      <div class="guide-card">
+        <h3>🎙️ Podcast + Blog Connections</h3>
+        <p>Related blog stories, future podcast references, behind-the-scenes memories, and creative connections.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Where This Connects</h2>
+
+    <p>
+      The Alaska guide connects into the blog archive, podcast universe, travel memories, photo collections, road trip recommendations, and future creative projects tied to one of the most epic trips we have ever taken together.
+    </p>
+
+    <p>
+      Over time, this page can become the Alaska hub inside 3Dudes1Life Creative — starting simple now, then growing into a full route guide with photos, stories, pins, stops, and memories.
+    </p>
+
+    <a class="button" href="../index.html#adventures">🌎 More Adventures</a>
+    <a class="button" href="alaska.html">🏔️ Alaska Adventure Page</a>
+    <a class="button" href="https://www.3dudes1life.com/post/post-10-will-s-40th-birthday-an-alaskan-adventure-to-remember" target="_blank" rel="noopener">📰 Read the Alaska Blog</a>
+    <a class="button" href="../index.html">🏠 Back to Creative</a>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 3Dudes1Life Creative • Three Men. One Life. Endless Stories.
+</footer>
+
+<script>
+  const map = L.map('alaska-map').setView([64.8, -149.5], 5);
+
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  const stops = [
+    {
+      name: '✈️ Anchorage',
+      coords: [61.2176, -149.8997],
+      rating: '9/10',
+      category: 'Start / City',
+      note: 'The start of the Alaska adventure and the gateway to one of our biggest 3Dudes1Life road trips.'
+    },
+    {
+      name: '🏔️ Knik River / Knik Glacier Area',
+      coords: [61.4725, -148.8735],
+      rating: '10/10',
+      category: 'Glacier / Scenic Area',
+      note: 'One of the most beautiful glacier and river areas from the trip. Big Alaska energy, mountain views, and unforgettable scenery.'
+    },
+    {
+      name: '🌄 Palmer',
+      coords: [61.5994, -149.1128],
+      rating: '8/10',
+      category: 'Road Trip Stop',
+      note: 'A key stop on the route north from Anchorage toward Wasilla, Denali, and the interior.'
+    },
+    {
+      name: '🚗 Wasilla',
+      coords: [61.5809, -149.4415],
+      rating: '8/10',
+      category: 'Route Stop',
+      note: 'Part of the northbound route as the road trip moved from Anchorage into the wider Alaska adventure.'
+    },
+    {
+      name: '🏞️ Denali State Park / Parks Highway',
+      coords: [62.7950, -150.1200],
+      rating: '10/10',
+      category: 'Mountain Views',
+      note: 'Huge mountain views, wild scenery, and one of the major stretches that made the road trip feel epic.'
+    },
+    {
+      name: '🌲 Fairbanks',
+      coords: [64.8378, -147.7164],
+      rating: '9/10',
+      category: 'Interior Alaska Hub',
+      note: 'A major hub for the trip before heading farther north toward the Arctic Circle, Coldfoot, and the tundra.'
+    },
+    {
+      name: '🎅 North Pole, Alaska',
+      coords: [64.7511, -147.3494],
+      rating: '9/10',
+      category: 'Fun Stop',
+      note: 'A classic Alaska stop near Fairbanks and part of the interior Alaska memories.'
+    },
+    {
+      name: '♨️ Chena Hot Springs',
+      coords: [65.0531, -146.0556],
+      rating: '10/10',
+      category: 'Hot Springs / Remote Stop',
+      note: 'Remote, beautiful, and one of the more unique Alaska stops from the trip.'
+    },
+    {
+      name: '🌉 Yukon River Crossing',
+      coords: [65.8766, -149.7330],
+      rating: '10/10',
+      category: 'River Crossing',
+      note: 'A major milestone heading north on the Dalton Highway toward Coldfoot and the Arctic Circle.'
+    },
+    {
+      name: '⭕ Arctic Circle',
+      coords: [66.5622, -150.8058],
+      rating: '10/10',
+      category: 'Bucket List Stop',
+      note: 'One of the biggest moments of the trip — crossing into the Arctic Circle together.'
+    },
+    {
+      name: '🏕️ Coldfoot',
+      coords: [67.2522, -150.1761],
+      rating: '10/10',
+      category: 'Remote Alaska Stop',
+      note: 'A wildly remote stop and proof that this road trip went far beyond normal Alaska tourist routes.'
+    },
+    {
+      name: '🏔️ Brooks Range',
+      coords: [67.9000, -149.7500],
+      rating: '10/10',
+      category: 'Mountain Range',
+      note: 'Massive mountain scenery, remote wilderness, and some of the most dramatic Alaska road views.'
+    },
+    {
+      name: '❄️ Atigun Pass',
+      coords: [68.1300, -149.4780],
+      rating: '10/10',
+      category: 'Mountain Pass',
+      note: 'One of the most dramatic drives of our lives. Snow-covered peaks, endless views, and the gateway into Alaska’s Arctic wilderness.'
+    },
+    {
+      name: '🌌 North Slope / Tundra Turnaround',
+      coords: [68.6500, -149.2500],
+      rating: '10/10',
+      category: 'Furthest North',
+      note: 'The farthest north part of the adventure — tundra, remote road, and that “we really did this” feeling.'
+    },
+    {
+      name: '🧊 Glennallen',
+      coords: [62.1090, -145.5460],
+      rating: '9/10',
+      category: 'Southbound Route Stop',
+      note: 'A major stop as the trip moved back through mountain roads, glacier country, and south-central Alaska.'
+    },
+ {
+  name: '🏕️ Knik River Glacier',
+  coords: [61.4335, -148.9200],
+  rating: '10/10',
+  category: 'Glacier',
+  note: 'One of our favorite Alaska memories.'
+},
+
+{
+  name: '🚇 Anton Anderson Memorial Tunnel',
+  coords: [60.7896, -148.8644],
+  rating: '10/10',
+  category: 'Tunnel / Road Trip Moment',
+  note: 'The tunnel into Whittier — one of the most unique drives in Alaska.'
+},
+
+{
+  name: '🏔️ Girdwood',
+  coords: [60.9425, -149.1664],
+  rating: '9/10',
+  category: 'Mountain Town',
+  note: 'Beautiful mountain town surrounded by forests and dramatic scenery.'
+},
+
+{
+  name: '🌊 Whittier',
+  coords: [60.7731, -148.6839],
+  rating: '10/10',
+  category: 'Coastal Town',
+  note: 'Reached through the famous tunnel and surrounded by towering mountains.'
+},
+
+{
+  name: '🐟 Kenai',
+  coords: [60.5544, -151.2583],
+  rating: '8/10',
+  category: 'Kenai Peninsula',
+  note: 'Part of our drive south through the Kenai Peninsula.'
+},
+
+{
+  name: '🌲 Cooper Landing',
+  coords: [60.4897, -149.8347],
+  rating: '10/10',
+  category: 'River / Scenic Stop',
+  note: 'One of the prettiest river and mountain areas we visited.'
+},
+
+{
+  name: '🏕️ Tustumena River Campground',
+  coords: [60.2650, -151.2650],
+  rating: '10/10',
+  category: 'Camping',
+  note: 'One of our favorite campsites of the trip. Located near the mouth of Tustumena Lake where the river begins its journey toward Cook Inlet. Wildlife, river views, campfires, and classic Alaska wilderness.'
+},
+    {
+  name: '🌊 Tustumena Lake Outlet',
+  coords: [60.2790, -151.2450],
+  rating: '10/10',
+  category: 'Scenic Stop',
+  note: 'The outlet where Tustumena Lake feeds the Kasilof River. Beautiful water, wildlife, and one of the quieter moments of the entire Alaska adventure.'
+},
+
+{
+  name: '🌅 Homer',
+  coords: [59.6425, -151.5483],
+  rating: '10/10',
+  category: 'Town',
+  note: 'The southern destination of our road trip with incredible coastal views.'
+},
+
+{
+  name: '🍻 Homer Town & Bars',
+  coords: [59.6441, -151.5406],
+  rating: '9/10',
+  category: 'Food & Nightlife',
+  note: 'Restaurants, bars, and exploring one of Alaska’s coolest towns.'
+},
+
+{
+  name: '🏕️ Homer Spit Campground',
+  coords: [59.6036, -151.4317],
+  rating: '10/10',
+  category: 'Camping',
+  note: 'Camping directly on the Homer Spit surrounded by water.'
+},
+
+{
+  name: '🌊 Land’s End / Homer Spit',
+  coords: [59.6006, -151.4107],
+  rating: '10/10',
+  category: 'End of the Road',
+  note: 'Literally the end of the road. One of the most memorable stops of the entire trip.'
+}
+
+];
+
+  // ===== 3DUDES GUIDE MEDIA SYSTEM: YOUTUBE + MP4 =====
+const guideVideoRegistry = [];
+
+function escapeGuideMediaHtml(value=''){
+  return String(value)
+    .replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;')
+    .replaceAll('"','&quot;').replaceAll("'",'&#039;');
+}
+
+function getYouTubeId(value=''){
+  const raw=String(value).trim();
+  if(!raw) return '';
+
+  try{
+    const parsed=new URL(raw,window.location.origin);
+    const host=parsed.hostname.replace(/^www\./,'');
+    if(host==='youtu.be') return parsed.pathname.split('/').filter(Boolean)[0]||'';
+
+    if(['youtube.com','m.youtube.com','youtube-nocookie.com'].includes(host)){
+      const v=parsed.searchParams.get('v');
+      if(v) return v;
+      const parts=parsed.pathname.split('/').filter(Boolean);
+      const i=parts.findIndex(part=>['shorts','embed','live'].includes(part.toLowerCase()));
+      if(i!==-1&&parts[i+1]) return parts[i+1];
+    }
+  }catch(error){}
+
+  const match=raw.match(/(?:youtu\.be\/|youtube(?:-nocookie)?\.com\/(?:watch\?.*?v=|shorts\/|embed\/|live\/))([A-Za-z0-9_-]{6,})/i);
+  return match?match[1]:'';
+}
+
+function normalizeGuideVideo(entry,placeName='3Dudes1Life video'){
+  const item=typeof entry==='string'?{url:entry}:{...entry};
+  const url=String(item.url||item.src||'').trim();
+  if(!url) return null;
+
+  const youtubeId=item.youtubeId||getYouTubeId(url);
+  const type=String(item.type||(youtubeId?'youtube':'mp4')).toLowerCase();
+
+  return {
+    type,url,youtubeId,
+    title:item.title||placeName||'3Dudes1Life video',
+    thumbnail:item.thumbnail||(youtubeId?`https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`:'')
+  };
+}
+
+function registerGuideVideo(video){
+  guideVideoRegistry.push(video);
+  return guideVideoRegistry.length-1;
+}
+
+function renderVideoGallery(entries,placeName='Video'){
+  if(!Array.isArray(entries)||!entries.length) return '';
+  const videos=entries.map(entry=>normalizeGuideVideo(entry,placeName)).filter(Boolean);
+  if(!videos.length) return '';
+
+  return `<div class="video-gallery" aria-label="Videos for ${escapeGuideMediaHtml(placeName)}">
+    ${videos.map(video=>{
+      const index=registerGuideVideo(video);
+      const isYouTube=video.type==='youtube'&&video.youtubeId;
+      const preview=isYouTube
+        ? `<img src="${escapeGuideMediaHtml(video.thumbnail)}" alt="${escapeGuideMediaHtml(video.title)}" loading="lazy">`
+        : `<video muted playsinline preload="metadata"><source src="${escapeGuideMediaHtml(video.url)}" type="video/mp4"></video>`;
+
+      return `<button class="video-thumb" type="button"
+        aria-label="Play ${escapeGuideMediaHtml(video.title)}"
+        onclick="openGuideVideo(${index})">
+        ${preview}
+        <span class="video-play-button">▶</span>
+        <span class="video-source-badge">${isYouTube?'YouTube':'Video'}</span>
+      </button>`;
+    }).join('')}
+  </div>`;
+}
+
+function openGuideVideo(index){
+  const video=guideVideoRegistry[index];
+  const lightbox=document.getElementById('guideVideoLightbox');
+  const media=document.getElementById('guideVideoMedia');
+  const title=document.getElementById('guideVideoTitle');
+  if(!video||!lightbox||!media||!title) return;
+
+  title.textContent=video.title||'3Dudes1Life video';
+
+  if(video.type==='youtube'&&video.youtubeId){
+    media.innerHTML=`<iframe class="guide-video-frame"
+      src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(video.youtubeId)}?autoplay=1&rel=0"
+      title="${escapeGuideMediaHtml(video.title||'YouTube video')}"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+  }else{
+    media.innerHTML=`<video class="guide-video-player" controls autoplay playsinline>
+      <source src="${escapeGuideMediaHtml(video.url)}" type="video/mp4">
+      Your browser does not support this video.
+    </video>`;
+  }
+
+  lightbox.classList.add('active');
+  lightbox.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+}
+
+function closeGuideVideo(){
+  const lightbox=document.getElementById('guideVideoLightbox');
+  const media=document.getElementById('guideVideoMedia');
+  if(!lightbox||!media) return;
+  lightbox.classList.remove('active');
+  lightbox.setAttribute('aria-hidden','true');
+  media.innerHTML='';
+  document.body.style.overflow='';
+}
+
+document.addEventListener('click',event=>{
+  if(event.target&&event.target.id==='guideVideoLightbox') closeGuideVideo();
+});
+document.addEventListener('keydown',event=>{
+  if(event.key==='Escape') closeGuideVideo();
+});
+// ===== END 3DUDES GUIDE MEDIA SYSTEM =====
+
+stops.forEach((place) => {
+    L.marker(place.coords).addTo(map).bindPopup(`
+      <h3>${place.name}</h3>
+      <p><strong>Category:</strong> ${place.category}</p>
+      <p><strong>3Dudes Rating:</strong> ${place.rating}</p>
+      <p>${place.note}</p>
+      ${renderVideoGallery(place.videos, place.name)}
+    `);
+  });
+</script>
+
+
+
+<div id="guideVideoLightbox" class="guide-video-lightbox" aria-hidden="true">
+  <div class="guide-video-shell" role="dialog" aria-modal="true" aria-label="Guide video player">
+    <button class="guide-video-close" type="button" onclick="closeGuideVideo()" aria-label="Close video">×</button>
+    <div id="guideVideoMedia"></div>
+    <div id="guideVideoTitle" class="guide-video-title"></div>
+  </div>
+</div>
+
+</body>
+</html>
