@@ -142,40 +142,44 @@ body.app-shell-home > header .buttons a{
   .app-shell__toggle-lines::before,.app-shell__toggle-lines::after{transition:none!important}
 }
 
-/* iPhone top/status-area continuation — shared by every app-shell header */
+/* iPhone Safari/header seam match — shared by every app-shell header */
+:root{
+  --app-shell-top-match:#3a1038;
+}
+
 html,
 body{
-  background-color:#30102d!important;
+  background-color:var(--app-shell-top-match)!important;
 }
 
 /*
-  Safari tabs only accept a solid theme-color. In Home Screen/standalone mode,
-  this fixed gradient paints beneath the translucent iPhone status area.
+  Safari's browser/status area is solid. Make the visible top edge of the real
+  header use that exact same solid tone, then fade into the existing horizontal
+  pink/navy/teal header so there is no hard color seam.
 */
 html::before{
   content:"";
   position:fixed;
   z-index:999997;
-  top:0;
-  left:0;
-  right:0;
-  height:max(env(safe-area-inset-top, 0px), 64px);
+  inset:0 0 auto 0;
+  height:max(env(safe-area-inset-top, 0px), 72px);
   pointer-events:none;
-  background:
-    radial-gradient(circle at 12% -20%,rgba(255,79,216,.30),transparent 38%),
-    radial-gradient(circle at 88% 120%,rgba(67,206,162,.24),transparent 42%),
-    linear-gradient(115deg,#30102d 0%,#11131a 48%,#082434 100%);
+  background:var(--app-shell-top-match);
 }
 
 .site-nav.app-shell{
+  z-index:999999!important;
   background:
+    linear-gradient(
+      to bottom,
+      var(--app-shell-top-match) 0,
+      var(--app-shell-top-match) 10px,
+      rgba(58,16,56,.82) 24px,
+      rgba(58,16,56,.34) 48px,
+      transparent 72px
+    ),
     radial-gradient(circle at 12% -20%,rgba(255,79,216,.30),transparent 38%),
     radial-gradient(circle at 88% 120%,rgba(67,206,162,.24),transparent 42%),
     linear-gradient(115deg,#30102d 0%,#11131a 48%,#082434 100%)!important;
-}
-
-/* Keep the header above the safe-area continuation layer. */
-.site-nav.app-shell{
-  z-index:999999!important;
 }
 

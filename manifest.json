@@ -4,8 +4,8 @@
   "description": "Podcast, books, adventures, maps, and real-life throuple stories.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#30102d",
-  "theme_color": "#30102d",
+  "background_color": "#3a1038",
+  "theme_color": "#3a1038",
   "icons": [
     {
       "src": "/app-icon.png",

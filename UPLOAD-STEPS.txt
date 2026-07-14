@@ -1,17 +1,14 @@
-3DUDES1LIFE — ALL HEADERS TOP GRADIENT FIX
+3DUDES1LIFE — HEADER SEAM MATCH FIX
 
-1. Unzip this file.
-2. In GitHub, open 3dudes1life/3dudes1lifecreative.
-3. Choose Add file > Upload files.
-4. Drag EVERYTHING inside this unzipped folder into GitHub.
-5. Keep the assets and connections folders intact.
-6. Commit as: Fix top color across all app headers
-7. Wait for GitHub Pages to deploy.
-8. Fully close Safari and reopen the page.
+This package makes the Safari top/status color and the top edge of the actual
+header the same color, then fades into the existing pink/navy/teal header.
 
-IMPORTANT:
-• In normal Safari browser mode, Apple only permits a SOLID theme color in the
-  status/browser area; websites cannot draw a CSS gradient inside Safari chrome.
-• This package sets that area to the closest matching deep-plum color.
-• When opened from the iPhone Home Screen as an installed web app, the actual
-  header gradient is painted beneath the translucent status area.
+UPLOAD:
+1. Unzip.
+2. Open 3dudes1life/3dudes1lifecreative on GitHub.
+3. Add file > Upload files.
+4. Drag everything inside this folder into GitHub.
+5. Preserve assets and connections folders.
+6. Commit: Match Safari bar to header fade
+7. Wait for GitHub Pages deployment.
+8. Fully close Safari and reopen the site.
