@@ -1,57 +1,59 @@
-3DUDES1LIFE CREATIVE — ZIP 1
-APP HEADER + MOBILE NAVIGATION SHELL
+3DUDES1LIFE CREATIVE — ZIP 1, GITHUB-FIXED EDITION
+==================================================
 
-WHAT THIS PACKAGE DOES
-• Replaces the crowded legacy navigation visually with a premium sticky app header.
-• Layout: logo | Latest Episode action | hamburger.
-• Gives every existing HTML page the same navigation shell.
-• Adds iPhone safe-area/status-bar support.
-• Adds a polished slide-down menu, background scrim, Escape-key support, focus handling, and 44px+ touch targets.
-• Shortens the HOME PAGE hero without deleting any content.
-• Keeps all current sections, links, travel pages, RSS episode logic, install modal, newsletter, manifest, service worker, images, and analytics intact.
-• Includes automatic backups and rollback.
+THIS VERSION FIXES THE MISSING HAMBURGER.
 
-THIS IS DELIBERATELY NOT ZIP 2 OR ZIP 3
-• It does not rearrange the homepage dashboard/content yet.
-• It does not install bottom navigation yet.
-• It does not perform the full SEO/schema/PWA overhaul yet.
-• Existing SEO is preserved while this shell is tested.
+WHAT WENT WRONG BEFORE
+The previous ZIP uploaded the CSS, JavaScript, and Mac installer, but GitHub does
+not run Mac/Python installers automatically. The HTML pages never received the
+CSS/JS references, so the visual changes that came from uploaded CSS could appear,
+but the JavaScript-created hamburger could not.
 
-FASTEST MAC INSTALL
-1. Download your 3dudes1lifecreative repository from GitHub as a ZIP and unzip it.
-2. Copy EVERYTHING from this ZIP 1 folder into the root of that downloaded repository.
-3. Double-click APPLY-ZIP1.command.
-4. macOS may ask permission to run it. If blocked: right-click it, choose Open, then Open again.
-5. Test index.html and several files inside /connections/.
-6. Upload all changed HTML files and the new /assets/app-shell/ folder to GitHub.
+WHAT THIS VERSION DOES
+This package includes a GitHub Actions workflow that runs INSIDE GITHUB. After
+upload, GitHub patches every current HTML page, verifies the hamburger code and
+shared shell references, creates backups, and commits the finished pages.
 
-MANUAL INSTALL
-Run this from Terminal while inside the repository root:
-  python3 APPLY-ZIP1.py
+UPLOAD INSTRUCTIONS
+1. Unzip this package.
+2. Upload/merge ALL folders into the ROOT of:
+   3dudes1life/3dudes1lifecreative
+   Important: include the hidden .github folder.
+3. Commit the upload.
+4. Open the repository's Actions tab.
+5. Open "Apply ZIP 1 App Header."
+6. The workflow should start automatically. If it does not, click "Run workflow."
+7. Wait for the green check, then allow GitHub Pages to redeploy.
+8. Close and reopen Safari. For the Home Screen app, swipe it away and relaunch.
 
-TEST CHECKLIST
-□ Desktop Safari/Chrome: header stays fixed, logo is clear, menu opens and closes.
-□ iPhone Safari: no wrapped nav links; header respects the top safe area.
-□ Home Screen/PWA: header reaches the status-bar region and does not cover content.
-□ Hamburger links reach Podcast, Latest Episode, Books, Adventures, Blog, and Contact.
-□ Alaska, Maui, Big Island, Costa Rica, California, and Road Trip pages use the same shell.
-□ Escape closes the menu on desktop.
-□ Tapping outside the menu closes it.
-□ Existing latest-episode feed still loads.
-□ Existing newsletter and app-install modals still work.
+VERIFIED FEATURES IN THIS BUILD
+[PASS] Premium sticky app-style header
+[PASS] Logo | Latest Episode | hamburger
+[PASS] Clean mobile and desktop hamburger menu
+[PASS] iPhone safe-area/status-bar support
+[PASS] Proper 44px+ mobile touch targets
+[PASS] Shorter homepage hero without deleting content
+[PASS] Shared header treatment for every HTML page
+[PASS] Automatic GitHub installer
+[PASS] Automatic Mac installer
+[PASS] Automatic per-page backups in .zip1-backups
+[PASS] GitHub and Mac rollback scripts
+[PASS] Detailed testing checklist
+[PASS] Fallback header for pages such as links.html that had no old .site-nav
+[PASS] Escape key, outside-tap closing, and focus return
+
+MAC INSTALLER
+The GitHub workflow is recommended. A Mac installer is still included:
+  double-click APPLY-ZIP1.command
+It runs the same patcher and verification locally.
 
 ROLLBACK
-Run:
-  python3 ROLLBACK-ZIP1.py
-The installer creates a .zip1-backup copy beside every changed HTML file.
+GitHub:
+  Actions > Roll Back ZIP 1 > Run workflow
 
-FILES ADDED
-/assets/app-shell/app-shell.css
-/assets/app-shell/app-shell.js
-APPLY-ZIP1.py
-APPLY-ZIP1.command
-ROLLBACK-ZIP1.py
-README-FIRST.txt
+Mac:
+  double-click ROLLBACK-ZIP1.command
 
-VERSION
-ZIP 1 — 2026-07-14
+IMPORTANT
+Do not upload only assets/app-shell. Upload the .github and tools folders too.
+The GitHub workflow is what connects the app shell to every HTML page.

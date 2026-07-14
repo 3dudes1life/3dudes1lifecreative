@@ -1,0 +1,54 @@
+ZIP 1 TESTING CHECKLIST
+=======================
+
+GITHUB
+[ ] Upload included .github, assets, tools, and root command/readme files.
+[ ] Actions > Apply ZIP 1 App Header ends with a green check.
+[ ] Latest commit says "Activate ZIP 1 app header across all HTML pages."
+[ ] .zip1-backups exists after the action.
+[ ] GitHub Pages finishes deploying.
+
+DESKTOP
+[ ] Header stays at the top while scrolling.
+[ ] Left side shows the Creative logo.
+[ ] Latest Episode appears before the hamburger.
+[ ] Hamburger is visible and opens the menu.
+[ ] Menu contains Universe, Podcast, Latest Episode, Books, Adventures, Blog, Contact, and Install App.
+[ ] Escape closes the menu.
+[ ] Clicking outside closes the menu.
+[ ] Existing page links and content still work.
+
+IPHONE SAFARI
+[ ] Header reaches the safe-area/status-bar region.
+[ ] Logo, Latest Episode, and hamburger fit on one row.
+[ ] At very narrow widths, Latest Episode becomes a microphone icon.
+[ ] Hamburger has a comfortable touch target.
+[ ] Menu links are at least 50px tall.
+[ ] Page does not horizontally scroll.
+[ ] Hero is shorter and next content begins sooner.
+
+HOME SCREEN / PWA
+[ ] Swipe away the old app and reopen it.
+[ ] Header does not overlap the status bar.
+[ ] Header remains visible while scrolling.
+[ ] Hamburger opens and closes.
+[ ] Existing install, newsletter, and latest-episode functions still work.
+
+INTERNAL PAGES
+[ ] links.html
+[ ] connections/alaska.html
+[ ] connections/alaska-guide.html
+[ ] connections/maui-guide.html
+[ ] connections/hawaii-maui.html
+[ ] connections/big-island-guide.html
+[ ] connections/costa-rica.html
+[ ] connections/costa-rica-guide.html
+[ ] connections/california.html
+[ ] connections/california-guide.html
+[ ] connections/road-trips.html
+[ ] connections/road-trip-guide.html
+[ ] Any other HTML page in the repo
+
+ROLLBACK TEST
+[ ] Actions > Roll Back ZIP 1 is available.
+[ ] Do not run rollback unless the design must be removed.
