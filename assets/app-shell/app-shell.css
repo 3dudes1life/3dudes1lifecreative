@@ -10,7 +10,7 @@
   --app-shell-height:68px;
   --app-safe-top:env(safe-area-inset-top,0px);
 }
-html{scroll-padding-top:calc(var(--app-shell-height) + var(--app-safe-top) + 18px)}
+html{scroll-padding-top:calc(var(--app-shell-height) + var(--app-safe-top) + 18px);background:#25132b}
 body{padding-top:calc(var(--app-shell-height) + var(--app-safe-top))!important}
 body.app-menu-open{overflow:hidden}
 .site-nav.app-shell{
