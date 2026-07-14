@@ -1,27 +1,15 @@
-3DUDES1LIFE — ZIP 2.3 SEO + PWA
+3DUDES1LIFE — WHOLE STORY DESKTOP FORMAT FIX
 
-IMPORTANT:
-Install ZIP 2.2 first, then upload this ZIP 2.3 package. ZIP 2.3 includes and
-preserves the ZIP 2.2 homepage experience.
-
-UPLOAD:
 1. Unzip this package.
-2. Open 3dudes1life/3dudes1lifecreative on GitHub.
-3. Add file > Upload files.
-4. Drag EVERYTHING inside the unzipped folder into GitHub.
-5. Keep assets and connections folders intact.
-6. Commit: Install ZIP 2.3 SEO and PWA
+2. Open the 3dudes1life/3dudes1lifecreative GitHub repository.
+3. Click Add file > Upload files.
+4. Upload index.html from this package.
+5. Allow GitHub to replace the existing index.html.
+6. Commit as: Fix Whole Story desktop formatting
 7. Wait for GitHub Pages to deploy.
-8. Fully close Safari and reopen the site.
+8. Refresh the site.
 
-THIS BUILD:
-• Canonical URLs on all 13 pages
-• Corrected Open Graph metadata
-• Twitter cards
-• Organization, WebSite, WebPage, Podcast, and breadcrumb schema
-• New sitemap.xml and robots.txt
-• Improved manifest and app shortcuts
-• PWA service worker and cache cleanup
-• Font preconnects
-• Lazy loading and async image decoding
-• Existing ZIP 2.2 homepage and header fixes retained
+This fix centers the heading and copy and formats the four badges as:
+• Four equal columns on wide desktop
+• Two-by-two on tablet/smaller desktop
+• One column on narrow phones
