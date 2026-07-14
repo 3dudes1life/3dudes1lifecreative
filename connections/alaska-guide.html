@@ -220,22 +220,38 @@
     }
   
 
-/* ===== 3DUDES GUIDE MEDIA SYSTEM: YOUTUBE + MP4 ===== */
-.video-gallery{display:flex;gap:10px;margin-top:14px;overflow-x:auto;max-width:100%;padding:2px 2px 9px;scrollbar-width:thin}
-.video-thumb{position:relative;flex:0 0 auto;width:132px;height:86px;padding:0;border:0;border-radius:12px;overflow:hidden;cursor:pointer;background:#11131a;box-shadow:0 6px 18px rgba(0,0,0,.24);transition:transform .18s ease,box-shadow .18s ease}
-.video-thumb:hover,.video-thumb:focus-visible{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.34);outline:3px solid rgba(255,79,216,.45);outline-offset:2px}
+/* ===== ALASKA GUIDE FULL MEDIA + PHOTO UPGRADE ===== */
+.leaflet-popup-content-wrapper{border-radius:16px}
+.leaflet-popup-content{width:320px!important;max-width:75vw;max-height:520px;overflow-y:auto;padding-right:6px}
+.leaflet-popup-content h3{margin-top:0;color:#185a9d;line-height:1.25}
+.leaflet-popup-content p{font-size:.9rem;line-height:1.55;margin:.55rem 0}
+
+.video-gallery{display:flex;gap:10px;margin-top:14px;overflow-x:auto;max-width:100%;padding:2px 2px 9px}
+.video-thumb{position:relative;flex:0 0 auto;width:132px;height:86px;padding:0;border:0;border-radius:12px;overflow:hidden;cursor:pointer;background:#11131a}
 .video-thumb img,.video-thumb video{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
-.video-play-button{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;color:#fff;font-size:2rem;line-height:1;background:linear-gradient(180deg,rgba(0,0,0,.06),rgba(0,0,0,.48));pointer-events:none;text-shadow:0 2px 10px rgba(0,0,0,.95)}
-.video-source-badge{position:absolute;left:7px;bottom:7px;z-index:3;padding:3px 7px;border-radius:999px;color:#fff;background:rgba(0,0,0,.74);font-size:.67rem;font-weight:800;letter-spacing:.02em;pointer-events:none}
-.guide-video-lightbox{display:none;position:fixed;inset:0;z-index:10000000;background:rgba(0,0,0,.93);align-items:center;justify-content:center;padding:22px}
-.guide-video-lightbox.active{display:flex}
-.guide-video-shell{position:relative;width:min(1000px,94vw);max-height:92vh}
-.guide-video-frame,.guide-video-player{display:block;width:100%;aspect-ratio:16/9;max-height:84vh;border:0;border-radius:16px;background:#000;box-shadow:0 24px 70px rgba(0,0,0,.7)}
-.guide-video-close{position:absolute;top:-18px;right:-18px;z-index:4;width:48px;height:48px;border:0;border-radius:50%;background:#185a9d;color:#fff;font-size:1.9rem;line-height:1;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.45)}
-.guide-video-close:hover,.guide-video-close:focus-visible{background:#ff4fd8;outline:3px solid rgba(255,255,255,.65)}
+.video-play-button{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:2rem;background:rgba(0,0,0,.28);pointer-events:none}
+.video-source-badge{position:absolute;left:7px;bottom:7px;padding:3px 7px;border-radius:999px;color:#fff;background:rgba(0,0,0,.72);font-size:.67rem;font-weight:800;pointer-events:none}
+
+.place-images{display:flex;gap:8px;margin-top:12px;overflow-x:auto;max-width:100%;padding-bottom:6px}
+.place-images img{width:82px;height:82px;object-fit:cover;border-radius:10px;cursor:pointer;flex:0 0 auto}
+
+.guide-video-lightbox,.photo-lightbox{display:none;position:fixed;inset:0;z-index:10000000;background:rgba(0,0,0,.93);align-items:center;justify-content:center;padding:22px}
+.guide-video-lightbox.active,.photo-lightbox.active{display:flex}
+.guide-video-shell{position:relative;width:min(1000px,94vw)}
+.guide-video-frame,.guide-video-player{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:16px;background:#000}
+.guide-video-close,.photo-lightbox-close{position:absolute;top:18px;right:18px;z-index:3;width:48px;height:48px;border:0;border-radius:50%;background:#185a9d;color:#fff;font-size:1.9rem;cursor:pointer}
 .guide-video-title{color:#fff;margin:12px 52px 0 2px;font-weight:800;text-align:left}
-@media(max-width:620px){.video-thumb{width:116px;height:76px}.guide-video-lightbox{padding:14px}.guide-video-close{top:-14px;right:-8px}}
-/* ===== END 3DUDES GUIDE MEDIA SYSTEM ===== */
+.photo-lightbox img{max-width:92vw;max-height:86vh;object-fit:contain;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.65)}
+.photo-lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border:0;border-radius:999px;background:rgba(255,255,255,.18);color:#fff;font-size:3rem;line-height:1;cursor:pointer}
+.photo-prev{left:20px}.photo-next{right:20px}
+
+@media(max-width:620px){
+  .leaflet-popup-content{width:260px!important;max-height:340px}
+  .leaflet-popup-content p{font-size:.85rem}
+  .video-thumb{width:116px;height:76px}
+  .photo-prev{left:8px}.photo-next{right:8px}
+}
+/* ===== END ALASKA GUIDE FULL MEDIA + PHOTO UPGRADE ===== */
 </style>
 </head>
 
@@ -583,24 +599,21 @@
 
 ];
 
-  // ===== 3DUDES GUIDE MEDIA SYSTEM: YOUTUBE + MP4 =====
-const guideVideoRegistry = [];
+  const guideVideoRegistry=[];
+let currentPhotoSet=[];
+let currentPhotoIndex=0;
 
 function escapeGuideMediaHtml(value=''){
-  return String(value)
-    .replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;')
-    .replaceAll('"','&quot;').replaceAll("'",'&#039;');
+  return String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;');
 }
 
 function getYouTubeId(value=''){
   const raw=String(value).trim();
   if(!raw) return '';
-
   try{
     const parsed=new URL(raw,window.location.origin);
     const host=parsed.hostname.replace(/^www\./,'');
     if(host==='youtu.be') return parsed.pathname.split('/').filter(Boolean)[0]||'';
-
     if(['youtube.com','m.youtube.com','youtube-nocookie.com'].includes(host)){
       const v=parsed.searchParams.get('v');
       if(v) return v;
@@ -609,115 +622,130 @@ function getYouTubeId(value=''){
       if(i!==-1&&parts[i+1]) return parts[i+1];
     }
   }catch(error){}
-
   const match=raw.match(/(?:youtu\.be\/|youtube(?:-nocookie)?\.com\/(?:watch\?.*?v=|shorts\/|embed\/|live\/))([A-Za-z0-9_-]{6,})/i);
   return match?match[1]:'';
 }
 
-function normalizeGuideVideo(entry,placeName='3Dudes1Life video'){
+function normalizeGuideVideo(entry,placeName='Video'){
   const item=typeof entry==='string'?{url:entry}:{...entry};
   const url=String(item.url||item.src||'').trim();
   if(!url) return null;
-
   const youtubeId=item.youtubeId||getYouTubeId(url);
-  const type=String(item.type||(youtubeId?'youtube':'mp4')).toLowerCase();
-
   return {
-    type,url,youtubeId,
+    type:String(item.type||(youtubeId?'youtube':'mp4')).toLowerCase(),
+    url,
+    youtubeId,
     title:item.title||placeName||'3Dudes1Life video',
     thumbnail:item.thumbnail||(youtubeId?`https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`:'')
   };
 }
 
-function registerGuideVideo(video){
-  guideVideoRegistry.push(video);
-  return guideVideoRegistry.length-1;
-}
-
 function renderVideoGallery(entries,placeName='Video'){
   if(!Array.isArray(entries)||!entries.length) return '';
   const videos=entries.map(entry=>normalizeGuideVideo(entry,placeName)).filter(Boolean);
-  if(!videos.length) return '';
-
-  return `<div class="video-gallery" aria-label="Videos for ${escapeGuideMediaHtml(placeName)}">
-    ${videos.map(video=>{
-      const index=registerGuideVideo(video);
-      const isYouTube=video.type==='youtube'&&video.youtubeId;
-      const preview=isYouTube
-        ? `<img src="${escapeGuideMediaHtml(video.thumbnail)}" alt="${escapeGuideMediaHtml(video.title)}" loading="lazy">`
-        : `<video muted playsinline preload="metadata"><source src="${escapeGuideMediaHtml(video.url)}" type="video/mp4"></video>`;
-
-      return `<button class="video-thumb" type="button"
-        aria-label="Play ${escapeGuideMediaHtml(video.title)}"
-        onclick="openGuideVideo(${index})">
-        ${preview}
-        <span class="video-play-button">▶</span>
-        <span class="video-source-badge">${isYouTube?'YouTube':'Video'}</span>
-      </button>`;
-    }).join('')}
-  </div>`;
+  return `<div class="video-gallery">${videos.map(video=>{
+    guideVideoRegistry.push(video);
+    const index=guideVideoRegistry.length-1;
+    const yt=video.type==='youtube'&&video.youtubeId;
+    const preview=yt
+      ? `<img src="${escapeGuideMediaHtml(video.thumbnail)}" alt="${escapeGuideMediaHtml(video.title)}" loading="lazy">`
+      : `<video muted playsinline preload="metadata"><source src="${escapeGuideMediaHtml(video.url)}" type="video/mp4"></video>`;
+    return `<button class="video-thumb" type="button" onclick="openGuideVideo(${index})">${preview}<span class="video-play-button">▶</span><span class="video-source-badge">${yt?'YouTube':'Video'}</span></button>`;
+  }).join('')}</div>`;
 }
 
 function openGuideVideo(index){
   const video=guideVideoRegistry[index];
-  const lightbox=document.getElementById('guideVideoLightbox');
+  const box=document.getElementById('guideVideoLightbox');
   const media=document.getElementById('guideVideoMedia');
   const title=document.getElementById('guideVideoTitle');
-  if(!video||!lightbox||!media||!title) return;
-
-  title.textContent=video.title||'3Dudes1Life video';
-
-  if(video.type==='youtube'&&video.youtubeId){
-    media.innerHTML=`<iframe class="guide-video-frame"
-      src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(video.youtubeId)}?autoplay=1&rel=0"
-      title="${escapeGuideMediaHtml(video.title||'YouTube video')}"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
-  }else{
-    media.innerHTML=`<video class="guide-video-player" controls autoplay playsinline>
-      <source src="${escapeGuideMediaHtml(video.url)}" type="video/mp4">
-      Your browser does not support this video.
-    </video>`;
-  }
-
-  lightbox.classList.add('active');
-  lightbox.setAttribute('aria-hidden','false');
+  if(!video||!box||!media||!title) return;
+  title.textContent=video.title;
+  media.innerHTML=video.type==='youtube'&&video.youtubeId
+    ? `<iframe class="guide-video-frame" src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(video.youtubeId)}?autoplay=1&rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`
+    : `<video class="guide-video-player" controls autoplay playsinline><source src="${escapeGuideMediaHtml(video.url)}" type="video/mp4"></video>`;
+  box.classList.add('active');
   document.body.style.overflow='hidden';
 }
 
 function closeGuideVideo(){
-  const lightbox=document.getElementById('guideVideoLightbox');
+  const box=document.getElementById('guideVideoLightbox');
   const media=document.getElementById('guideVideoMedia');
-  if(!lightbox||!media) return;
-  lightbox.classList.remove('active');
-  lightbox.setAttribute('aria-hidden','true');
+  if(!box||!media) return;
+  box.classList.remove('active');
   media.innerHTML='';
   document.body.style.overflow='';
 }
 
+function openPhotoLightboxByIndex(placeIndex,index){
+  currentPhotoSet=stops[placeIndex].images||[];
+  currentPhotoIndex=index;
+  if(!currentPhotoSet.length) return;
+  document.getElementById('photoLightboxImg').src=currentPhotoSet[currentPhotoIndex];
+  document.getElementById('photoLightbox').classList.add('active');
+  document.body.style.overflow='hidden';
+}
+
+function closePhotoLightbox(){
+  document.getElementById('photoLightbox').classList.remove('active');
+  document.getElementById('photoLightboxImg').src='';
+  document.body.style.overflow='';
+}
+
+function changePhoto(direction){
+  if(!currentPhotoSet.length) return;
+  currentPhotoIndex+=direction;
+  if(currentPhotoIndex<0) currentPhotoIndex=currentPhotoSet.length-1;
+  if(currentPhotoIndex>=currentPhotoSet.length) currentPhotoIndex=0;
+  document.getElementById('photoLightboxImg').src=currentPhotoSet[currentPhotoIndex];
+}
+
 document.addEventListener('click',event=>{
   if(event.target&&event.target.id==='guideVideoLightbox') closeGuideVideo();
+  if(event.target&&event.target.id==='photoLightbox') closePhotoLightbox();
 });
-document.addEventListener('keydown',event=>{
-  if(event.key==='Escape') closeGuideVideo();
-});
-// ===== END 3DUDES GUIDE MEDIA SYSTEM =====
 
-stops.forEach((place) => {
+document.addEventListener('keydown',event=>{
+  if(event.key==='Escape'){
+    closeGuideVideo();
+    closePhotoLightbox();
+  }
+  if(document.getElementById('photoLightbox')?.classList.contains('active')){
+    if(event.key==='ArrowLeft') changePhoto(-1);
+    if(event.key==='ArrowRight') changePhoto(1);
+  }
+});
+
+stops.forEach((place, placeIndex) => {
     L.marker(place.coords).addTo(map).bindPopup(`
       <h3>${place.name}</h3>
       <p><strong>Category:</strong> ${place.category}</p>
       <p><strong>3Dudes Rating:</strong> ${place.rating}</p>
       <p>${place.note}</p>
-      ${renderVideoGallery(place.videos, place.name)}
+      ${renderVideoGallery(place.videos,place.name)}
+      ${place.images ? `
+        <div class="place-images">
+          ${place.images.map((img,imgIndex)=>`
+            <img src="${img}" alt="${place.name}" loading="lazy"
+              onclick="openPhotoLightboxByIndex(${placeIndex},${imgIndex})">
+          `).join('')}
+        </div>
+      ` : ''}
     `);
   });
 </script>
 
 
 
-<div id="guideVideoLightbox" class="guide-video-lightbox" aria-hidden="true">
-  <div class="guide-video-shell" role="dialog" aria-modal="true" aria-label="Guide video player">
+<div id="photoLightbox" class="photo-lightbox">
+  <button class="photo-lightbox-close" type="button" onclick="closePhotoLightbox()" aria-label="Close photo">×</button>
+  <button class="photo-lightbox-nav photo-prev" type="button" onclick="changePhoto(-1)" aria-label="Previous photo">‹</button>
+  <img id="photoLightboxImg" src="" alt="Alaska photo">
+  <button class="photo-lightbox-nav photo-next" type="button" onclick="changePhoto(1)" aria-label="Next photo">›</button>
+</div>
+
+<div id="guideVideoLightbox" class="guide-video-lightbox">
+  <div class="guide-video-shell" role="dialog" aria-modal="true">
     <button class="guide-video-close" type="button" onclick="closeGuideVideo()" aria-label="Close video">×</button>
     <div id="guideVideoMedia"></div>
     <div id="guideVideoTitle" class="guide-video-title"></div>
