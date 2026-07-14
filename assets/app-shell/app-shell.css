@@ -1,0 +1,181 @@
+:root{
+  --app-shell-bg:#11131a;
+  --app-shell-panel:rgba(17,19,26,.94);
+  --app-shell-text:#fff;
+  --app-shell-muted:#cdd5df;
+  --app-shell-teal:#43cea2;
+  --app-shell-pink:#ff4fd8;
+  --app-shell-orange:#ff9f1c;
+  --app-shell-blue:#185a9d;
+  --app-shell-height:68px;
+  --app-shell-radius:18px;
+  --app-safe-top:env(safe-area-inset-top,0px);
+}
+
+html{scroll-padding-top:calc(var(--app-shell-height) + var(--app-safe-top) + 18px)}
+body{padding-top:calc(var(--app-shell-height) + var(--app-safe-top))!important}
+body.app-menu-open{overflow:hidden}
+
+/* Replace each legacy nav visually without deleting its original links. */
+.site-nav.app-shell{
+  position:fixed!important;
+  inset:0 0 auto 0!important;
+  top:0!important;
+  z-index:999999!important;
+  min-height:calc(var(--app-shell-height) + var(--app-safe-top))!important;
+  padding:var(--app-safe-top) clamp(12px,3vw,28px) 0!important;
+  display:block!important;
+  background:
+    radial-gradient(circle at 12% -20%,rgba(255,79,216,.28),transparent 36%),
+    radial-gradient(circle at 88% 120%,rgba(67,206,162,.22),transparent 40%),
+    linear-gradient(115deg,rgba(48,10,45,.98),rgba(17,19,26,.98) 48%,rgba(8,36,52,.98))!important;
+  border:0!important;
+  border-bottom:1px solid rgba(255,255,255,.12)!important;
+  box-shadow:0 8px 30px rgba(0,0,0,.28)!important;
+  backdrop-filter:blur(18px) saturate(145%);
+  -webkit-backdrop-filter:blur(18px) saturate(145%);
+}
+.site-nav.app-shell::after{
+  content:"";
+  position:absolute;
+  left:0;right:0;bottom:-1px;height:3px;
+  background:linear-gradient(90deg,var(--app-shell-teal),var(--app-shell-pink),var(--app-shell-orange),var(--app-shell-blue));
+}
+.app-shell__bar{
+  height:var(--app-shell-height);
+  max-width:1240px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto auto;
+  align-items:center;
+  gap:10px;
+}
+.site-nav.app-shell .nav-logo{
+  justify-self:start;
+  display:flex!important;
+  align-items:center!important;
+  min-width:0;
+  margin:0!important;
+  padding:6px 0!important;
+  line-height:1!important;
+}
+.site-nav.app-shell .nav-logo img{
+  display:block!important;
+  width:auto!important;
+  height:44px!important;
+  max-width:min(220px,48vw)!important;
+  object-fit:contain!important;
+  filter:drop-shadow(0 4px 12px rgba(0,0,0,.35));
+}
+.app-shell__primary{
+  min-height:44px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 16px;
+  border-radius:999px;
+  background:linear-gradient(135deg,var(--app-shell-pink),var(--app-shell-orange));
+  color:#fff!important;
+  text-decoration:none!important;
+  font:800 .9rem/1 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
+  box-shadow:0 8px 20px rgba(255,79,216,.22);
+  white-space:nowrap;
+}
+.app-shell__primary:hover{transform:translateY(-1px);filter:brightness(1.06)}
+.app-shell__toggle{
+  width:46px;height:46px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:14px;
+  color:#fff;
+  background:rgba(255,255,255,.09);
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+.app-shell__toggle-lines,.app-shell__toggle-lines::before,.app-shell__toggle-lines::after{
+  width:21px;height:2px;border-radius:99px;background:currentColor;display:block;transition:.22s ease;
+}
+.app-shell__toggle-lines{position:relative}
+.app-shell__toggle-lines::before,.app-shell__toggle-lines::after{content:"";position:absolute;left:0}
+.app-shell__toggle-lines::before{top:-7px}.app-shell__toggle-lines::after{top:7px}
+.app-menu-open .app-shell__toggle-lines{background:transparent}
+.app-menu-open .app-shell__toggle-lines::before{top:0;transform:rotate(45deg)}
+.app-menu-open .app-shell__toggle-lines::after{top:0;transform:rotate(-45deg)}
+.app-shell__menu{
+  position:absolute;
+  top:calc(100% + 10px);
+  right:clamp(12px,3vw,28px);
+  width:min(390px,calc(100vw - 24px));
+  max-height:calc(100dvh - var(--app-shell-height) - var(--app-safe-top) - 28px);
+  overflow:auto;
+  padding:10px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:22px;
+  background:rgba(16,18,26,.98);
+  box-shadow:0 26px 70px rgba(0,0,0,.48);
+  transform:translateY(-8px) scale(.98);
+  transform-origin:top right;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:.2s ease;
+}
+.app-menu-open .app-shell__menu{opacity:1;visibility:visible;pointer-events:auto;transform:none}
+.site-nav.app-shell .app-shell__menu a{
+  min-height:50px;
+  display:flex!important;
+  align-items:center;
+  gap:12px;
+  margin:0!important;
+  padding:0 14px!important;
+  border-radius:14px;
+  color:#fff!important;
+  font:750 .98rem/1.2 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
+  text-decoration:none!important;
+}
+.site-nav.app-shell .app-shell__menu a:hover,.site-nav.app-shell .app-shell__menu a:focus-visible{background:rgba(255,255,255,.09);color:#fff!important}
+.app-shell__menu a[aria-current="page"]{background:linear-gradient(135deg,rgba(255,79,216,.18),rgba(67,206,162,.14))}
+.app-shell__divider{height:1px;background:rgba(255,255,255,.1);margin:8px}
+.app-shell__menu-note{padding:10px 14px 8px;color:var(--app-shell-muted);font:600 .78rem/1.45 system-ui,-apple-system,sans-serif;text-align:left}
+.app-shell__scrim{position:fixed;inset:calc(var(--app-shell-height) + var(--app-safe-top)) 0 0;background:rgba(0,0,0,.45);opacity:0;visibility:hidden;pointer-events:none;transition:.2s;z-index:-1}
+.app-menu-open .app-shell__scrim{opacity:1;visibility:visible;pointer-events:auto}
+
+/* Home hero tightening only; content remains intact. */
+body.app-shell-home > header{
+  padding-top:clamp(42px,7vw,78px)!important;
+  padding-bottom:clamp(38px,6vw,68px)!important;
+  min-height:auto!important;
+}
+body.app-shell-home > header .wrap{max-width:900px!important}
+body.app-shell-home > header img.logo{max-width:112px!important;margin-bottom:.85rem!important}
+body.app-shell-home > header .eyebrow{margin-bottom:.65rem!important}
+body.app-shell-home > header h1{font-size:clamp(2.15rem,7vw,4.2rem)!important;margin:.35rem auto!important}
+body.app-shell-home > header .intro{max-width:760px!important;font-size:clamp(1rem,2.4vw,1.1rem)!important;line-height:1.55!important;margin:.85rem auto 1.15rem!important}
+body.app-shell-home > header .buttons{gap:.55rem!important}
+body.app-shell-home > header .buttons a{min-height:46px;display:inline-flex!important;align-items:center;justify-content:center}
+
+/* Prevent legacy mobile rules from shrinking or wrapping the new shell. */
+@media(max-width:860px){
+  .app-shell__primary{font-size:.84rem;padding:0 13px}
+}
+@media(max-width:620px){
+  :root{--app-shell-height:62px}
+  body{padding-top:calc(var(--app-shell-height) + var(--app-safe-top))!important}
+  .site-nav.app-shell{padding-left:10px!important;padding-right:10px!important}
+  .site-nav.app-shell .nav-logo img{height:38px!important;max-width:43vw!important}
+  .app-shell__primary{min-height:42px;padding:0 12px;font-size:.79rem}
+  .app-shell__toggle{width:43px;height:43px;border-radius:13px}
+  .app-shell__menu{right:10px;width:calc(100vw - 20px);border-radius:20px}
+  body.app-shell-home > header{padding-left:16px!important;padding-right:16px!important}
+  body.app-shell-home > header img.logo{display:none!important}
+  body.app-shell-home > header .buttons a{width:100%;margin:.12rem 0!important}
+}
+@media(max-width:390px){
+  .app-shell__primary{font-size:0;width:42px;padding:0;border-radius:14px}
+  .app-shell__primary::before{content:"🎙️";font-size:1.08rem}
+  .site-nav.app-shell .nav-logo img{max-width:46vw!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .app-shell__menu,.app-shell__scrim,.app-shell__toggle-lines,.app-shell__toggle-lines::before,.app-shell__toggle-lines::after{transition:none!important}
+}
