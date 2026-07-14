@@ -1,0 +1,20 @@
+ZIP 1 — APP SHELL (FINISHED)
+
+This package contains the finished, already-patched files. No installer or Terminal is required.
+
+1. Unzip this file.
+2. Open the 3dudes1lifecreative repository in GitHub.
+3. Upload the CONTENTS of this folder into the repository root, preserving the connections and assets folders.
+4. Allow GitHub to replace files with the same names.
+5. Commit with: Activate ZIP 1 app shell
+6. Wait for GitHub Pages to deploy, then hard-refresh the website.
+
+Expected result:
+- Premium fixed header
+- Logo on left
+- Latest Episode button
+- Hamburger on right
+- Working mobile/desktop menu
+- iPhone safe-area support
+- Shorter homepage hero
+- Header active on all 13 HTML pages
