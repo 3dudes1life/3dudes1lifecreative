@@ -10,8 +10,8 @@
 <meta content="3Dudes1Life Creative is the connected world of William, Caleb, and Daniel — a real-life gay throuple sharing A Little Throuple Tea podcast, Tres Amigos Una Vida books, travel adventures, blog stories, and life together." name="description"/>
 <meta content="gay throuple podcast, throuple podcast, LGBTQ relationship podcast, three men in love, real-life throuple, A Little Throuple Tea, Tres Amigos Una Vida, 3Dudes1Life, gay relationship podcast" name="keywords"/>
 <meta content="3Dudes1Life Creative | Podcast, Books, Adventures &amp; Real-Life Throuple Stories" property="og:title"/>
-<meta content="3Dudes1Life Creative is the connected world of William, Caleb, and Daniel — a real-life gay throuple sharing A Little Throuple Tea podcast, Tres Amigos Una Vida books, travel adventures, blog stories, and life together." property="og:description">
-<meta content="https://3dudes1lifecreative.com/app-icon-512.png" property="og:image"/>
+<meta content="3Dudes1Life Creative is the connected world of William, Caleb, and Daniel — a real-life gay throuple sharing A Little Throuple Tea podcast, Tres Amigos Una Vida books, travel adventures, blog stories, and life together." property="og:description"/>
+<meta content="https://3dudes1lifecreative.com/app-icon-512.png" property="og:image">
 <meta content="website" property="og:type"/>
 <link href="/manifest.json" rel="manifest"/>
 <meta content="#3a1038" name="theme-color"/>
@@ -618,8 +618,8 @@
       }
     }
   </style>
-<link href="assets/app-shell/app-shell.css?v=20260714-zip22" rel="stylesheet">
-</link></meta><style id="zip-2-2-homepage-css">
+<link href="assets/app-shell/app-shell.css?v=20260714-app246" rel="stylesheet"/>
+</meta><style id="zip-2-2-homepage-css">
 /* ZIP 2.2 — Homepage Experience */
 body.app-shell-home > header{
   padding-top:clamp(30px,5vw,54px)!important;
@@ -991,10 +991,10 @@ body.app-shell-home main > .card:not(.latest-home):not(.universe-summary){
 <div class="badge">❤️ Sharing Our Journey Since 2016</div>
 </div>
 </section>
-<div class="home-section-label"><span>Go deeper</span><h2>More from our universe</h2></div><section class="card" id="podcast">
-<h2>🎙️ A Little Throuple Tea</h2>
+<div class="home-section-label"><span>Go deeper</span><h2>More from our universe</h2></div><section class="card feature-card feature-card--podcast" id="podcast">
+<span class="feature-kicker">Watch • Listen • Laugh</span><h2>🎙️ A Little Throuple Tea</h2>
 <a href="https://throupletea.com" rel="noopener" target="_blank">
-<img alt="A Little Throuple Tea podcast artwork" class="podcast-art" decoding="async" loading="lazy" src="3Dudes1Life_Podcastartwork2_Season2_listen%20copy.jpg"/>
+<img alt="A Little Throuple Tea podcast artwork" class="podcast-art" decoding="async" fetchpriority="high" loading="eager" src="3Dudes1Life_Podcastartwork2_Season2_listen%20copy.jpg"/>
 </a>
 <p style="font-size:1.05rem; margin-bottom:0.5rem;">
         🏆 <strong>Ranked the #1 Throuple Podcast by FeedSpot</strong>
@@ -1014,8 +1014,8 @@ body.app-shell-home main > .card:not(.latest-home):not(.universe-summary){
 <a href="https://throupletea.com" rel="noopener" target="_blank">🌐 Podcast Site</a>
 </div>
 </section>
-<section class="card" id="book">
-<h2>📚 Tres Amigos, Una Vida</h2>
+<section class="card feature-card feature-card--book" id="book">
+<span class="feature-kicker">Love Story • Book Series</span><h2>📚 Tres Amigos, Una Vida</h2>
 <img alt="Tres Amigos, Una Vida book cover" class="book-cover" decoding="async" loading="lazy" src="book-cover.png"/>
 <p>
 <em>Tres Amigos, Una Vida</em> is the book series inspired by true events from a real-life throuple — a love story about vulnerability, devotion, humor, healing, and the messy magic of choosing each other.
@@ -1030,12 +1030,12 @@ body.app-shell-home main > .card:not(.latest-home):not(.universe-summary){
 <a href="https://tresamigosunavida.com" rel="noopener" target="_blank">🌐 Book Site</a>
 </div>
 </section>
-<section class="card" id="adventures">
-<h2>🌎 Adventures &amp; Story Places</h2>
+<section class="card adventure-hub" id="adventures">
+<span class="feature-kicker">Maps • Guides • Memories</span><h2>🌎 Adventures &amp; Story Places</h2>
 <p>
         Some places are more than vacation stops. They become chapters. These are the locations that connect our real life, blog stories, podcast moments, and book universe.
       </p>
-<div class="grid">
+<p class="rail-hint">Swipe or scroll to explore →</p><div aria-label="Travel adventures" class="adventure-rail" tabindex="0">
 <a class="adventure-link" href="connections/hawaii-maui.html">
 <div class="mini-card">
 <img alt="Hawaii and Maui adventures" decoding="async" loading="lazy" src="images/hawaii-maui.jpg"/>
@@ -1078,8 +1078,8 @@ body.app-shell-home main > .card:not(.latest-home):not(.universe-summary){
 </a>
 </div>
 </section>
-<section class="card" id="blog">
-<h2>🌈 3Dudes1Life Blog</h2>
+<section class="card feature-card feature-card--blog" id="blog">
+<span class="feature-kicker">Life Beyond the Podcast</span><h2>🌈 3Dudes1Life Blog</h2>
 <p>
         The blog is our real-life archive — garden updates, vacation stories, recipes, how we met, Alaska adventures, Hawaii dreams, and the beautiful chaos of everyday throuple life.
       </p>
@@ -1314,5 +1314,20 @@ function closeInstallModal(){
 }
 </script>
 <script defer="" src="assets/app-shell/app-shell.js?v=20260714-zip22"></script>
-<script data-zip23-sw="true">if ("serviceWorker" in navigator) {window.addEventListener("load",()=>navigator.serviceWorker.register("/service-worker.js"));}</script></body>
+<script data-zip23-sw="true">if ("serviceWorker" in navigator) {window.addEventListener("load",()=>navigator.serviceWorker.register("/service-worker.js"));}</script><nav aria-label="Mobile navigation" class="mobile-tabbar">
+<a aria-label="Home" href="/"><span>🏠</span><small>Home</small></a>
+<a aria-label="Latest podcast episode" href="#latest"><span>🎙️</span><small>Podcast</small></a>
+<a aria-label="Books" href="#book"><span>📚</span><small>Books</small></a>
+<a aria-label="Explore adventures" href="#adventures"><span>🌎</span><small>Explore</small></a>
+<button aria-label="Open menu" class="mobile-tabbar__more" type="button"><span>☰</span><small>More</small></button>
+</nav><a aria-label="Play the latest episode" class="floating-latest" href="#latest">🎙️ Latest Episode</a><script id="zip-246-behavior">
+document.addEventListener("DOMContentLoaded",function(){
+  const more=document.querySelector(".mobile-tabbar__more");
+  const toggle=document.querySelector(".app-shell__toggle");
+  if(more&&toggle)more.addEventListener("click",()=>toggle.click());
+  document.querySelectorAll('.mobile-tabbar a[href^="#"]').forEach(link=>{
+    link.addEventListener("click",()=>document.body.classList.remove("app-menu-open"));
+  });
+});
+</script></body>
 </html>

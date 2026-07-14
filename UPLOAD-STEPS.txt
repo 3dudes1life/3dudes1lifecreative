@@ -1,15 +1,23 @@
-3DUDES1LIFE — WHOLE STORY DESKTOP FORMAT FIX
+3DUDES1LIFE — ZIP 2.4–2.6 APP EXPERIENCE PACK
 
-1. Unzip this package.
-2. Open the 3dudes1life/3dudes1lifecreative GitHub repository.
-3. Click Add file > Upload files.
-4. Upload index.html from this package.
-5. Allow GitHub to replace the existing index.html.
-6. Commit as: Fix Whole Story desktop formatting
-7. Wait for GitHub Pages to deploy.
-8. Refresh the site.
+This cumulative package preserves ZIP 2.2, ZIP 2.3, all header fixes,
+and the Whole Story desktop formatting fix.
 
-This fix centers the heading and copy and formats the four badges as:
-• Four equal columns on wide desktop
-• Two-by-two on tablet/smaller desktop
-• One column on narrow phones
+UPLOAD:
+1. Unzip.
+2. Open 3dudes1life/3dudes1lifecreative on GitHub.
+3. Add file > Upload files.
+4. Drag EVERYTHING inside the unzipped folder into GitHub.
+5. Keep assets and connections folders intact.
+6. Commit: Install app experience pack
+7. Wait for GitHub Pages deployment.
+8. Fully close Safari and reopen the site.
+
+INCLUDED:
+• Redesigned podcast, book, and blog feature cards
+• Horizontal swipe/scroll adventure hub
+• Mobile bottom navigation
+• More button connected to the existing hamburger
+• Floating Latest Episode button on larger screens
+• Better hover, tap, spacing, and responsive behavior
+• No image-library reupload
