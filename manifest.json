@@ -1,21 +1,75 @@
 {
   "name": "3Dudes1Life Creative",
   "short_name": "3Dudes1Life",
-  "description": "Podcast, books, adventures, maps, and real-life throuple stories.",
-  "start_url": "/",
+  "description": "Podcast episodes, books, adventures, guides, and real-life stories from William, Caleb, and Daniel.",
+  "start_url": "/?source=pwa",
   "display": "standalone",
-  "background_color": "#3a1038",
+  "background_color": "#11131a",
   "theme_color": "#3a1038",
   "icons": [
     {
       "src": "/app-icon.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "/app-icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "scope": "/",
+  "display_override": [
+    "window-controls-overlay",
+    "standalone",
+    "minimal-ui"
+  ],
+  "orientation": "portrait-primary",
+  "categories": [
+    "entertainment",
+    "lifestyle",
+    "travel"
+  ],
+  "lang": "en-US",
+  "dir": "ltr",
+  "shortcuts": [
+    {
+      "name": "Latest Episode",
+      "short_name": "Latest",
+      "description": "Play the newest episode of A Little Throuple Tea",
+      "url": "/#latest",
+      "icons": [
+        {
+          "src": "/app-icon.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Books",
+      "short_name": "Books",
+      "description": "Explore Tres Amigos, Una Vida",
+      "url": "/#book",
+      "icons": [
+        {
+          "src": "/app-icon.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Adventures",
+      "short_name": "Adventures",
+      "description": "Open travel adventures and guides",
+      "url": "/#adventures",
+      "icons": [
+        {
+          "src": "/app-icon.png",
+          "sizes": "192x192"
+        }
+      ]
     }
   ]
 }

@@ -1,14 +1,27 @@
-3DUDES1LIFE — HEADER SEAM MATCH FIX
+3DUDES1LIFE — ZIP 2.3 SEO + PWA
 
-This package makes the Safari top/status color and the top edge of the actual
-header the same color, then fades into the existing pink/navy/teal header.
+IMPORTANT:
+Install ZIP 2.2 first, then upload this ZIP 2.3 package. ZIP 2.3 includes and
+preserves the ZIP 2.2 homepage experience.
 
 UPLOAD:
-1. Unzip.
+1. Unzip this package.
 2. Open 3dudes1life/3dudes1lifecreative on GitHub.
 3. Add file > Upload files.
-4. Drag everything inside this folder into GitHub.
-5. Preserve assets and connections folders.
-6. Commit: Match Safari bar to header fade
-7. Wait for GitHub Pages deployment.
+4. Drag EVERYTHING inside the unzipped folder into GitHub.
+5. Keep assets and connections folders intact.
+6. Commit: Install ZIP 2.3 SEO and PWA
+7. Wait for GitHub Pages to deploy.
 8. Fully close Safari and reopen the site.
+
+THIS BUILD:
+• Canonical URLs on all 13 pages
+• Corrected Open Graph metadata
+• Twitter cards
+• Organization, WebSite, WebPage, Podcast, and breadcrumb schema
+• New sitemap.xml and robots.txt
+• Improved manifest and app shortcuts
+• PWA service worker and cache cleanup
+• Font preconnects
+• Lazy loading and async image decoding
+• Existing ZIP 2.2 homepage and header fixes retained
