@@ -1,3 +1,3 @@
-Install Version 3 traffic engine
+Install Version 3 growth engine
 
-Upload all files to GitHub and commit: Install Version 3 traffic engine
+Install ZIP 3.0-3.2 first, then upload all files and commit: Install Version 3 growth engine

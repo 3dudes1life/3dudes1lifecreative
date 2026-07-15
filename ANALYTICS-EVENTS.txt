@@ -1,0 +1,16 @@
+page_ready
+scroll_depth
+outbound_click
+internal_link_click
+internal_anchor_click
+button_click
+email_click
+phone_click
+form_submit
+pwa_install_prompt_available
+pwa_installed
+network_offline
+network_restored
+conversion_latest_episode
+conversion_book
+conversion_install
