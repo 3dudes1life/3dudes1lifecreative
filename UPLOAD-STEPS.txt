@@ -1,27 +1,21 @@
-3DUDES1LIFE — ZIP 2.7 PWA SUPERPOWERS
+3DUDES1LIFE — FEATURE CARD SPACING FIX
 
-This is cumulative. It preserves the header, homepage experience, SEO/PWA,
-Whole Story formatting, and ZIP 2.4–2.6 App Experience Pack.
+This is a tiny cumulative homepage fix built from ZIP 2.7.
 
 UPLOAD:
 1. Unzip this package.
 2. Open 3dudes1life/3dudes1lifecreative on GitHub.
 3. Click Add file > Upload files.
-4. Drag EVERYTHING inside the unzipped folder into GitHub.
-5. Preserve the assets and connections folders.
-6. Commit as: Install ZIP 2.7 PWA superpowers
-7. Wait for GitHub Pages deployment.
-8. Fully close Safari and reopen the site.
-9. For the Home Screen app, swipe it away completely and reopen it.
+4. Upload index.html.
+5. Replace the existing index.html.
+6. Commit as: Fix podcast and book card spacing
+7. Wait for GitHub Pages to deploy.
+8. Refresh the desktop page and fully close/reopen Safari on mobile.
 
-INCLUDED:
-• Device-aware install instructions for iPhone/iPad, Android, and desktop
-• Native install prompt where supported
-• Installed-app detection
-• Branded offline fallback page
-• Offline status indicator
-• Stronger service-worker caching
-• Automatic hourly update checks
-• “Fresh version available” update prompt
-• Old cache cleanup
-• Improved manifest launch behavior and shortcuts
+FIXED:
+• Podcast paragraphs no longer overlap
+• Ranking line is now a proper proof badge
+• Podcast buttons have clean separation
+• Book copy has consistent paragraph spacing
+• Book artwork has more breathing room
+• Desktop, tablet, and mobile layouts are preserved

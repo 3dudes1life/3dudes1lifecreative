@@ -12,9 +12,9 @@
 <meta content="3Dudes1Life Creative | Podcast, Books, Adventures &amp; Real-Life Throuple Stories" property="og:title"/>
 <meta content="3Dudes1Life Creative is the connected world of William, Caleb, and Daniel — a real-life gay throuple sharing A Little Throuple Tea podcast, Tres Amigos Una Vida books, travel adventures, blog stories, and life together." property="og:description"/>
 <meta content="https://3dudes1lifecreative.com/app-icon-512.png" property="og:image"/>
-<meta content="website" property="og:type">
+<meta content="website" property="og:type"/>
 <link href="/manifest.json" rel="manifest"/>
-<meta content="#3a1038" name="theme-color"/>
+<meta content="#3a1038" name="theme-color">
 <meta content="dark" name="color-scheme"/>
 <meta content="yes" name="apple-mobile-web-app-capable"/>
 <meta content="3Dudes1Life" name="apple-mobile-web-app-title"/>
@@ -883,7 +883,154 @@ body.app-shell-home main > .card:not(.latest-home):not(.universe-summary){
     min-height:58px!important;
   }
 }
-</style><link href="/assets/pwa/pwa-superpowers.css?v=20260714-pwa27" rel="stylesheet"/></head>
+</style><link href="/assets/pwa/pwa-superpowers.css?v=20260714-pwa27" rel="stylesheet"/><style id="feature-card-spacing-fix">
+/* Feature card collision and spacing fix */
+.feature-card--podcast{
+  grid-template-areas:
+    "art kicker"
+    "art title"
+    "art copy"
+    "art actions"!important;
+  grid-template-rows:auto auto auto auto!important;
+  align-content:center!important;
+  row-gap:10px!important;
+}
+
+.feature-card--podcast > .feature-card__copy{
+  grid-area:copy!important;
+  min-width:0!important;
+  display:flex!important;
+  flex-direction:column!important;
+  gap:10px!important;
+  margin:0!important;
+}
+
+.feature-card--podcast > .feature-card__copy p{
+  position:static!important;
+  display:block!important;
+  margin:0!important;
+  max-width:680px!important;
+  line-height:1.55!important;
+  text-align:left!important;
+}
+
+.feature-card--podcast .feature-card__proof{
+  align-self:flex-start!important;
+  display:inline-flex!important;
+  width:auto!important;
+  padding:8px 12px!important;
+  border-radius:999px!important;
+  color:#185a9d!important;
+  background:rgba(67,206,162,.14)!important;
+  border:1px solid rgba(67,206,162,.28)!important;
+  font-size:.84rem!important;
+  font-weight:900!important;
+  line-height:1.2!important;
+}
+
+.feature-card--podcast > .buttons{
+  grid-area:actions!important;
+  margin-top:4px!important;
+}
+
+.feature-card--podcast > h2{
+  margin:.1rem 0 .35rem!important;
+  line-height:1.1!important;
+}
+
+.feature-card--book{
+  min-height:460px!important;
+  padding-top:42px!important;
+  padding-bottom:42px!important;
+  padding-left:clamp(28px,4vw,48px)!important;
+}
+
+.feature-card--book > .feature-card__copy{
+  max-width:640px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  gap:12px!important;
+  margin:0 0 18px!important;
+}
+
+.feature-card--book > .feature-card__copy p{
+  margin:0!important;
+  line-height:1.62!important;
+  text-align:left!important;
+}
+
+.feature-card--book > h2{
+  margin:.1rem 0 .85rem!important;
+  line-height:1.1!important;
+}
+
+.feature-card--book .book-cover{
+  right:clamp(28px,5vw,64px)!important;
+  width:min(26vw,285px)!important;
+  max-height:360px!important;
+}
+
+@media(max-width:900px){
+  .feature-card--podcast{
+    grid-template-columns:220px minmax(0,1fr)!important;
+    column-gap:28px!important;
+  }
+
+  .feature-card--book{
+    min-height:420px!important;
+    padding-right:min(38vw,340px)!important;
+  }
+
+  .feature-card--book .book-cover{
+    width:min(27vw,235px)!important;
+  }
+}
+
+@media(max-width:680px){
+  .feature-card--podcast{
+    display:flex!important;
+    row-gap:0!important;
+  }
+
+  .feature-card--podcast > .feature-card__copy{
+    order:3!important;
+    align-items:center!important;
+    gap:10px!important;
+  }
+
+  .feature-card--podcast > .feature-card__copy p{
+    text-align:center!important;
+  }
+
+  .feature-card--podcast .feature-card__proof{
+    align-self:center!important;
+  }
+
+  .feature-card--podcast > .buttons{
+    order:4!important;
+    margin-top:14px!important;
+  }
+
+  .feature-card--book{
+    min-height:0!important;
+    padding:24px 16px!important;
+  }
+
+  .feature-card--book > .feature-card__copy{
+    align-items:center!important;
+    margin-bottom:16px!important;
+  }
+
+  .feature-card--book > .feature-card__copy p{
+    text-align:center!important;
+  }
+
+  .feature-card--book .book-cover{
+    width:min(58vw,250px)!important;
+    margin:8px auto 18px!important;
+  }
+}
+</style></head>
 <body>
 <nav class="site-nav">
 <a class="nav-logo" href="index.html">
@@ -996,16 +1143,16 @@ body.app-shell-home main > .card:not(.latest-home):not(.universe-summary){
 <a href="https://throupletea.com" rel="noopener" target="_blank">
 <img alt="A Little Throuple Tea podcast artwork" class="podcast-art" decoding="async" fetchpriority="high" loading="eager" src="3Dudes1Life_Podcastartwork2_Season2_listen%20copy.jpg"/>
 </a>
-<p style="font-size:1.05rem; margin-bottom:0.5rem;">
+
+
+
+<div class="feature-card__copy"><p class="feature-card__proof" style="font-size:1.05rem; margin-bottom:0.5rem;">
         🏆 <strong>Ranked the #1 Throuple Podcast by FeedSpot</strong>
-</p>
-<p>
+</p><p>
         A Little Throuple Tea is our weekly video podcast about love, chaos, relationship dynamics, travel, family, reality TV, and what it actually feels like to be three men in love.
-      </p>
-<p>
+      </p><p>
 <strong>New episodes every Friday.</strong> Available on Spotify, Apple Podcasts, YouTube, Amazon Music, iHeartRadio, and everywhere you listen.
-      </p>
-<div class="buttons">
+      </p></div><div class="buttons">
 <a href="https://podcasts.apple.com/us/podcast/3dudes1life-a-little-throuple-tea/id1837237399" rel="noopener" target="_blank">🍎 Apple Podcasts</a>
 <a href="https://open.spotify.com/show/6cb9Y7qcyDO1L7O15X2oL5" rel="noopener" target="_blank">🟢 Spotify</a>
 <a href="https://www.youtube.com/@ThroupleTea" rel="noopener" target="_blank">▶️ YouTube</a>
@@ -1017,13 +1164,13 @@ body.app-shell-home main > .card:not(.latest-home):not(.universe-summary){
 <section class="card feature-card feature-card--book" id="book">
 <span class="feature-kicker">Love Story • Book Series</span><h2>📚 Tres Amigos, Una Vida</h2>
 <img alt="Tres Amigos, Una Vida book cover" class="book-cover" decoding="async" loading="lazy" src="book-cover.png"/>
-<p>
+
+
+<div class="feature-card__copy"><p>
 <em>Tres Amigos, Una Vida</em> is the book series inspired by true events from a real-life throuple — a love story about vulnerability, devotion, humor, healing, and the messy magic of choosing each other.
-      </p>
-<p>
+      </p><p>
         The books and podcast live side by side: one gives you the fictionalized emotional journey, while the other lets you hear the real voices, stories, and chaos behind the world.
-      </p>
-<div class="buttons">
+      </p></div><div class="buttons">
 <a href="https://www.etsy.com/shop/TresAmigosUnaVida" rel="noopener" target="_blank">🛒 Buy the Paperback</a>
 <a href="https://www.amazon.com/Tres-Amigos-Una-Vida-Throuple-ebook/dp/B0F98W6S5N" rel="noopener" target="_blank">📖 Get the eBook</a>
 <a href="https://www.instagram.com/tresamigosunavida" rel="noopener" target="_blank">📱 Follow the Story</a>
