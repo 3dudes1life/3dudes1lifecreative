@@ -1,23 +1,27 @@
-3DUDES1LIFE — ZIP 2.4–2.6 APP EXPERIENCE PACK
+3DUDES1LIFE — ZIP 2.7 PWA SUPERPOWERS
 
-This cumulative package preserves ZIP 2.2, ZIP 2.3, all header fixes,
-and the Whole Story desktop formatting fix.
+This is cumulative. It preserves the header, homepage experience, SEO/PWA,
+Whole Story formatting, and ZIP 2.4–2.6 App Experience Pack.
 
 UPLOAD:
-1. Unzip.
+1. Unzip this package.
 2. Open 3dudes1life/3dudes1lifecreative on GitHub.
-3. Add file > Upload files.
+3. Click Add file > Upload files.
 4. Drag EVERYTHING inside the unzipped folder into GitHub.
-5. Keep assets and connections folders intact.
-6. Commit: Install app experience pack
+5. Preserve the assets and connections folders.
+6. Commit as: Install ZIP 2.7 PWA superpowers
 7. Wait for GitHub Pages deployment.
 8. Fully close Safari and reopen the site.
+9. For the Home Screen app, swipe it away completely and reopen it.
 
 INCLUDED:
-• Redesigned podcast, book, and blog feature cards
-• Horizontal swipe/scroll adventure hub
-• Mobile bottom navigation
-• More button connected to the existing hamburger
-• Floating Latest Episode button on larger screens
-• Better hover, tap, spacing, and responsive behavior
-• No image-library reupload
+• Device-aware install instructions for iPhone/iPad, Android, and desktop
+• Native install prompt where supported
+• Installed-app detection
+• Branded offline fallback page
+• Offline status indicator
+• Stronger service-worker caching
+• Automatic hourly update checks
+• “Fresh version available” update prompt
+• Old cache cleanup
+• Improved manifest launch behavior and shortcuts

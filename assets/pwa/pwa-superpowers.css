@@ -1,0 +1,184 @@
+
+/* ZIP 2.7 — PWA Superpowers */
+.pwa-toast{
+  position:fixed;
+  z-index:1000001;
+  left:50%;
+  bottom:calc(92px + env(safe-area-inset-bottom,0px));
+  width:min(92vw,560px);
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:14px;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:20px;
+  color:#fff;
+  background:rgba(17,19,26,.96);
+  box-shadow:0 22px 55px rgba(0,0,0,.45);
+  backdrop-filter:blur(18px) saturate(145%);
+  -webkit-backdrop-filter:blur(18px) saturate(145%);
+  transform:translate(-50%,24px);
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:.22s ease;
+}
+.pwa-toast.is-visible{
+  transform:translate(-50%,0);
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+}
+.pwa-toast__icon{
+  flex:0 0 auto;
+  width:44px;height:44px;
+  display:grid;place-items:center;
+  border-radius:14px;
+  font-size:1.3rem;
+  background:linear-gradient(135deg,#ff4fd8,#ff9f1c);
+}
+.pwa-toast__copy{min-width:0;flex:1}
+.pwa-toast__copy strong{display:block;font:850 .98rem/1.2 system-ui,-apple-system,sans-serif}
+.pwa-toast__copy span{display:block;margin-top:3px;color:#cdd5df;font:600 .78rem/1.35 system-ui,-apple-system,sans-serif}
+.pwa-toast__actions{display:flex;gap:8px}
+.pwa-toast button{
+  min-height:40px;
+  padding:0 13px;
+  border:0;
+  border-radius:12px;
+  font:800 .78rem/1 system-ui,-apple-system,sans-serif;
+  cursor:pointer;
+}
+.pwa-toast__primary{color:#fff;background:linear-gradient(135deg,#ff4fd8,#ff9f1c)}
+.pwa-toast__secondary{color:#fff;background:rgba(255,255,255,.10)}
+
+.pwa-install-sheet{
+  position:fixed;
+  z-index:1000002;
+  inset:0;
+  display:grid;
+  place-items:end center;
+  padding:18px;
+  background:rgba(0,0,0,.58);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:.2s ease;
+}
+.pwa-install-sheet.is-visible{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+}
+.pwa-install-sheet__panel{
+  width:min(100%,620px);
+  max-height:min(82dvh,720px);
+  overflow:auto;
+  padding:22px;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:26px;
+  color:#fff;
+  background:
+    radial-gradient(circle at 0 0,rgba(255,79,216,.18),transparent 34%),
+    radial-gradient(circle at 100% 100%,rgba(67,206,162,.16),transparent 36%),
+    #11131a;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  transform:translateY(24px);
+  transition:.22s ease;
+}
+.pwa-install-sheet.is-visible .pwa-install-sheet__panel{transform:none}
+.pwa-install-sheet__top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.pwa-install-sheet__top h2{margin:0;color:#fff;font-size:clamp(1.45rem,5vw,2rem)}
+.pwa-install-sheet__close{
+  flex:0 0 auto;
+  width:42px;height:42px;
+  border:0;border-radius:14px;
+  color:#fff;background:rgba(255,255,255,.10);
+  font-size:1.35rem;cursor:pointer;
+}
+.pwa-install-sheet__lead{margin:.65rem 0 1rem;color:#cdd5df;line-height:1.55}
+.pwa-install-sheet__steps{
+  display:grid;
+  gap:10px;
+  margin:0;
+  padding:0;
+  list-style:none;
+  counter-reset:pwa-step;
+}
+.pwa-install-sheet__steps li{
+  counter-increment:pwa-step;
+  display:grid;
+  grid-template-columns:36px minmax(0,1fr);
+  align-items:center;
+  gap:12px;
+  padding:13px;
+  border-radius:16px;
+  background:rgba(255,255,255,.07);
+}
+.pwa-install-sheet__steps li::before{
+  content:counter(pwa-step);
+  width:34px;height:34px;
+  display:grid;place-items:center;
+  border-radius:50%;
+  color:#fff;font-weight:900;
+  background:linear-gradient(135deg,#ff4fd8,#ff9f1c);
+}
+.pwa-install-sheet__install{
+  width:100%;
+  min-height:50px;
+  margin-top:14px;
+  border:0;
+  border-radius:16px;
+  color:#fff;
+  font-weight:900;
+  background:linear-gradient(135deg,#ff4fd8,#ff9f1c);
+  cursor:pointer;
+}
+.pwa-install-sheet__status{
+  margin:12px 0 0;
+  padding:12px;
+  border-radius:14px;
+  color:#cdd5df;
+  background:rgba(255,255,255,.06);
+  font-size:.85rem;
+  line-height:1.45;
+}
+
+.pwa-offline-pill{
+  position:fixed;
+  z-index:1000000;
+  top:calc(var(--app-shell-height) + var(--app-safe-top) + 10px);
+  left:50%;
+  padding:8px 13px;
+  border-radius:999px;
+  color:#fff;
+  background:#8f2d2d;
+  box-shadow:0 8px 22px rgba(0,0,0,.3);
+  font:800 .75rem/1 system-ui,-apple-system,sans-serif;
+  transform:translate(-50%,-15px);
+  opacity:0;
+  visibility:hidden;
+  transition:.2s;
+}
+body.is-offline .pwa-offline-pill{
+  transform:translate(-50%,0);
+  opacity:1;
+  visibility:visible;
+}
+
+@media(min-width:681px){
+  .pwa-toast{bottom:22px}
+  .pwa-install-sheet{place-items:center}
+}
+@media(max-width:560px){
+  .pwa-toast{align-items:flex-start;flex-wrap:wrap}
+  .pwa-toast__actions{width:100%}
+  .pwa-toast__actions button{flex:1}
+  .pwa-install-sheet{padding:10px}
+  .pwa-install-sheet__panel{padding:20px 16px;border-radius:24px 24px 18px 18px}
+}
+@media(prefers-reduced-motion:reduce){
+  .pwa-toast,.pwa-install-sheet,.pwa-install-sheet__panel{transition:none}
+}
