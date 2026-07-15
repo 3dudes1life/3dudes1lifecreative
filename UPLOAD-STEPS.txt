@@ -1,3 +1,31 @@
-Install Version 3 growth engine
+3DUDES1LIFE — PWA INSTALL VERBIAGE SUPERMAN FIX
 
-Install ZIP 3.0-3.2 first, then upload all files and commit: Install Version 3 growth engine
+This package is cumulative and starts from the completed Version 3 Growth build.
+
+It checks the visitor's browser and operating system and shows the correct
+language for:
+
+• iPhone and iPad Safari — Add to Home Screen
+• Mac Safari — File > Add to Dock
+• Mac Chrome
+• Mac Edge
+• Android Chrome and other browsers
+• Samsung Internet
+• Windows Chrome
+• Windows Edge
+• Chromebook
+• Firefox desktop
+• Already-added / standalone mode
+• Native browser install-prompt mode
+• Unknown-browser fallback
+
+UPLOAD:
+1. Unzip this package.
+2. Open 3dudes1life/3dudes1lifecreative on GitHub.
+3. Click Add file > Upload files.
+4. Drag everything inside the unzipped folder into GitHub.
+5. Preserve the assets and connections folder structure.
+6. Commit: Fix install wording for every platform
+7. Wait for GitHub Pages to deploy.
+8. Fully close and reopen the browser.
+9. Swipe away and reopen an existing Home Screen app if testing there.

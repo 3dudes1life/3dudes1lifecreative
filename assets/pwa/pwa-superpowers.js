@@ -1,4 +1,3 @@
-
 (() => {
   "use strict";
 
@@ -6,9 +5,20 @@
   let refreshing = false;
 
   const ua = navigator.userAgent || "";
+  const platform = navigator.platform || "";
+  const maxTouchPoints = navigator.maxTouchPoints || 0;
+
   const isIOS = /iPad|iPhone|iPod/.test(ua) ||
-    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-  const isAndroid = /Android/.test(ua);
+    (platform === "MacIntel" && maxTouchPoints > 1);
+  const isAndroid = /Android/i.test(ua);
+  const isMac = /Macintosh|Mac OS X/i.test(ua) && !isIOS;
+  const isWindows = /Windows/i.test(ua);
+  const isChromeOS = /CrOS/i.test(ua);
+  const isEdge = /Edg\//i.test(ua);
+  const isChrome = /Chrome|CriOS/i.test(ua) && !isEdge;
+  const isFirefox = /Firefox|FxiOS/i.test(ua);
+  const isSafari = /Safari/i.test(ua) && !/Chrome|CriOS|Edg|OPR|Firefox|FxiOS/i.test(ua);
+  const isSamsungInternet = /SamsungBrowser/i.test(ua);
   const isStandalone = window.matchMedia("(display-mode: standalone)").matches ||
     window.navigator.standalone === true;
 
@@ -38,7 +48,7 @@
           </div>
           <p class="pwa-install-sheet__lead" data-pwa-lead></p>
           <ol class="pwa-install-sheet__steps" data-pwa-steps></ol>
-          <button class="pwa-install-sheet__install" type="button" data-pwa-native-install hidden>Install App</button>
+          <button class="pwa-install-sheet__install" type="button" data-pwa-native-install hidden>Add App</button>
           <p class="pwa-install-sheet__status" data-pwa-status></p>
         </div>
       </div>
@@ -58,58 +68,168 @@
     });
   }
 
-  function setInstallContent() {
-    const lead = document.querySelector("[data-pwa-lead]");
+  function setSteps(items) {
     const steps = document.querySelector("[data-pwa-steps]");
+    if (!steps) return;
+    steps.innerHTML = items.map(item => `<li>${item}</li>`).join("");
+  }
+
+  function setInstallContent() {
+    const title = document.querySelector("#pwaInstallTitle");
+    const lead = document.querySelector("[data-pwa-lead]");
     const status = document.querySelector("[data-pwa-status]");
     const nativeButton = document.querySelector("[data-pwa-native-install]");
-    if (!lead || !steps || !status || !nativeButton) return;
+    if (!title || !lead || !status || !nativeButton) return;
 
+    title.textContent = "📲 Add 3Dudes1Life";
     nativeButton.hidden = true;
-    steps.innerHTML = "";
+    nativeButton.textContent = "Add App";
+    status.textContent = "";
 
     if (isStandalone) {
-      lead.textContent = "You already have the app experience open.";
-      status.textContent = "You’re all set — this version runs full screen from your Home Screen.";
-      steps.innerHTML = "<li>Keep this icon on your Home Screen for one-tap access.</li>";
+      title.textContent = "✅ 3Dudes1Life Is Already Added";
+      lead.textContent = "You’re already using the standalone app experience.";
+      setSteps([
+        isIOS
+          ? "Keep the 3Dudes1Life icon on your Home Screen for one-tap access."
+          : "Keep 3Dudes1Life in your Dock, taskbar, launcher, or app list for one-tap access."
+      ]);
+      status.textContent = "Nothing else is required.";
       return;
     }
 
     if (deferredInstallPrompt) {
-      lead.textContent = "Your browser can install 3Dudes1Life as an app right now.";
-      status.textContent = "It opens in its own window and keeps essential pages available offline.";
-      steps.innerHTML = "<li>Tap Install App below.</li><li>Confirm the browser prompt.</li>";
+      lead.textContent = "Your browser can add 3Dudes1Life as an app right now.";
+      setSteps([
+        "Choose Add App below.",
+        "Approve the browser’s confirmation message."
+      ]);
+      status.textContent = "It will open in its own app-style window and retain essential offline access.";
       nativeButton.hidden = false;
       return;
     }
 
     if (isIOS) {
-      lead.textContent = "On iPhone or iPad, install directly from Safari.";
-      status.innerHTML = "Look for the Share icon — the square with the upward arrow.";
-      steps.innerHTML =
-        "<li>Open this page in Safari.</li>" +
-        "<li>Tap the Share button in the Safari toolbar.</li>" +
-        "<li>Scroll and choose <strong>Add to Home Screen</strong>.</li>" +
-        "<li>Tap <strong>Add</strong>.</li>";
+      title.textContent = "📲 Add to Your Home Screen";
+      lead.textContent = "On iPhone or iPad, add 3Dudes1Life from the browser’s Share menu.";
+      setSteps([
+        "Open this page in Safari.",
+        "Tap the Share button — the square with the upward arrow.",
+        "Scroll down and choose <strong>Add to Home Screen</strong>.",
+        "Tap <strong>Add</strong>."
+      ]);
+      status.textContent = "The 3Dudes1Life icon will appear on your iPhone or iPad Home Screen.";
+      return;
+    }
+
+    if (isMac && isSafari) {
+      title.textContent = "💻 Add 3Dudes1Life on Your Mac";
+      lead.textContent = "Safari adds websites like this to your Mac as web apps.";
+      setSteps([
+        "In Safari’s menu bar, choose <strong>File</strong>.",
+        "Choose <strong>Add to Dock</strong>.",
+        "Confirm the name, then choose <strong>Add</strong>."
+      ]);
+      status.textContent = "3Dudes1Life will be added to your Dock and Applications folder. On Mac, Apple calls this “Add to Dock,” not “Install App.”";
+      return;
+    }
+
+    if (isMac && isEdge) {
+      title.textContent = "💻 Add 3Dudes1Life on Your Mac";
+      lead.textContent = "Microsoft Edge can add this site as an app-style shortcut.";
+      setSteps([
+        "Open the Edge menu (•••).",
+        "Choose <strong>Apps</strong>.",
+        "Choose <strong>Install this site as an app</strong>, then confirm."
+      ]);
+      status.textContent = "The exact Edge wording may vary slightly by version.";
+      return;
+    }
+
+    if (isMac && isChrome) {
+      title.textContent = "💻 Add 3Dudes1Life on Your Mac";
+      lead.textContent = "Chrome can add 3Dudes1Life as an app-style shortcut.";
+      setSteps([
+        "Look for the Add or Install icon at the right side of Chrome’s address bar.",
+        "If it is not shown, open Chrome’s menu (⋮).",
+        "Choose <strong>Cast, save, and share</strong>, then choose the available app or shortcut option."
+      ]);
+      status.textContent = "Chrome’s menu wording can vary by version. Safari’s Mac option is File → Add to Dock.";
+      return;
+    }
+
+    if (isAndroid && isSamsungInternet) {
+      title.textContent = "📲 Add to Your Android Home Screen";
+      lead.textContent = "Samsung Internet can place 3Dudes1Life directly on your Home screen.";
+      setSteps([
+        "Open the Samsung Internet menu (☰).",
+        "Choose <strong>Add page to</strong>.",
+        "Choose <strong>Home screen</strong>, then confirm."
+      ]);
+      status.textContent = "The icon will appear with your other Android apps and shortcuts.";
       return;
     }
 
     if (isAndroid) {
-      lead.textContent = "Add 3Dudes1Life from your browser menu.";
-      status.textContent = "Chrome may also show an Install App button automatically.";
-      steps.innerHTML =
-        "<li>Tap the browser menu (⋮).</li>" +
-        "<li>Choose <strong>Install app</strong> or <strong>Add to Home screen</strong>.</li>" +
-        "<li>Confirm the installation.</li>";
+      title.textContent = "📲 Add to Your Android Home Screen";
+      lead.textContent = "Add 3Dudes1Life from your Android browser menu.";
+      setSteps([
+        "Open the browser menu (⋮).",
+        "Choose <strong>Add to Home screen</strong> or <strong>Install app</strong>.",
+        "Confirm the name and placement."
+      ]);
+      status.textContent = "Android wording varies by browser: Chrome may say “Install app” while others say “Add to Home screen.”";
       return;
     }
 
-    lead.textContent = "Install 3Dudes1Life from your desktop browser.";
-    status.textContent = "Chrome and Edge usually show an install icon at the right side of the address bar.";
-    steps.innerHTML =
-      "<li>Look for the install icon in the address bar.</li>" +
-      "<li>Or open the browser menu and choose <strong>Install 3Dudes1Life</strong>.</li>" +
-      "<li>Confirm the installation.</li>";
+    if (isWindows && isEdge) {
+      title.textContent = "🖥️ Add 3Dudes1Life on Windows";
+      lead.textContent = "Microsoft Edge can add this site as an app.";
+      setSteps([
+        "Open the Edge menu (•••).",
+        "Choose <strong>Apps</strong>.",
+        "Choose <strong>Install this site as an app</strong>, then confirm."
+      ]);
+      status.textContent = "You can pin it to the taskbar or Start menu after it is added.";
+      return;
+    }
+
+    if ((isWindows || isChromeOS) && isChrome) {
+      title.textContent = isChromeOS
+        ? "💻 Add 3Dudes1Life on Your Chromebook"
+        : "🖥️ Add 3Dudes1Life on Windows";
+      lead.textContent = "Chrome can add 3Dudes1Life as an app.";
+      setSteps([
+        "Look for the Add or Install icon at the right side of the address bar.",
+        "If it is not shown, open Chrome’s menu (⋮).",
+        "Choose <strong>Cast, save, and share</strong>, then choose the available app or shortcut option."
+      ]);
+      status.textContent = "Afterward, open it from your Start menu, taskbar, or Chromebook launcher.";
+      return;
+    }
+
+    if (isFirefox) {
+      title.textContent = "🔖 Save 3Dudes1Life";
+      lead.textContent = "Firefox desktop does not currently offer the same full web-app installation flow.";
+      setSteps([
+        "Bookmark this page in Firefox for quick access.",
+        "For a standalone app-style window, open this site in Safari, Chrome, or Edge.",
+        isMac
+          ? "On Mac Safari, choose <strong>File → Add to Dock</strong>."
+          : "Follow that browser’s Add or Install option."
+      ]);
+      status.textContent = "You can continue using every website feature normally in Firefox.";
+      return;
+    }
+
+    title.textContent = "🔖 Save 3Dudes1Life for Quick Access";
+    lead.textContent = "Your browser did not expose an automatic app-add option.";
+    setSteps([
+      "Open your browser’s main menu.",
+      "Look for <strong>Add to Home Screen</strong>, <strong>Add to Dock</strong>, <strong>Install</strong>, or <strong>Create shortcut</strong>.",
+      "If no app option appears, bookmark this page."
+    ]);
+    status.textContent = "The exact wording depends on your operating system and browser version.";
   }
 
   function openInstallSheet() {
