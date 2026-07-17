@@ -1,0 +1,4 @@
+Site: William Zakrajshek
+URL: https://zakrajshek.com
+Language: English
+Last updated: 2026-07-15

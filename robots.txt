@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /.git/
-Disallow: /tools/
 
-Sitemap: https://3dudes1lifecreative.com/sitemap.xml
+Sitemap: https://zakrajshek.com/sitemap.xml

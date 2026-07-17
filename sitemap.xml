@@ -1,81 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://3dudes1lifecreative.com/</loc>
-    <lastmod>2026-07-14</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://zakrajshek.com/</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://3dudes1lifecreative.com/links.html</loc>
-    <lastmod>2026-07-14</lastmod>
+    <loc>https://zakrajshek.com/about.html</loc>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://3dudes1lifecreative.com/connections/alaska.html</loc>
-    <lastmod>2026-07-14</lastmod>
+    <loc>https://zakrajshek.com/dj-will-z.html</loc>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://3dudes1lifecreative.com/connections/alaska-guide.html</loc>
-    <lastmod>2026-07-14</lastmod>
+    <loc>https://zakrajshek.com/speaking.html</loc>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://3dudes1lifecreative.com/connections/big-island-guide.html</loc>
-    <lastmod>2026-07-14</lastmod>
+    <loc>https://zakrajshek.com/media.html</loc>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://3dudes1lifecreative.com/connections/california.html</loc>
-    <lastmod>2026-07-14</lastmod>
+    <loc>https://zakrajshek.com/books-podcast.html</loc>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://3dudes1lifecreative.com/connections/california-guide.html</loc>
-    <lastmod>2026-07-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://3dudes1lifecreative.com/connections/costa-rica.html</loc>
-    <lastmod>2026-07-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://3dudes1lifecreative.com/connections/costa-rica-guide.html</loc>
-    <lastmod>2026-07-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://3dudes1lifecreative.com/connections/hawaii-maui.html</loc>
-    <lastmod>2026-07-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://3dudes1lifecreative.com/connections/maui-guide.html</loc>
-    <lastmod>2026-07-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://3dudes1lifecreative.com/connections/road-trips.html</loc>
-    <lastmod>2026-07-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://3dudes1lifecreative.com/connections/road-trip-guide.html</loc>
-    <lastmod>2026-07-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-</urlset>
+<url><loc>https://zakrajshek.com/privacy.html</loc></url><url><loc>https://zakrajshek.com/accessibility.html</loc></url><url><loc>https://zakrajshek.com/contact.html</loc></url></urlset>
