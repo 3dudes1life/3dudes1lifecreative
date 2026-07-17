@@ -1,1 +1,88 @@
-const VERSION='zak-v5-4-brands-20260717';const STATIC=`${VERSION}-static`;const PAGES=`${VERSION}-pages`;const CORE=['/','/index.html','/about.html','/speaking.html','/media.html','/books-podcast.html','/dj-will-z.html','/404.html','/assets/site.css','/assets/site.js','/assets/media/press-headshot-primary.webp','/assets/media/press-headshot-secondary.webp','/assets/media/dj-will-z/hero.webp','/assets/og-dj-will-z.jpg','/favicon.svg','/site.webmanifest'];self.addEventListener('install',e=>e.waitUntil(caches.open(STATIC).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting())));self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>!k.startsWith(VERSION)).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));self.addEventListener('fetch',e=>{const r=e.request;if(r.method!=='GET')return;const u=new URL(r.url);if(u.origin!==location.origin)return;if(r.mode==='navigate'){e.respondWith(fetch(r).then(res=>{const copy=res.clone();caches.open(PAGES).then(c=>c.put(r,copy));return res}).catch(()=>caches.match(r).then(x=>x||caches.match('/404.html'))));return}if(['style','script','image','font'].includes(r.destination)){e.respondWith(caches.match(r).then(hit=>hit||fetch(r).then(res=>{if(res.ok){const copy=res.clone();caches.open(STATIC).then(c=>c.put(r,copy))}return res})));}});
+const CACHE_VERSION = "3dudes1life-pwa-27";
+const STATIC_CACHE = `${CACHE_VERSION}-static`;
+const RUNTIME_CACHE = `${CACHE_VERSION}-runtime`;
+
+const CORE_ASSETS = [
+  "/",
+  "/index.html",
+  "/links.html",
+  "/offline.html",
+  "/manifest.json",
+  "/logo.png",
+  "/app-icon.png",
+  "/app-icon-512.png",
+  "/assets/app-shell/app-shell.css",
+  "/assets/app-shell/app-shell.js",
+  "/assets/pwa/pwa-superpowers.css",
+  "/assets/pwa/pwa-superpowers.js"
+];
+
+self.addEventListener("install", event => {
+  event.waitUntil(
+    caches.open(STATIC_CACHE)
+      .then(cache => cache.addAll(CORE_ASSETS))
+  );
+});
+
+self.addEventListener("activate", event => {
+  event.waitUntil(
+    caches.keys()
+      .then(keys => Promise.all(
+        keys
+          .filter(key => ![STATIC_CACHE, RUNTIME_CACHE].includes(key))
+          .map(key => caches.delete(key))
+      ))
+      .then(() => self.clients.claim())
+  );
+});
+
+self.addEventListener("message", event => {
+  if (event.data?.type === "SKIP_WAITING") self.skipWaiting();
+});
+
+self.addEventListener("fetch", event => {
+  const request = event.request;
+  if (request.method !== "GET") return;
+
+  if (request.mode === "navigate") {
+    event.respondWith(
+      fetch(request)
+        .then(response => {
+          const copy = response.clone();
+          caches.open(RUNTIME_CACHE).then(cache => cache.put(request, copy));
+          return response;
+        })
+        .catch(async () =>
+          (await caches.match(request)) ||
+          (await caches.match("/offline.html"))
+        )
+    );
+    return;
+  }
+
+  const url = new URL(request.url);
+  if (url.origin !== self.location.origin) {
+    event.respondWith(
+      caches.match(request).then(cached =>
+        cached || fetch(request).catch(() => cached)
+      )
+    );
+    return;
+  }
+
+  event.respondWith(
+    caches.match(request).then(cached => {
+      const network = fetch(request)
+        .then(response => {
+          if (response.ok) {
+            const copy = response.clone();
+            caches.open(RUNTIME_CACHE).then(cache => cache.put(request, copy));
+          }
+          return response;
+        })
+        .catch(() => cached);
+
+      return cached || network;
+    })
+  );
+});
